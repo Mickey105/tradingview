@@ -11,12 +11,9 @@
           <div class="rights">{{ $t("common.rights") }}</div>
           <div class="footer__socials-container">
             <a
-              v-if="
-                localConfig.socials.facebook &&
-                localConfig.socials.facebook !== ''
-              "
               class="footer__social-item"
-              :href="`https://facebook.com/${localConfig.socials.facebook.link}`"
+              href="https://www.facebook.com/pool4ever.com.official"
+              target="_blank"
             >
               <span class="pl-2">
                 <svg
@@ -35,15 +32,11 @@
                   </g>
                 </svg>
               </span>
-              {{ localConfig.socials.facebook.link }}
+              Pool4Ever
             </a>
             <a
-              v-if="
-                localConfig.socials.twitter &&
-                localConfig.socials.twitter !== ''
-              "
               class="footer__social-item"
-              :href="`https://twitter.com/${localConfig.socials.twitter.link}`"
+              href="https://twitter.com/Pool4everCom"
             >
               <span class="pl-1">
                 <svg
@@ -59,16 +52,9 @@
                   />
                 </svg>
               </span>
-              {{ localConfig.socials.twitter.link }}
+              Pool4Ever
             </a>
-            <a
-              v-if="
-                localConfig.socials.telegram &&
-                localConfig.socials.telegram !== ''
-              "
-              class="footer__social-item"
-              :href="`https://t.me/${localConfig.socials.telegram.link}`"
-            >
+            <a class="footer__social-item" href="https://t.me/Pool4EverCom2022">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +72,7 @@
                   </g>
                 </svg>
               </span>
-              {{ localConfig.socials.telegram.link }}
+              Pool4Ever
             </a>
             <a
               v-if="
@@ -372,6 +358,8 @@ export default {
   width: 40%;
   padding-right: 10px;
   color: #42a4ff;
+  display: flex;
+  gap: 5px;
 }
 .footer__social-item span {
   width: 20px;

@@ -1,0 +1,72 @@
+//###########################################################################
+//   OpenCEX Frontend configuration file. More info
+//   https://polygant.notion.site/Settings-3f9e0aae880e433a9d23e76f62a4a456
+//###########################################################################
+
+const localConfig = {
+  wss_url: "wss://",
+  two_fa: "Exchange Pool4Ever",
+  project_title: "Exchange Pool4Ever",
+  api: {
+    baseURL: "https://exchange.pool4ever.com/api/v1/",
+    basePublicURL: "https://exchange.pool4ever.com/api/public/v1/",
+    host: "exchange.pool4ever.com",
+  },
+  api_url: "https://exchange.pool4ever.com",
+  api_url_plane: "exchange.pool4ever.com",
+  recaptcha_site_key: "6LfC3VInAAAAAOiMivLH03pMe0U97YPSEz7nA0Fl",
+  vue_v: "prod",
+  site_domain: "exchange.pool4ever.com",
+  host: "exchange.pool4ever.com",
+  help_widget: "",
+  logo: "",
+  themes: [
+    {
+      main_color: "#212529",
+      second_color: "#ffac2a",
+      cancel_color: "#d93d47",
+      login_background: "#36373c",
+      login_text: "white",
+      main_background: "#edf1fa",
+      main_text: "#2a2259",
+      input_color: "white",
+      input_text: "#2a2259",
+      block_color: "white",
+      border_color: "#f0f0f0",
+    },
+    {
+      main_color: "#212529",
+      second_color: "#ffac2a",
+      cancel_color: "#d93d47",
+      login_background: "#36373c",
+      login_text: "white",
+      main_background: "#171717",
+      main_text: "#888888",
+      input_color: "#242424",
+      input_text: "#888888",
+      block_color: "#242424",
+      border_color: "#353535",
+    },
+  ],
+  socials: {
+    telegram: {
+      link: "opencex",
+      title: "sitechange",
+    },
+    telegramNews: {
+      link: "",
+      title: "site_news",
+    },
+    mail: "idanzam@gmail.com",
+    facebook: {
+      link: "polygant",
+      title: "Exchange",
+    },
+    twitter: {
+      link: "polygant",
+      title: "@",
+    },
+  },
+};
+
+export default localConfig;

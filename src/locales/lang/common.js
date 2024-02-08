@@ -808,7 +808,7 @@ const common = {
     second_table_withdraw_fee: "Withdrawal fee",
     back_to_login: "Back to login",
     fees: "Fees",
-    Mining_Pools: "Mining Pools",
+    mining: "Mining Pools",
     not_enough_holds: "Not enough holds",
     copyLink: "Copy link",
     topupDetailsSepa: "Exchange will be processed at topup amount",

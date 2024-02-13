@@ -130,8 +130,8 @@
                       @click="setCurrentPair(pair['base'], pair['quote'])"
                     >
                       <div class="currency-table__td">
-                        <div class="currency-table__name" style="display: flex">
-                          <span style="color: white">
+                        <div class="currency-table__name">
+                          <span class="cur-color">
                             {{ pair.currency }}
                           </span>
                           /{{ pair["quote"] }}
@@ -401,6 +401,12 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.cur-color {
+  color: #ffd54f;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.623);
+}
+
 tr.disabled {
   opacity: 0.5;
 }
@@ -483,5 +489,6 @@ tr.disabled {
   font-weight: 700 !important;
   font-size: 12px !important;
   text-transform: none;
+  display: flex;
 }
 </style>

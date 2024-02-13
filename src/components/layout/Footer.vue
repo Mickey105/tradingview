@@ -186,6 +186,7 @@ export default {
 .copyright {
   font-size: 15px;
   margin-bottom: 13px;
+  // color: #ffd545;
 }
 .rights {
   font-size: 14px;

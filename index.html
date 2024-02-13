@@ -24,6 +24,17 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000" />
     <!--  recaptchaLoaded  -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8MB73XBXD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag('"js"', new Date());
+
+      gtag('"config"', '"G-R8MB73XBXD"');
+    </script>
     <script>
       (function () {
         window.recaptchaLoaded = function () {
@@ -41,16 +52,5 @@
         type="module"
         src="/public/TV/datafeeds/udf/dist/bundle.js"
     ></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8MB73XBXD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        window.dataLayer.push(arguments);
-      }
-      gtag('"js"', new Date());
-
-      gtag('"config"', '"G-R8MB73XBXD"');
-    </script>
   </body>
 </html>

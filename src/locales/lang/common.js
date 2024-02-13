@@ -1281,7 +1281,7 @@ const common = {
     deposit_history: "Deposit history",
     needkyc: "Pass KYC procedure",
     not_empty_field: "Field shouldn't be empty",
-    deposit: "DEPOSIT",
+    deposit: "Deposit",
     average_price: "Average price",
     allbalance: "Total balance",
     err: "Error: invalid link",

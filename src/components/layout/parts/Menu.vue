@@ -1,15 +1,12 @@
 <template>
   <div v-click-outside="closeMenu" class="header__menu" @click="toggleIsOpen">
     <div class="burger">
-      <svg
+      <img
         class="burger__image"
-        xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
-        viewBox="0 0 24 24"
-      >
-        <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z" />
-      </svg>
+        src="/public/img/menu/menu-point.svg"
+      />
       <span class="burger__text">{{ $t("common.menu") }}</span>
     </div>
     <ul class="navigation" :class="{ navigation__open: isOpenMenu }">

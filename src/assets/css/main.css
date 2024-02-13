@@ -175,8 +175,8 @@ img {
   position: relative;
   min-width: 50px;
   height: 32px;
-  margin-right: 10px;
-  padding-left: 30px;
+  margin-right: 0px;
+  padding-left: 10px;
 }
 .header__author:before {
   content: "";
@@ -184,9 +184,10 @@ img {
   height: 70px;
   background-color: #29324a;
   position: absolute;
-  left: -7px;
+  left: 0px !important;
   top: 50%;
   margin-top: -35px;
+  display: none;
 }
 @media screen and (max-width: 425px) {
   .header__author {
@@ -252,11 +253,15 @@ img {
   }
 }
 .header__ether-img {
-  width: 71px;
+  width: 50px;
   height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .header__ether-img img {
-  margin-right: 25px;
+  margin-right: 10px; 
+  height: 35px;
 }
 .header__ether-info {
   font-size: 14px;
@@ -495,7 +500,7 @@ img {
   text-transform: initial;
   line-height: 1.2;
   padding: 0 12px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 @media screen and (max-width: 500px) {
   .burger__text {
@@ -685,7 +690,7 @@ img {
   font-size: 14px;
   font-family: "Open Sans", arial, sans-serif;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   line-height: 1.2;
 }
 

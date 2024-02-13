@@ -344,7 +344,7 @@ th.walletTable__header,
 }
 .header-deopsit-btn,
 .support__nav-link--active .faq-icon {
-  background: v-bind(secondLocal) !important;
+  background: #ffd545;
 }
 .register__link span,
 .register__link,

@@ -174,7 +174,7 @@ export default {
 .footer {
   padding: 65px 0 77px;
   border-top: 1px solid #d9d9d9;
-  background: #fff;
+  // background: #fff;
 }
 .footer-content-wrapper {
   display: flex;

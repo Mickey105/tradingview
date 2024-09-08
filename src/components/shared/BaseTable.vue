@@ -252,7 +252,7 @@ $grey: #fafafb;
   &__table-heading,
   &__table-cell {
     line-height: 125%;
-    color: #2b395b;
+    // color: #2b395b;
     padding: 5px 10px 13px;
   }
 

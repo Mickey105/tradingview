@@ -19,6 +19,9 @@
         @input="$emit('update:modelValue', $event.target.value)"
       />
       <span v-if="placeholder" class="trade-input__caption">
+        <span>
+          <img :src="getCurrencyLogo(placeholder)" class="currency-logo" />
+        </span>
         {{ placeholder }}
       </span>
     </div>
@@ -59,6 +62,11 @@ export default {
     },
   },
   emits: ["update:modelValue", "focus", "blur"],
+  methods: {
+    getCurrencyLogo(currency) {
+      return "/public/img/common/svgcrypto/" + currency.toLowerCase() + ".svg";
+    },
+  },
 };
 </script>
 
@@ -106,5 +114,9 @@ export default {
     top: 50%;
     transform: translateY(-50%);
   }
+}
+.currency-logo {
+  width: 17px;
+  margin-right: 2px;
 }
 </style>

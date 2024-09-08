@@ -2,7 +2,7 @@
   <div v-if="showPage">
     <div class="flex flex-wrap xl:-mt-2">
       <div class="md:w-3/12 order-tables">
-        <v-card class="rounded-[3px] overflow-hidden mt-4">
+        <v-card class="rounded-[3px] overflow-hidden mt-4 card-trade">
           <SellOrders
             :decimals="coins[currentBaseCurrency].decimals"
             :base-currency="currentBaseCurrency"
@@ -84,6 +84,7 @@ import Recent from "../components/Recent.vue";
 import TradeMenus from "../components/TradeMenus.vue";
 import TradeGraphic from "../components/TradeGraphic.vue";
 import InfoModal from "~/modules/wallet/components/modals/InfoModal.vue";
+import localConfig from "~/local_config";
 
 function precision(a) {
   const decimalValue = new Decimal(a);
@@ -167,6 +168,22 @@ export default {
       user_notification: "core/user_notification",
       currentPrecisions: "core/currentPrecisions",
     }),
+    secondLocal() {
+      return (
+        localConfig?.themes?.[this.currentTheme]?.second_color || "#ffac2a"
+      );
+    },
+    borderLocal() {
+      return localConfig?.themes?.[this.currentTheme]?.border_color || "#CCC";
+    },
+    hoverLocal() {
+      return (
+        localConfig?.themes?.[this.currentTheme]?.hover_color || "#f4bf0b38"
+      );
+    },
+    blockColorLocal() {
+      return localConfig?.themes?.[this.currentTheme]?.block_color || "#FFF";
+    },
     showPage() {
       return (
         this.pairsList.length &&
@@ -693,9 +710,19 @@ export default {
   position: relative;
   top: -1px;
 }
+.card-trade {
+  border-radius: 10px;
+  padding: 5px;
+  background: v-bind(blockColorLocal);
+}
+.card-trade:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+}
 
 .trade-menus {
   margin-top: 15px;
+  border-radius: 10px;
+  background: v-bind(blockColorLocal);
 }
 .wallet-list--tooltip-layer {
   z-index: 2;
@@ -710,7 +737,7 @@ export default {
   left: inherit;
   text-align: right;
   width: 100%;
-  background: #ffffff;
+  // background: #ffffff;
 
   &__link {
     text-transform: lowercase;

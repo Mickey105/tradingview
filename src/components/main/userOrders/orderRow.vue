@@ -255,6 +255,7 @@ export default {
     },
     type: {
       type: String,
+      default: "defaultType",
     },
     isActivePair: {
       type: Boolean,

@@ -9,7 +9,7 @@ body {
 
 .currency-list .currency-table .table tbody tr.active,
 .wallet-list .currency-table .table tbody tr.active {
-  background-color: color.change($theme-primary-color, $lightness: 90%);
+  background-color: color.change($theme-hover-color);
 }
 
 .footer-list__link:hover {

@@ -793,6 +793,7 @@ export default {
           password1: this.form.password,
           password2: this.form.password,
           username: this.form.email,
+          country: this.form.country,
           captchaResponse: this.captcha,
         };
 

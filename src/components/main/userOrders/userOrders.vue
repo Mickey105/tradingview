@@ -281,14 +281,14 @@ export default {
   -webkit-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
-  padding: 0;
+  padding: 5px;
+  border-radius: 10px;
   transition: all 0.3s linear;
   -webkit-box-shadow: 0.53px -0.848px 6px 0 rgba(0, 0, 0, 0.14);
   box-shadow: 0.53px -0.848px 6px 0 rgba(0, 0, 0, 0.14);
   -webkit-box-shadow: 0.53px -0.848px 6px 0 rgba(0, 0, 0, 0.14);
   box-shadow: 0.53px -0.848px 6px 0 rgba(0, 0, 0, 0.14);
-  border-radius: 3px;
-  background: #fff;
+  /* background: #fff; */
   position: relative;
 }
 

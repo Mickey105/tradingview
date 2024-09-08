@@ -146,7 +146,7 @@ export default {
 
 .order-tables .table-responsive.sell-orders-up {
   position: relative;
-  height: 328px !important;
+  height: 323px !important;
 }
 
 .order-tables .table-responsive.sell-orders-up #order-list-sell {

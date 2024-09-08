@@ -101,6 +101,11 @@ export default {
     borderLocal() {
       return localConfig?.themes?.[this.currentTheme]?.border_color || "#CCC";
     },
+    hoverLocal() {
+      return (
+        localConfig?.themes?.[this.currentTheme]?.hover_color || "#f4bf0b38"
+      );
+    },
   },
   watch: {
     "$route.path": "checkLayout",
@@ -158,9 +163,7 @@ export default {
 }
 .stack-precision #select-stack-precision,
 .address-text-field,
-input[type="text"],
-input[type="password"],
-.logIn__form__input,
+// .logIn__form__input,
 .country-select__selected-country,
 .changePassword__input,
 .coinSelector__elem,
@@ -169,7 +172,7 @@ input[type="password"],
 .formField__input,
 .trade-input__input,
 .mx-input {
-  color: v-bind(inputTextLocal) !important;
+  color: v-bind(secondLocal) !important;
   background: v-bind(inputColorLocal) !important;
   border-color: v-bind(borderLocal) !important;
 }
@@ -197,8 +200,10 @@ input[type="password"],
 .user-orders,
 .plate,
 .card {
-  background: v-bind(blockColorLocal) !important;
+  background: v-bind(blockColorLocal);
+  // border-radius: 10px;
 }
+
 .smile-st3 {
   fill: v-bind(blockColorLocal) !important;
 }
@@ -251,7 +256,8 @@ input[type="password"],
 .nav-tabs .nav-link:not(.active),
 .alert-container,
 .footer {
-  background-color: v-bind(mainBackgroundLocal) !important;
+  // background-color: v-bind(mainBackgroundLocal) !important;
+  background-color: v-bind(mainBackgroundLocal) 50%;
 }
 .footer__social-item {
   color: v-bind(mainTextLocal) !important;
@@ -272,7 +278,7 @@ input[type="password"],
 .non-auth-page__sub-title,
 .select__description-title,
 .select__description-subtitle {
-  color: v-bind(loginTextLocal) !important;
+  // color: rgb(34, 37, 41) !important;
 }
 .header__author-img path,
 .burger__image,
@@ -308,7 +314,7 @@ h3,
 h4,
 h5,
 p {
-  color: v-bind(mainTextLocal) !important;
+  // color: #f8d761 !important;
   opacity: 1;
 }
 .navigation-language__link {
@@ -324,7 +330,7 @@ th.walletTable__header,
 .tab-block__nav-link.active,
 .settings__NAME,
 .stack-precision {
-  border-bottom: 1px solid v-bind(borderLocal) !important;
+  border-bottom: 1px solid #f8d761 !important;
 }
 
 .order-tables__sell-buy,
@@ -377,6 +383,7 @@ th.walletTable__header,
 .trade-menus__content,
 .trade-menus__block {
   border-color: v-bind(borderLocal) !important;
+  background: v-bind(blockColorLocal);
 }
 
 .stake-field_input-max {

@@ -112,7 +112,7 @@ export default {
 .error {
   background: #ebf3fa;
   font-family: Open Sans;
-  color: #2b395b;
+  // color: #2b395b;
   min-height: 100vh;
   background-image: url("public/img/info-main-page/top-background.png");
   background-repeat: no-repeat;

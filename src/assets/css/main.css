@@ -4,10 +4,14 @@ input[type="text"]::-webkit-input-placeholder {color: #ccc;}
 input[type="text"]::-moz-placeholder          {color: #ccc;}
 input[type="text"]:-moz-placeholder           {color: #ccc;}
 input[type="text"]:-ms-input-placeholder      {color: #ccc;}
+:root {
+  --theme-hover-color: rgba(244, 191, 11, 0.22); /* Equivalent to #f4bf0b38 */
+  --theme-gen-color: #212529
+}
 
 h2 {
   font-weight: 700;
-  color: #2b395b;
+  /* color: #2b395b; */
   font-size: 22px;
   line-height: 20px;
 }
@@ -359,7 +363,7 @@ img {
   background-color: #f0edf3;
 }
 .author-list__link {
-  color: #19243c;
+  /* color: #19243c; */
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -524,8 +528,8 @@ img {
   max-height: 80vh;
   overflow-y: auto;
 }
-.navigation__link {
-  color: #19243c;
+.navigation__link { 
+  /* color: #19243c; */
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -718,7 +722,8 @@ img {
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
   -webkit-border-radius: 3px;
-  border-radius: 3px;
+  border-radius: 10px;
+  padding: 5px;
 }
 .sell-orders__td,
 .currency-table__td,
@@ -729,8 +734,8 @@ img {
 
 .currency-list:hover,
 .wallet-list:hover {
-  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
 }
 
 .currency-list .nav-tabs .nav-item.show .nav-link,
@@ -801,7 +806,7 @@ img {
   width: 100%;
   height: 37px;
   padding: 5px 40px 5px;
-  border-radius: 0;
+  border-radius: 15px;
 }
 
 .currency-list .tab-pane__icon,
@@ -859,7 +864,7 @@ img {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   width: 100%;
-  height: 32px;
+  height: 22px;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -923,7 +928,7 @@ img {
   font-size: 22px;
   font-family: "Open Sans";
   font-weight: bold;
-  color: #2b395b;
+  /* color: #2b395b; */
   position: relative;
   padding-left: 20px;
   margin-bottom: 20px;
@@ -1276,11 +1281,12 @@ thead .sell-orders__td b {
   -webkit-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
+  border-radius: 10px;
 }
 
 .graphic:hover {
-  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow:  0 8px 17px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
 }
 
 .smile-st0,
@@ -1333,7 +1339,9 @@ thead .sell-orders__td b {
   transition: all 0.3s linear;
   padding: 0;
   transition: all 0.3s linear;
-  background: #fff;
+  /* background: #fff; */
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .orders:hover,
@@ -1417,7 +1425,7 @@ thead .sell-orders__td b {
 }
 
 .footer {
-  background-color: var(--theme-secondary-color);
+  background-color: var(--theme-gen-color);
   margin-top: 15px;
   padding: 3rem;
 }
@@ -1630,7 +1638,7 @@ ul {
 }
 
 .recent-trades__title {
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 /*svg {*/
@@ -4183,8 +4191,15 @@ main-new {
   padding-bottom: 80px;
 }
 
+
 .table-hover tbody tr:hover {
-  background-color: rgba(0, 0, 0, 0.075) !important;
+  /* background-color: rgba(0, 0, 0, 0.075) !important; */
+  /* background-color: v-bind(mainBackgroundLocal) 50%; */
+  background-color: var(--theme-hover-color);
+  /* background-color: v-bind(hoverLocal) !important; */
+
+
+
 }
 
 .currency-list-main-page tbody tr {
@@ -4567,7 +4582,7 @@ iframe.wizard {
 .tab-block__nav {
   padding: 0;
   margin: 0;
-  background-color: #fff;
+  /* background-color: #fff; */
   border-bottom: none;
   display: flex;
   justify-content: space-between;
@@ -4582,7 +4597,7 @@ iframe.wizard {
 .tab-block__nav-link {
   font-family: "Open Sans", arial, sans-serif;
   border: none;
-  color: #c0c0c2;
+  color: #f8d761;
   font-size: 13px;
   display: block;
   padding: 10px 1rem;
@@ -4721,7 +4736,7 @@ iframe.wizard {
 }
 
 .logIn__form input {
-  color: #000;
+  /* color: #000; */
 }
 
 .nav-tabs {
@@ -4750,7 +4765,7 @@ iframe.wizard {
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  color: #495057;
+  color: #f8d761;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }

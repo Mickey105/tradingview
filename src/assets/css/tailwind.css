@@ -22,14 +22,14 @@ sup {
 h1 {
   @apply font-title;
   font-weight: 700;
-  color: #2b395b;
+  /* color: #2b395b; */
   font-size: 28px;
   line-height: 20px;
 }
 
 h2 {
   font-weight: 700;
-  color: #2b395b;
+  /* color: #2b395b; */
   font-size: 22px;
   line-height: 20px;
 }
@@ -37,13 +37,13 @@ h2 {
 h3 {
   font-weight: 700;
   font-size: 18px;
-  color: #2b395b;
+  /* color: #2b395b; */
   line-height: 18px;
 }
 
 p {
   font-weight: 300;
-  color: #000000;
+  /* color: #000000; */
   font-size: 12px;
   line-height: 20px;
 }

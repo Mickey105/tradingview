@@ -14,6 +14,17 @@
           "
           class="limit-list__wallet-image inline-block mr-1"
         />
+        <img
+          :src="
+            color == 'green'
+              ? getCurrencyLogo(baseCurrency)
+              : getCurrencyLogo(quoteCurrency)
+          "
+          class="limit-list__wallet-image inline-block mr-1"
+        />
+        <!-- <span>
+          <img :src="getCurrencyLogo(baseCurrency)" class="currency-logo" />
+        </span> -->
         {{
           addSpace(
             getCoolBalance(operation == "buy" ? quoteCurrency : baseCurrency)
@@ -85,14 +96,19 @@
       :style="
         mainColor
           ? color === 'green'
-            ? `background: ${mainColor} !important`
-            : `background: ${secondolor} !important`
+            ? `background: #5dc887 !important`
+            : `background: #ff707e !important`
           : {}
       "
+      style="font-weight: 700"
       type="submit"
       :disabled="disableOperations"
     >
-      {{ $t("common." + operation) }} {{ baseCurrency }}
+      {{ $t("common." + operation) }}
+      <span>
+        <img :src="getCurrencyLogo(baseCurrency)" class="currency-logo" />
+      </span>
+      {{ baseCurrency }}
     </button>
   </form>
 </template>
@@ -222,6 +238,9 @@ export default {
   },
 
   methods: {
+    getCurrencyLogo(currency) {
+      return "/public/img/common/svgcrypto/" + currency.toLowerCase() + ".svg";
+    },
     noExponents(num) {
       let data = String(num).split(/[eE]/);
       if (data.length === 1) return data[0];
@@ -311,7 +330,7 @@ export default {
 <style lang="scss" scoped>
 .limit-list {
   line-height: initial;
-  background: white;
+  // background: white;
   padding: 15px 2rem 10px;
   &__row {
     display: flex;
@@ -379,5 +398,10 @@ export default {
       background-color: var(--theme-primary-color);
     }
   }
+}
+.currency-logo {
+  width: 17px;
+  margin-right: 3px;
+  margin-left: 3px;
 }
 </style>

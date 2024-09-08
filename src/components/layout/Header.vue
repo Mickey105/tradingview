@@ -649,7 +649,7 @@ export default {
   }
 
   &__link {
-    color: #19243c;
+    // color: #19243c;
     display: flex;
     width: 100%;
     height: 100%;

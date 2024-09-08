@@ -166,9 +166,6 @@
               <router-link v-if="!isLoggedIn" :to="`/login/`">
                 <button
                   class="exchange__button--normal exchange__button exchangeForm__button"
-                  :style="
-                    mainColor ? `background: ${mainColor} !important` : {}
-                  "
                 >
                   {{ $t("common.login") }}
                 </button>

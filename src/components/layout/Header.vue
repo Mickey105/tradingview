@@ -78,7 +78,7 @@
           href="https://pool4ever.com/app-buy-page"
           target="_blank"
         >
-          <span style="margin: 2px">Buy Crypto</span>
+          <span style="margin-top: 5px">Buy Crypto</span>
         </a>
 
         <router-link

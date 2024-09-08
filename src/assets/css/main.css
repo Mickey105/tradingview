@@ -799,7 +799,7 @@ img {
 
 .currency-list .tab-pane__search,
 .wallet-list .tab-pane__search {
-  background: url("/public/img/searchicon.png") no-repeat 15px center;
+  /* background: url("/public/img/searchicon.png") no-repeat 15px center; */
   border: none;
   font-size: 14px;
   font-family: "Open Sans", arial, sans-serif;
@@ -1102,6 +1102,7 @@ img {
 
 .content {
   padding-top: 80px;
+  margin-bottom: 40px;
 }
 
 .left-side-wrapper {
@@ -1426,7 +1427,7 @@ thead .sell-orders__td b {
 
 .footer {
   background-color: var(--theme-gen-color);
-  margin-top: 15px;
+  /* margin-top: 15px; */
   padding: 3rem;
 }
 
@@ -1653,7 +1654,7 @@ ul {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  /* color: #495057; */
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
@@ -2397,8 +2398,8 @@ button:active {
   transition: all 0.3s linear;
   overflow: hidden;
   margin-top: 15px;
-  border-radius: 3px;
-  background-color: #fff;
+  border-radius: 15px;
+  /* background-color: #fff; */
   box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
 }
 
@@ -2407,8 +2408,8 @@ button:active {
   transition: all 0.3s linear;
   overflow: hidden;
   margin-top: 15px;
-  border-radius: 3px;
-  background-color: #fff;
+  border-radius: 15px;
+  /* background-color: #fff; */
   box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
 }
 
@@ -2438,8 +2439,8 @@ button:active {
 .exchange {
   transition: all 0.3s linear;
   overflow: hidden;
-  border-radius: 3px;
-  background-color: #fff;
+  border-radius: 15px;
+  /* background-color: #fff; */
   box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -2472,10 +2473,10 @@ button:active {
   font-size: 16px;
   font-weight: 700;
   line-height: 44px;
-  color: #fff;
+  /* color: #fff; */
   background-color: #ffac2a;
   -webkit-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 15px;
   padding: 0 16px;
 }
 
@@ -2563,14 +2564,14 @@ button:active {
 }
 
 .exchangeForm__button {
-  color: #ffffff;
+  /* color: #ffffff; */
   font-size: 25px;
   line-height: 68px;
   font-weight: 400;
   -webkit-border-radius: 5px;
-  border-radius: 5px;
+  border-radius: 25px;
   background-color: var(--theme-primary-color);
-  width: 300px;
+  width: 200px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3135,8 +3136,8 @@ button {
   padding: 24px;
   margin: 0.5rem 0 1rem;
   transition: box-shadow 0.25s;
-  border-radius: 5px;
-  background-color: #fff;
+  border-radius: 15px;
+  /* background-color: #fff; */
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 

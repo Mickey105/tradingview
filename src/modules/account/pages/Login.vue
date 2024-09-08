@@ -270,6 +270,9 @@ export default {
     borderLocal() {
       return localConfig?.themes?.[this.currentTheme]?.border_color || "#CCC";
     },
+    inputTextLocal() {
+      return localConfig?.themes?.[this.currentTheme]?.input_text || "#000";
+    },
   },
   beforeCreate() {
     if (localStorage.getItem("token")) {
@@ -412,28 +415,28 @@ button:disabled {
   padding-left: 10px !important;
   font-size: 14px;
   font-weight: 400;
-  color: #1a1a1a;
+  // color: #1a1a1a;
 }
 
 .logIn__form__input::-moz-placeholder {
   padding-left: 10px !important;
   font-size: 14px;
   font-weight: 400;
-  color: #1a1a1a;
+  // color: #1a1a1a;
 }
 
 .logIn__form__input:-ms-input-placeholder {
   padding-left: 10px !important;
   font-size: 14px;
   font-weight: 400;
-  color: #1a1a1a;
+  // color: #1a1a1a;
 }
 
 .logIn__form__input::placeholder {
   padding-left: 10px !important;
   font-size: 14px;
   font-weight: 400;
-  color: #1a1a1a;
+  // color: #1a1a1a;
 }
 
 .logIn__form__input_button {
@@ -443,7 +446,7 @@ button:disabled {
 
   border: none;
   font-weight: 700 !important;
-  color: #000;
+  // color: #000;
 }
 
 .logIn__form__input_button:hover,
@@ -454,7 +457,7 @@ button:disabled {
 
 /* style of input */
 input::-moz-placeholder {
-  color: #222;
+  // color: #222;
   font-weight: 700;
 }
 
@@ -534,7 +537,7 @@ button {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  // background-color: #ffffff;
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -786,6 +789,6 @@ button {
 }
 .logIn__form__input {
   background: v-bind(borderLocal) !important;
-  color: #000000e0 !important;
+  color: v-bind(inputTextLocal) !important;
 }
 </style>

@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue --ignore-path .eslintignore --fix src",
     "format": "prettier .  --write --ignore-path .gitignore",
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0 --port 65000",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -1,5 +1,5 @@
 <template>
-  <i :class="['inline-block v-icon', { disabled: disabled }]">
+  <i :class="['v-icon', { disabled: disabled }]">
     <svg
       :width="iconWidth"
       :height="iconHeight"
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed, toRefs } from "vue";
+import { computed, toRefs } from "vue";
 
 const props = defineProps({
   icon: {
@@ -34,12 +34,12 @@ const props = defineProps({
   width: {
     type: Number,
     required: false,
-    default: 30,
+    default: 15,
   },
   height: {
     type: Number,
     required: false,
-    default: 30,
+    default: 15,
   },
 });
 
@@ -61,7 +61,9 @@ const iconHeight = toRefs(props).height;
 
 <style scoped>
 .icon-object {
-  max-width: 20px;
-  max-height: 20px;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 </style>

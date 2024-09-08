@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 .sell-orders-header {
-  background-color: white;
+  // background-color: white;
 
   td {
     border-top: none;

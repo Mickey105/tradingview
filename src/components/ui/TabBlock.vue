@@ -105,7 +105,7 @@
       class="not-information"
     >
       <div class="icon smile">
-        <svg
+        <!-- <svg
           id="Layer_1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 60 60"
@@ -139,9 +139,11 @@
             class="smile-st1"
             d="M41.5 20c1.4 0 2.5 1.1 2.5 2.5S42.9 25 41.5 25 39 23.9 39 22.5s1.1-2.5 2.5-2.5zm5.2-4.4l-4.2-4.2c-.6-.6-1.5-.6-2.1 0-.6.6-.6 1.5 0 2.1l4.2 4.2c.6.6 1.5.6 2.1 0 .6-.6.6-1.6 0-2.1z"
           />
-        </svg>
+        </svg> -->
       </div>
-      <div class="txt">{{ $t("common.nodata") }}</div>
+      <div class="txt">
+        {{ $t("common.nodata") }} Log In or Register Now to trade
+      </div>
     </div>
   </div>
 </template>

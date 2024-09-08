@@ -1,4 +1,6 @@
 <template>
+  <HeaderComponent v-if="!simpleLayout" />
+
   <div class="auth">
     <div
       v-if="!showGoogleCodeInput"
@@ -122,7 +124,7 @@
               id="loginbtn"
               name="btn"
               :style="mainColor ? `background: ${mainColor}` : {}"
-              class="logIn__form__input logIn__form__input_button opacitychangebtn cursor-pointer inline-block"
+              class="login_but logIn__form__input_button opacitychangebtn cursor-pointer inline-block"
               :class="{ 'blocked-btn': captchaIsON && !captchaResponse }"
               type="submit"
               :disabled="captchaIsON && !captchaResponse"
@@ -224,12 +226,16 @@
     </div>
     <!--GOOGLE AUTH-->
   </div>
+  <FooterComponent v-if="!simpleLayout" />
 </template>
 
 <script>
 import { VueRecaptcha } from "vue-recaptcha";
 import ModalPagesHeader from "~/components/layout/ModalPagesHeader.vue";
 import loginMixin from "~/mixins/login";
+import HeaderComponent from "~/components/layout/Header.vue";
+import FooterComponent from "~/components/layout/Footer.vue";
+import localConfig from "~/local_config";
 
 export default {
   name: "LoginPage",
@@ -249,6 +255,8 @@ export default {
   components: {
     VueRecaptcha,
     ModalPagesHeader,
+    HeaderComponent,
+    FooterComponent,
   },
   mixins: [loginMixin],
   computed: {
@@ -258,6 +266,9 @@ export default {
           return k && text && text !== "";
         })
       );
+    },
+    borderLocal() {
+      return localConfig?.themes?.[this.currentTheme]?.border_color || "#CCC";
     },
   },
   beforeCreate() {
@@ -317,6 +328,7 @@ export default {
 .blocked-btn {
   opacity: 0.5;
   pointer-events: none;
+  background: green !important;
 }
 .input-group {
   //border: solid 1px #e0e0e0;
@@ -338,7 +350,7 @@ button:disabled {
 }
 
 .logIn {
-  position: fixed;
+  // position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -349,6 +361,7 @@ button:disabled {
   background-color: #36373c;
   display: flex;
   flex-direction: column;
+  margin-top: 70px;
 
   &__descr {
     font-size: 16px;
@@ -425,7 +438,9 @@ button:disabled {
 
 .logIn__form__input_button {
   min-height: 54px;
-  background-color: var(--theme-primary-color);
+  // background-color: var(--theme-primary-color);
+  background: v-bind(borderLocal) !important;
+
   border: none;
   font-weight: 700 !important;
   color: #000;
@@ -476,7 +491,7 @@ input[type="button"]:focus {
 .logIn__form input[type="url"],
 .logIn__form input[type="text"],
 .logIn__form textarea {
-  // background: #16171B;
+  // color: var(--theme-hover-color);
   font-size: 16px;
   width: 100%;
   height: 100%;
@@ -487,6 +502,7 @@ input[type="button"]:focus {
   // color: #fff;
   border-radius: 5px;
   font-weight: 700;
+  // background: v-bind(inputColorLocal) !important;
 }
 
 button {
@@ -760,5 +776,16 @@ button {
 }
 .logIn__register {
   text-transform: none !important;
+}
+
+.login_but {
+  background-color: #169664 !important;
+  width: 80%;
+  border-radius: 25px;
+  margin-bottom: 10px;
+}
+.logIn__form__input {
+  background: v-bind(borderLocal) !important;
+  color: #000000e0 !important;
 }
 </style>

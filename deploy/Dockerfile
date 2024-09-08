@@ -3,7 +3,9 @@ ARG localconfig
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY . .
-RUN yarn install
+# RUN yarn install --network-timeout 1000000  # Adjust the timeout value as needed
+RUN yarn install  # Adjust the timeout value as needed
+
 RUN yarn build
 
 FROM nginx:alpine

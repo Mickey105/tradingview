@@ -37,7 +37,7 @@ export default {
     border-radius: 3px;
   }
   &__icon {
-    color: #2b395b;
+    // color: #2b395b;
     margin-left: 0px;
     padding: 8px 17px;
     font-size: 22px;

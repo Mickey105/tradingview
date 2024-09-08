@@ -851,7 +851,7 @@ button[disabled] {
     font-weight: 300;
   }
   strong {
-    color: #2b395b;
+    // color: #2b395b;
     display: block;
     font-size: 14px;
     line-height: 1em;

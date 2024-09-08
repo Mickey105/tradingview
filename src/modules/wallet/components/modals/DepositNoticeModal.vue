@@ -3,11 +3,11 @@
     <div class="modal-content">
       <div class="modal-body">
         <div>
-          <h3 class="text-capitalize">
+          <h3 class="text-capitalize" style="color: red !important">
             {{ $t("common.deposit_modal.title") }}
           </h3>
           <div class="security-notice">
-            <p class="font-bold text-center">
+            <p class="font-bold text-center" style="color: red">
               {{ $t("common.deposit_modal.text") }}<br />{{
                 $t("common.deposit_modal.subtext")
               }}

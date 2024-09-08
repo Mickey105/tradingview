@@ -55,6 +55,42 @@ export default {
     s.src = `https://api.sumsub.com/idensic/static/sumsub-kyc.js`;
     let x = document.getElementsByTagName("script")[0];
     x.parentNode.insertBefore(s, x);
+
+    this.checkUserIP();
+  },
+  methods: {
+    async checkUserIP() {
+      try {
+        // Fetch the user's IP information
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+
+        console.log("User IP Info:", data); // Log the IP info for debugging
+
+        // Check if the user is from Israel
+        if (data.country === "IL") {
+          const userIP = data.ip;
+          const allowedIP = "213.137.74.31"; // The allowed IP
+
+          console.log("User IP:", userIP); // Log the user's IP
+          console.log("Allowed IP:", allowedIP);
+
+          // Redirect if the user is from Israel but not the allowed IP
+          if (userIP !== allowedIP) {
+            console.log(
+              "Redirecting to: https://pool4ever.com/app-out-service"
+            );
+            window.location.href = "https://pool4ever.com/app-out-service";
+          } else {
+            console.log("User allowed to access.");
+          }
+        } else {
+          console.log("User is not from Israel");
+        }
+      } catch (error) {
+        console.error("Error fetching IP information: ", error);
+      }
+    },
   },
 };
 </script>

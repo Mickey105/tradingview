@@ -2,7 +2,7 @@
   <div class="tab-block">
     <ul
       class="tab-block__nav justify-start"
-      style="justify-content: start !important"
+      style="justify-content: start !important; justify-content: center"
     >
       <li
         v-for="(coin, ticker) in filteredCoins"
@@ -14,7 +14,11 @@
           :id="ticker + '-tab'"
           class="nav-link"
           @click="setTopCurrency(ticker)"
-          >{{ ticker }}</a
+        >
+          <sapn>
+            <img :src="getCurrencyLogo(ticker)" class="currency-logo" />
+          </sapn>
+          {{ ticker }}</a
         >
       </li>
     </ul>
@@ -78,12 +82,15 @@
                       v-for="column in [
                         'currency',
                         'price',
-                        'vol24h',
+                        // 'vol24h',
                         'price24h',
                       ]"
                       :key="column"
                     >
-                      <div class="sell-orders__td">
+                      <div
+                        class="sell-orders__td"
+                        style="display: inline-block"
+                      >
                         <b
                           class="sort-label"
                           :class="{
@@ -115,8 +122,8 @@
                         coins[pair.quote].disable_pairs,
                     }"
                   >
-                    <td>
-                      <div class="currency-table__td">
+                    <td style="width: 50px">
+                      <div class="cur">
                         <v-icon
                           :icon="isStarred(pair) ? 'Star' : 'StarBorder'"
                           color="var(--theme-primary-color)"
@@ -126,15 +133,30 @@
                     </td>
                     <td
                       v-if="pair.active"
-                      style="cursor: pointer"
+                      style="cursor: pointer; display: inline-block"
                       @click="setCurrentPair(pair['base'], pair['quote'])"
                     >
-                      <div class="currency-table__td">
+                      <div
+                        class="currency-table__td"
+                        style="width: fit-content"
+                      >
                         <div class="currency-table__name">
-                          <span class="cur-color">
+                          <span>
+                            <img
+                              :src="getCurrencyLogo(pair.currency)"
+                              class="currency-logo"
+                            />
+                          </span>
+                          <span class="cur-color" style="margin-right: 7px">
                             {{ pair.currency }}
                           </span>
-                          /{{ pair["quote"] }}
+                          /<span style="margin-left: 7px">
+                            <img
+                              :src="getCurrencyLogo(pair.quote)"
+                              class="currency-logo"
+                            />
+                          </span>
+                          {{ pair["quote"] }}
                         </div>
                       </div>
                     </td>
@@ -157,13 +179,13 @@
                       <div
                         v-if="pair.active"
                         class="currency-table__td"
-                        style="cursor: pointer"
+                        style="cursor: pointer; display: inline-block"
                         @click="setCurrentPair(pair['base'], pair['quote'])"
                       >
                         {{ pair.price }}
                       </div>
                     </td>
-                    <td>
+                    <!-- <td>
                       <div
                         v-if="pair.active"
                         class="currency-table__td"
@@ -172,9 +194,12 @@
                       >
                         {{ pair.vol24h }}
                       </div>
-                    </td>
+                    </td> -->
                     <td>
-                      <div class="currency-table__td">
+                      <div
+                        class="currency-table__td"
+                        style="cursor: pointer; display: inline-block"
+                      >
                         <span
                           class="percent"
                           :class="
@@ -215,6 +240,7 @@ export default {
     defaultPair: {
       type: String,
       required: false,
+      default: '""', // Set a default value here
     },
   },
   emits: ["setCurPair"],
@@ -327,6 +353,9 @@ export default {
     }, 1500);
   },
   methods: {
+    getCurrencyLogo(currency) {
+      return "/public/img/common/svgcrypto/" + currency.toLowerCase() + ".svg";
+    },
     sort(column) {
       const SORT_OPTIONS = [
         null,
@@ -470,6 +499,8 @@ tr.disabled {
 }
 .currency__filter-search {
   border: none !important;
+  margin-left: 7px;
+  margin-top: 20px;
 }
 .search-input {
   width: calc(100% - 30px);
@@ -478,8 +509,8 @@ tr.disabled {
 .search-input-icon {
   position: absolute;
   z-index: 2;
-  top: 8px;
-  left: 7px;
+  top: 10px;
+  left: 15px;
 }
 .ps {
   height: 378px;
@@ -490,5 +521,14 @@ tr.disabled {
   font-size: 12px !important;
   text-transform: none;
   display: flex;
+  align-items: center;
+}
+.cur {
+  height: 24px;
+  width: 30px;
+}
+.currency-logo {
+  width: 17px;
+  margin-right: 7px;
 }
 </style>

@@ -1,14 +1,22 @@
 module.exports = {
   content: {
     // enabled: import.meta.NODE_ENV === 'production',
-    enabled: true,
+    // enabled: true,
+    // content: [
+    //   "./src/**/*.{vue,js,ts}",
+    //   "./src/components/**/*.vue",
+    //   "./src/layouts/**/*.vue",
+    //   "./src/pages/**/*.vue",
+    //   "./src/plugins/**/*.js",
+    //   // TypeScript
+    //   "./src/plugins/**/*.ts",
+    // ],
     content: [
       "./src/**/*.{vue,js,ts}",
       "./src/components/**/*.vue",
       "./src/layouts/**/*.vue",
       "./src/pages/**/*.vue",
       "./src/plugins/**/*.js",
-      // TypeScript
       "./src/plugins/**/*.ts",
     ],
     options: {

@@ -16,6 +16,7 @@
           <a
             class="trade-menus__link nav-link"
             :class="{ active: tab === 2 }"
+            style="display: none"
             @click="setTab(2)"
           >
             {{ $t("common.stop_limit") }}
@@ -287,7 +288,7 @@ export default {
 <style lang="scss" scoped>
 .trade-menus {
   position: relative;
-  background-color: #fff;
+  background: v-bind(blockColorLocal);
   border-radius: 3px;
   box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
   overflow: hidden;
@@ -303,6 +304,7 @@ export default {
 
   &_blocked {
     opacity: 0.5;
+    background: v-bind(blockColorLocal);
   }
 
   &__links {
@@ -314,7 +316,7 @@ export default {
     border-top-right-radius: unset;
     border-top-left-radius: unset;
     font-weight: bold;
-    background-color: #f6f6f8;
+    background: v-bind(blockColorLocal);
     border: none;
   }
 

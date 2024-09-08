@@ -1,4 +1,5 @@
 <template>
+  <HeaderComponent v-if="!simpleLayout" />
   <div class="auth">
     <div
       class="register pb-5 px-1"
@@ -410,6 +411,7 @@
       </template>
     </div>
   </div>
+  <FooterComponent v-if="!simpleLayout" />
 </template>
 
 <script>
@@ -419,6 +421,8 @@ import DatePicker from "vue-datepicker-next";
 import "vue-datepicker-next/index.css";
 import { VueRecaptcha } from "vue-recaptcha";
 import PasswordStrength from "../components/PasswordStrength.vue";
+import HeaderComponent from "~/components/layout/Header.vue";
+import FooterComponent from "~/components/layout/Footer.vue";
 
 function getEmptyForm() {
   return {
@@ -453,6 +457,8 @@ export default {
     ModalPagesHeader,
     DatePicker,
     VueRecaptcha,
+    HeaderComponent,
+    FooterComponent,
   },
   props: {
     refcode: {
@@ -883,7 +889,8 @@ $red: #e93a3a;
   align-items: center;
   justify-content: center;
   background-color: #19233c;
-  color: #ffffff;
+  // color: #ffffff;
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -904,6 +911,7 @@ $red: #e93a3a;
 
     i {
       color: white;
+      // margin-top: 70px;
     }
   }
 }

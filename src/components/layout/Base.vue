@@ -166,7 +166,7 @@ export default {
 // .logIn__form__input,
 .country-select__selected-country,
 .changePassword__input,
-.coinSelector__elem,
+// .coinSelector__elem,
 .selector__current,
 .formField__readonly,
 .formField__input,
@@ -175,6 +175,12 @@ export default {
   color: v-bind(secondLocal) !important;
   background: v-bind(inputColorLocal) !important;
   border-color: v-bind(borderLocal) !important;
+}
+.coinSelector__elem {
+  background: v-bind(borderLocal) !important;
+}
+.coinSelector__elem:hover {
+  background: v-bind(secondLocal) !important;
 }
 .eye-pass,
 .show-password-icon-btn,

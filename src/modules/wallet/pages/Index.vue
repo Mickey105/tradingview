@@ -936,7 +936,7 @@ button[disabled] {
   padding-left: 0;
 }
 .tab-pane__search {
-  background: url("/public/img/searchicon.png") no-repeat 15px center;
+  // background: url("/public/img/searchicon.png") no-repeat 15px center;
   font-size: 14px;
   height: 37px;
   padding: 5px 40px 5px;
@@ -1007,8 +1007,8 @@ button[disabled] {
 .search-input-icon {
   position: absolute;
   z-index: 2;
-  top: 8px;
-  left: 7px;
+  top: 10px;
+  left: 15px;
 }
 @media (max-width: 542px) {
   .search-input {

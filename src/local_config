@@ -44,7 +44,7 @@ const localConfig = {
       main_background: "linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(248,215,103,1) 61%, rgba(248,215,103,1) 100%)",
       main_text: "#888888",
       input_color: "#f2d87826",
-      input_text: "#888888",
+      input_text: "#d0d0d0",
       block_color: "#212529",
       border_color: "#353535",
       hover_color: "f4bf0b38",

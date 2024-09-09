@@ -215,7 +215,7 @@ export default {
 
   .tab-pane__search {
     padding-left: 40px;
-    border-radius: 0;
+    border-radius: 20px;
     border-bottom: 1px solid rgba(199, 201, 204, 0.5);
     position: absolute;
     top: 41px;
@@ -225,12 +225,15 @@ export default {
 }
 .tab-pane__search--wrapper {
   padding-top: 36px;
+  background: transparent;
 }
 .search-input-absolute {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
 }
 .search-input-icon {
   position: absolute;

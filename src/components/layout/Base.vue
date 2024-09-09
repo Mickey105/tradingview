@@ -289,7 +289,7 @@ export default {
 .header__author-img path,
 .burger__image,
 .header__author-image {
-  fill: v-bind(loginTextLocal) !important;
+  // background-color: white !important;
 }
 .sell-orders__td,
 .coinSelector__price,

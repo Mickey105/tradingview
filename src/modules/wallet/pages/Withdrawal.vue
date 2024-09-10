@@ -161,6 +161,10 @@ export default {
     },
   },
   async mounted() {
+    if (!this.wsUserIsAuthenticated) {
+      this.$router.push("/login");
+      return;
+    }
     await Promise.all([
       this.$store.dispatch("core/getCoinsLimits"),
       this.loadWallets(),

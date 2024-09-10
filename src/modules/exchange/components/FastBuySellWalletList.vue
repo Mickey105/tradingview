@@ -109,7 +109,10 @@ export default {
   mixins: [getCoolBalance, getFixedDecimal],
   emits: ["set-pair"],
   computed: {
-    ...mapGetters({ coins: "core/coins" }),
+    ...mapGetters({
+      coins: "core/coins",
+      wsUserIsAuthenticated: "wsUserIsAuthenticated",
+    }),
     sortedCoins() {
       return Object.keys(this.coins).filter(
         (ticker) =>
@@ -117,6 +120,13 @@ export default {
           !this.coins[ticker].disable_all
       );
     },
+  },
+  mounted() {
+    // Check if the user is authenticated, if not, redirect to login
+    if (!this.wsUserIsAuthenticated) {
+      this.$router.push("/login");
+      return;
+    }
   },
 };
 </script>

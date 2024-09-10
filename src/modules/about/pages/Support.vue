@@ -291,7 +291,7 @@ export default {
   &__nav-card {
     margin-bottom: 15px;
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 15px;
 
     &--contacts {
       padding: 20px;
@@ -305,7 +305,7 @@ export default {
   &__content-card {
     flex-grow: 1;
     background: #ffffff;
-    border-radius: 5px;
+    border-radius: 15px;
 
     @media screen and (max-width: 800px) {
       width: 100%;

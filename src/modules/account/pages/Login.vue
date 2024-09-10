@@ -10,7 +10,10 @@
       "
     >
       <ModalPagesHeader />
-      <div class="flex box white flex-col" :class="{ isBlur: isLoading }">
+      <div
+        class="flex box white flex-col logIn__title_header"
+        :class="{ isBlur: isLoading }"
+      >
         <div
           class="logIn__title"
           :style="loginText ? `color: ${loginText} !important` : {}"
@@ -791,4 +794,11 @@ button {
   background: v-bind(borderLocal) !important;
   color: v-bind(inputTextLocal) !important;
 }
+.logIn__title_header {
+  margin-bottom: 125px;
+}
+
+// .content {
+//   margin-bottom: 0px !important;
+// }
 </style>

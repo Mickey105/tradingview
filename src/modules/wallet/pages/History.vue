@@ -99,6 +99,10 @@ export default {
     },
   },
   mounted() {
+    if (!this.wsUserIsAuthenticated) {
+      this.$router.push("/login");
+      return;
+    }
     this.$store.dispatch("core/getUserNotifications");
     if (this.isConnectedSocket) {
       if (localStorage.getItem("token")) {

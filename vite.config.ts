@@ -14,6 +14,18 @@ export default defineConfig({
       "~": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            return "vendor"; // Splits vendor dependencies into a separate chunk
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000, // Increase the warning limit to 1MB
+  },
   // optimizeDeps: {
   //   include: ['~/../public/TradingView/charting_library/charting_library.min.js']
   // }

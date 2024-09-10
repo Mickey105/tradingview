@@ -173,30 +173,34 @@ export default {
     deep: true,
   },
   mounted() {
-    if (localStorage.getItem("showDepositNoticeModal")) {
-      this.showDepositNoticeModal();
-      localStorage.removeItem("showDepositNoticeModal");
-    }
-    this.$store.dispatch("core/getCoinsLimits");
-    this.loadWallets();
-    this.showSecurityNotice();
-    this.$store.dispatch("core/getUserNotifications");
-    if (this.isConnectedSocket) {
-      if (localStorage.getItem("token")) {
-        this.$store.dispatch(
-          "sendWSMessage",
-          JSON.stringify({ token: localStorage.getItem("token") })
-        );
+    if (!this.wsUserIsAuthenticated) {
+      this.$router.push("/login");
+    } else {
+      if (localStorage.getItem("showDepositNoticeModal")) {
+        this.showDepositNoticeModal();
+        localStorage.removeItem("showDepositNoticeModal");
       }
-      if (this.wsUserIsAuthenticated) {
-        this.getBalance();
-        this.getLockedBalance();
-        this.getWalletHistory();
+      this.$store.dispatch("core/getCoinsLimits");
+      this.loadWallets();
+      this.showSecurityNotice();
+      this.$store.dispatch("core/getUserNotifications");
+      if (this.isConnectedSocket) {
+        if (localStorage.getItem("token")) {
+          this.$store.dispatch(
+            "sendWSMessage",
+            JSON.stringify({ token: localStorage.getItem("token") })
+          );
+        }
+        if (this.wsUserIsAuthenticated) {
+          this.getBalance();
+          this.getLockedBalance();
+          this.getWalletHistory();
+        }
       }
     }
     setTimeout(() => {
       this.coinSelected(this.$route?.params?.walletitem, this.coins);
-    }, 300);
+    }, 200);
   },
   beforeUnmount() {
     this.unsubscribeWsData();

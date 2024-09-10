@@ -1,24 +1,22 @@
 module.exports = {
   content: {
-    // enabled: import.meta.NODE_ENV === 'production',
-    // enabled: true,
-    // content: [
-    //   "./src/**/*.{vue,js,ts}",
-    //   "./src/components/**/*.vue",
-    //   "./src/layouts/**/*.vue",
-    //   "./src/pages/**/*.vue",
-    //   "./src/plugins/**/*.js",
-    //   // TypeScript
-    //   "./src/plugins/**/*.ts",
-    // ],
     content: [
-      "./src/**/*.{vue,js,ts}",
+      "./index.html",
+      "./src/**/*.{vue,js,ts,jsx,tsx}",
       "./src/components/**/*.vue",
       "./src/layouts/**/*.vue",
       "./src/pages/**/*.vue",
       "./src/plugins/**/*.js",
       "./src/plugins/**/*.ts",
     ],
+    // content: [
+    //   "./src/**/*.{vue,js,ts}",
+    //   "./src/components/**/*.vue",
+    //   "./src/layouts/**/*.vue",
+    //   "./src/pages/**/*.vue",
+    //   "./src/plugins/**/*.js",
+    //   "./src/plugins/**/*.ts",
+    // ],
     options: {
       safelist: [
         "bg-green",
@@ -102,7 +100,7 @@ module.exports = {
         700: "#0369a1",
         800: "#075985",
         900: "#0c4a6e",
-      }
+      },
     },
     spacing: {
       px: "1px",

@@ -433,6 +433,11 @@ export default {
   },
   methods: {
     init() {
+      if (!this.wsUserIsAuthenticated) {
+        this.$router.push("/login");
+        return;
+      }
+      // init() {
       this.sortField = localStorage.getItem("sort-field") || "";
       this.sortTypeAsc = localStorage.getItem("sort-asc") === "1" || "";
       this.loadWallets();

@@ -218,9 +218,14 @@ export default {
 .logIn__popup,
 .btn-primary,
 .withdrawal__btn,
-#header,
-.support__title-bar {
+#header {
   background: v-bind(mainColorLocal) !important;
+}
+.support__title-bar {
+  background: v-bind(blockColorLocal) !important;
+  border-radius: 15px !important;
+  color: v-bind(secondLocal) !important;
+  font-size: 22px !important;
 }
 .footer-links-column a,
 .support__content-item a,

@@ -61,7 +61,7 @@
       </div>
     </div>
 
-    <div class="xl:grid lg:grid-cols-2 lg:gap-4">
+    <div class="xl:grid lg:grid-cols-2 lg:gap-4 pb-8">
       <UserOrders @error="showErrorMessage" @pull-orders="getOrders" />
       <Recent />
     </div>

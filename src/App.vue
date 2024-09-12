@@ -44,6 +44,9 @@ export default {
       },
     },
   },
+  beforeMount() {
+    this.checkUserIP();
+  },
   mounted() {
     localStorage.setItem(
       "project_title",
@@ -56,7 +59,7 @@ export default {
     let x = document.getElementsByTagName("script")[0];
     x.parentNode.insertBefore(s, x);
 
-    this.checkUserIP();
+    // this.checkUserIP();
   },
   methods: {
     async checkUserIP() {

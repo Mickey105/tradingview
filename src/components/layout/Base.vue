@@ -173,7 +173,7 @@ export default {
 .trade-input__input,
 .mx-input {
   color: v-bind(secondLocal) !important;
-  background: v-bind(inputColorLocal) !important;
+  background: v-bind(borderLocal) !important;
   border-color: v-bind(borderLocal) !important;
 }
 .coinSelector__elem {

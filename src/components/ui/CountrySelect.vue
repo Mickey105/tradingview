@@ -65,6 +65,7 @@
 </template>
 <script>
 import vClickOutside from "click-outside-vue3";
+import localConfig from "~/local_config";
 
 export default {
   name: "CountrySelect",
@@ -95,6 +96,11 @@ export default {
           flag: `/public/img/common/flags/${flagId}.gif`,
         };
       });
+    },
+    secondLocal() {
+      return (
+        localConfig?.themes?.[this.currentTheme]?.second_color || "#ffac2a"
+      );
     },
     countryList() {
       const qString = this.searchQuery.toLowerCase();
@@ -173,8 +179,8 @@ export default {
     -webkit-box-shadow: none;
     box-shadow: none;
     border: solid 1px #e0e0e0;
-    color: #222222;
-    border-radius: 5px;
+    color: v-bind(secondLocal) !important;
+    border-radius: 25px;
     font-weight: 700;
 
     &--opened {

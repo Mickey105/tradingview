@@ -2,7 +2,7 @@
   <HeaderComponent v-if="!simpleLayout" />
   <div class="auth">
     <div
-      class="register pb-5 px-1"
+      class="register pb-5 px-1 pt-7"
       :style="
         loginBackground ? `background: ${loginBackground} !important` : {}
       "
@@ -167,7 +167,11 @@
                   @blur="showValidationErrorFor.password = true"
                   @focus="showValidationErrorFor.password = false"
                 />
-                <span class="eye-pass" @click="togglePasswordVisible">
+                <span
+                  class="eye-pass"
+                  style="background: transparent !important"
+                  @click="togglePasswordVisible"
+                >
                   <svg
                     v-if="passwordViewType === 'text'"
                     class="show-password-icon"
@@ -423,6 +427,7 @@ import { VueRecaptcha } from "vue-recaptcha";
 import PasswordStrength from "../components/PasswordStrength.vue";
 import HeaderComponent from "~/components/layout/Header.vue";
 import FooterComponent from "~/components/layout/Footer.vue";
+import localConfig from "~/local_config";
 
 function getEmptyForm() {
   return {
@@ -525,6 +530,17 @@ export default {
           required: true,
         },
       };
+    },
+    borderLocal() {
+      return localConfig?.themes?.[this.currentTheme]?.border_color || "#CCC";
+    },
+    inputTextLocal() {
+      return localConfig?.themes?.[this.currentTheme]?.input_text || "#000";
+    },
+    secondLocal() {
+      return (
+        localConfig?.themes?.[this.currentTheme]?.second_color || "#ffac2a"
+      );
     },
     validationError() {
       const form = this.form,
@@ -926,8 +942,12 @@ $red: #e93a3a;
   margin-left: 37px;
 }
 .register__button {
-  background-color: var(--theme-primary-color);
-  color: white;
+  // background-color: var(--theme-primary-color);
+  // color: white;
+  background: v-bind(borderLocal) !important;
+  color: v-bind(secondLocal) !important;
+  border-radius: 25px;
+  font-weight: 500;
 }
 .register__button:active,
 .register__button:hover {
@@ -993,5 +1013,18 @@ $red: #e93a3a;
 
 .register__input {
   border-radius: 25px;
+  background: v-bind(borderLocal) !important;
+  color: v-bind(inputTextLocal) !important;
+}
+.register__title {
+  font-weight: 500;
+}
+.register__input-error-hint {
+  border-radius: 15px !important;
+}
+.register__input--birthday,
+.mx-input {
+  background: v-bind(borderLocal) !important;
+  color: v-bind(secondLocal) !important;
 }
 </style>

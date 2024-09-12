@@ -1,18 +1,18 @@
 <template>
   <div class="page-header">
-    <div class="language">
+    <!-- <div class="language">
       <LanguageSelector class="language__block" />
-    </div>
+    </div> -->
     <MainLogo />
   </div>
 </template>
 <script>
-import LanguageSelector from "~/components/layout/parts/LanguageSelector.vue";
+// import LanguageSelector from "~/components/layout/parts/LanguageSelector.vue";
 import MainLogo from "~/components/layout/parts/MainLogo.vue";
 
 export default {
   name: "ModalPagesHeader",
-  components: { MainLogo, LanguageSelector },
+  components: { MainLogo },
 };
 </script>
 <style lang="scss">
@@ -325,6 +325,7 @@ button {
   .mx-input-wrapper .mx-input {
     height: 100%;
     min-height: 45px;
+    border-radius: 25px;
   }
 
   .mx-input {

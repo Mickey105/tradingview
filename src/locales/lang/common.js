@@ -1430,7 +1430,7 @@ const common = {
     modalacctiv: "Your account activated!",
     register: "Registration",
     or: "OR",
-    useemail: "Use your email to log in",
+    useemail: "Use your Email to log in",
     login_upper: "LOGIN",
     price24h: "24h change",
     vol24h: "24h vol.",

@@ -1,4 +1,29 @@
 <template>
+  <div class="m-auto flex-wrap mt-4 mb-2">
+    <div
+      class="flex flex-wrap justify-center items-center text-center banner p-2 gap-1 shadow-lg"
+    >
+      <span class="line-height-3 join-us">Join our</span
+      ><a href="https://t.me/+Z7Eli0cVuegxZDA0" target="_blank"
+        ><img
+          src="https://pool4ever.com/Pool4ever-Designs/telegram.png"
+          width="20"
+          class="mr-2 ml-2"
+        />
+        <span>Telegram </span>
+        <span> Or</span>
+      </a>
+      <a href="https://t.me/+Z7Eli0cVuegxZDA0" target="_blank"
+        ><img
+          src="https://pool4ever.com/Pool4ever-Designs/discord.png"
+          width="20"
+          class="mr-2 ml-2"
+        />
+        <span>Discord</span>
+      </a>
+      <span class="join-us"> Community & Support</span>
+    </div>
+  </div>
   <div v-if="showPage">
     <div class="flex flex-wrap xl:-mt-2">
       <div class="md:w-3/12 order-tables">
@@ -174,7 +199,9 @@ export default {
       );
     },
     borderLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.border_color || "#CCC";
+      return (
+        localConfig?.themes?.[this.currentTheme]?.border_color || "#353535"
+      );
     },
     hoverLocal() {
       return (
@@ -183,6 +210,9 @@ export default {
     },
     blockColorLocal() {
       return localConfig?.themes?.[this.currentTheme]?.block_color || "#FFF";
+    },
+    loginTextLocal() {
+      return localConfig?.themes?.[this.currentTheme]?.login_text || "#FFF";
     },
     showPage() {
       return (
@@ -764,5 +794,16 @@ export default {
   &.blocked {
     opacity: 0.5;
   }
+}
+.banner {
+  background-color: v-bind(blockColorLocal);
+  border-radius: 15px;
+}
+.banner:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.585),
+    0 6px 20px 0 rgba(0, 0, 0, 0.547);
+}
+.join-us {
+  color: v-bind(secondLocal) !important;
 }
 </style>

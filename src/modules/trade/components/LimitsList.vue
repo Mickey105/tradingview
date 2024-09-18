@@ -50,14 +50,22 @@
       :placeholder="baseCurrency"
       @focus="lastEditedField = fields.QUANTITY"
     />
-    <div class="limit-list__row limit-list__row_min-max mt-2">
-      <div class="limit-list__min-max">
+    <div
+      class="limit-list__row limit-list__row_min-max mt-2"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      "
+    >
+      <div class="limit-list__min-max gap-2">
         <span>
           {{ $t("common.min") }}:
           {{ addSpaceFixDecimal(limits?.min, coins[limits.currency].decimals) }}
           {{ limits.currency }}
         </span>
-        <span class="mt-1">
+        <span class="">
           {{ $t("common.max") }}:
           {{ addSpaceFixDecimal(limits?.max, coins[limits.currency].decimals) }}
           {{ limits.currency }}
@@ -362,7 +370,7 @@ export default {
   }
   &__min-max {
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     font-weight: 400;
     font-size: 10px;
     color: #ff0000;

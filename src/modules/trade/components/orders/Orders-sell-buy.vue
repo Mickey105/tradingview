@@ -13,7 +13,10 @@
         padding-top: 6px;
       "
     >
-      <p style="margin-bottom: 5px; color: black; font-size: 12px">
+      <p
+        style="margin-bottom: 5px; font-size: 12px"
+        :style="isStakanPriceRising ? '' : 'color: #b95f5f'"
+      >
         {{ $t("common.totalsell") }}:
         <b class="total-sell-val"
           >{{
@@ -25,7 +28,8 @@
       <hr style="margin: 0; border-top: 1px solid #b9d2c6" />
 
       <p
-        style="margin-top: 5px; margin-bottom: 0; color: black; font-size: 12px"
+        style="margin-top: 5px; margin-bottom: 0; font-size: 12px"
+        :style="isStakanPriceRising ? '' : 'color: #b95f5f'"
       >
         {{ $t("common.totalbuy") }}:
         <b class="total-buy-val"

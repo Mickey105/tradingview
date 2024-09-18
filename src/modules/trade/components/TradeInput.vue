@@ -18,11 +18,14 @@
         @blur="$emit('blur')"
         @input="$emit('update:modelValue', $event.target.value)"
       />
-      <span v-if="placeholder" class="trade-input__caption">
+      <span
+        v-if="placeholder"
+        class="trade-input__caption flex items-center gap-1"
+      >
         <span>
           <img :src="getCurrencyLogo(placeholder)" class="currency-logo" />
         </span>
-        {{ placeholder }}
+        <span>{{ placeholder }}</span>
       </span>
     </div>
   </div>
@@ -73,7 +76,7 @@ export default {
 <style lang="scss" scoped>
 .trade-input {
   position: relative;
-  width: 51%;
+  width: 81%;
   font-size: 14px;
   flex-shrink: 0;
   &__wrapper {

@@ -21,6 +21,8 @@ import initPlugins from "~/plugins/index";
 import { useNotifications } from "~/components/notifications/index";
 // @ts-ignore
 import useModals from "~/components/modal/modal";
+//Google login
+import Vue3GoogleLogin from "vue3-google-login";
 
 export const app = createApp(App);
 
@@ -45,6 +47,10 @@ app.config.globalProperties.$modal = {
     useModals.close();
   },
 };
+app.use(Vue3GoogleLogin, {
+  clientId:
+    "945663563720-o7vik62t724s2mmedlgee1j3g79n887b.apps.googleusercontent.com",
+});
 
 // eslint-disable-next-line vue/multi-word-component-names
 app.component("BaseComponent", Base);

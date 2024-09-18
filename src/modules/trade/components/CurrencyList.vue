@@ -179,7 +179,12 @@
                       <div
                         v-if="pair.active"
                         class="currency-table__td"
-                        style="cursor: pointer; display: inline-block"
+                        style="
+                          cursor: pointer;
+                          display: flex;
+                          align-content: center;
+                          justify-content: flex-end;
+                        "
                         @click="setCurrentPair(pair['base'], pair['quote'])"
                       >
                         {{ pair.price }}
@@ -198,7 +203,12 @@
                     <td>
                       <div
                         class="currency-table__td"
-                        style="cursor: pointer; display: inline-block"
+                        style="
+                          cursor: pointer;
+                          display: flex;
+                          align-content: center;
+                          justify-content: center;
+                        "
                       >
                         <span
                           class="percent"

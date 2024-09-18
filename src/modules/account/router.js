@@ -32,6 +32,14 @@ const router = [
     },
     name: "settings",
   },
+  {
+    path: "/login",
+    component: lazyLoadView(import("./pages/Login.vue")),
+    meta: {
+      authRequired: true,
+    },
+    name: "GoogleLogin",
+  },
 ];
 
 export default router;

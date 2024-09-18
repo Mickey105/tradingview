@@ -62,8 +62,8 @@
       </div>
     </div>
     <div v-else class="not-information">
-      <div class="icon smile">
-        <svg
+      <!-- <div class="icon smile"> -->
+      <!-- <svg
           id="Layer_1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 60 60"
@@ -97,9 +97,24 @@
             class="smile-st1"
             d="M41.5 20c1.4 0 2.5 1.1 2.5 2.5S42.9 25 41.5 25 39 23.9 39 22.5s1.1-2.5 2.5-2.5zm5.2-4.4l-4.2-4.2c-.6-.6-1.5-.6-2.1 0-.6.6-.6 1.5 0 2.1l4.2 4.2c.6.6 1.5.6 2.1 0 .6-.6.6-1.6 0-2.1z"
           />
-        </svg>
-      </div>
-      <div class="txt">{{ $t("common.nodata") }}</div>
+        </svg> -->
+      <!-- </div> -->
+      <div class="txt mb-4">{{ $t("common.nodata") }}</div>
+      <span class="btn-nb1">
+        <button
+          class="rounded-full btn-nb-in1"
+          @click="$router.push({ name: 'login' })"
+        >
+          Login
+        </button>
+        <span>Or</span>
+        <button
+          class="rounded-full btn-nb-in1"
+          @click="$router.push({ name: 'register' })"
+        >
+          Register
+        </button>
+      </span>
     </div>
   </div>
 </template>
@@ -107,6 +122,7 @@
 <script>
 import OrderRow from "./orderRow.vue";
 import Paginate from "vuejs-paginate-next";
+import localConfig from "~/local_config";
 
 export default {
   components: {
@@ -144,6 +160,11 @@ export default {
   computed: {
     currentTablePage() {
       return this.currentPage;
+    },
+    secondLocal() {
+      return (
+        localConfig?.themes?.[this.currentTheme]?.second_color || "#ffac2a"
+      );
     },
   },
   watch: {
@@ -191,5 +212,23 @@ export default {
       display: table-cell;
     }
   }
+}
+.btn-nb1 {
+  position: relative;
+  /* top: 50%;
+            left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  pointer-events: auto;
+  z-index: 2;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.btn-nb-in1 {
+  color: v-bind(secondLocal) !important;
+  font-size: 16px;
+  font-weight: 300;
 }
 </style>

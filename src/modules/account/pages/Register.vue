@@ -855,7 +855,10 @@ export default {
               "password1",
               "captchaResponse",
             ];
-            const errors = Object.entries(r.body);
+
+            const errors = Object.entries(r.body || {});
+
+            // const errors = Object.entries(r.body);
 
             errors.forEach(([field, texts]) => {
               if (exceptedFields.includes(field)) {
@@ -868,8 +871,12 @@ export default {
                 });
               }
             });
-
-            if (r.data?.type[0]?.message === "country_not_support") {
+            if (
+              r.data?.type &&
+              Array.isArray(r.data.type) &&
+              r.data.type[0]?.message === "country_not_support"
+            ) {
+              // if (r.data?.type[0]?.message === "country_not_support") {
               this.$notify({
                 type: "error",
                 text: this.$t("common.country_not_support"),

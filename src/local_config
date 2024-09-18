@@ -1,7 +1,3 @@
-//###########################################################################
-//   OpenCEX Frontend configuration file. More info
-//   https://polygant.notion.site/Settings-3f9e0aae880e433a9d23e76f62a4a456
-//###########################################################################
 
 const localConfig = {
   wss_url: "wss://",
@@ -30,7 +26,7 @@ const localConfig = {
       main_text: "#888888",
       input_color: "white",
       input_text: "#2a2259",
-      block_color: "white",
+      block_color: "#f0f3fa",
       border_color: "#f0f0f0",
       hover_color: "f4bf0b38",
 

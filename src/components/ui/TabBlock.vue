@@ -104,45 +104,25 @@
       v-if="!isAuthorized || !items || items.length === 0"
       class="not-information"
     >
-      <div class="icon smile">
-        <!-- <svg
-          id="Layer_1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 60 60"
-          style="width: 60px; height: 60px"
-        >
-          <path
-            class="smile-st0"
-            d="M44.5 43.2C40.6 38.6 36 36 30 36s-10.6 2.6-14.5 7.2c-.5.6-.4 1.5.2 2 .3.2.6.3.9.3.4 0 .8-.2 1.1-.5 3.3-3.9 7.2-6.2 12.3-6.2 5.1 0 9 2.3 12.3 6.2.3.3.7.5 1.1.5.3 0 .7-.1.9-.3.6-.5.7-1.4.2-2z"
-          />
-          <path
-            class="smile-st1"
-            d="M30 60C13.4 60 0 46.6 0 30S13.4 0 30 0s30 13.4 30 30-13.4 30-30 30zm0-56C15.6 4 4 15.6 4 30s11.6 26 26 26 26-11.6 26-26S44.4 4 30 4z"
-          />
-          <path
-            class="smile-st1"
-            d="M18.5 15c4.1 0 7.5 3.4 7.5 7.5S22.6 30 18.5 30 11 26.6 11 22.5s3.4-7.5 7.5-7.5z"
-          />
-          <path
-            class="smile-st3"
-            d="M18.5 18c2.5 0 4.5 2 4.5 4.5S21 27 18.5 27 14 25 14 22.5s2-4.5 4.5-4.5z"
-          />
-          <path
-            class="smile-st1"
-            d="M18.5 20c1.4 0 2.5 1.1 2.5 2.5S19.9 25 18.5 25 16 23.9 16 22.5s1.1-2.5 2.5-2.5zm-5.2-4.4l4.2-4.2c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-4.2 4.2c-.6.6-1.5.6-2.1 0-.6-.6-.6-1.6 0-2.1zm28.2-.6c4.1 0 7.5 3.4 7.5 7.5S45.6 30 41.5 30 34 26.6 34 22.5s3.4-7.5 7.5-7.5z"
-          />
-          <path
-            class="smile-st3"
-            d="M41.5 18c2.5 0 4.5 2 4.5 4.5S44 27 41.5 27 37 25 37 22.5s2-4.5 4.5-4.5z"
-          />
-          <path
-            class="smile-st1"
-            d="M41.5 20c1.4 0 2.5 1.1 2.5 2.5S42.9 25 41.5 25 39 23.9 39 22.5s1.1-2.5 2.5-2.5zm5.2-4.4l-4.2-4.2c-.6-.6-1.5-.6-2.1 0-.6.6-.6 1.5 0 2.1l4.2 4.2c.6.6 1.5.6 2.1 0 .6-.6.6-1.6 0-2.1z"
-          />
-        </svg> -->
-      </div>
-      <div class="txt">
-        {{ $t("common.nodata") }} Log In or Register Now to trade
+      <!-- <div class="icon smile"></div> -->
+      <div class="txt flex flex-col">
+        <span class="mb-4"> {{ $t("common.nodata") }} </span>
+        <!-- <span>Log In or Register Now to trade</span> -->
+        <span class="btn-nb">
+          <button
+            class="rounded-full btn-nb-in"
+            @click="$router.push({ name: 'login' })"
+          >
+            Login
+          </button>
+          <span style="font-weight: 300">Or</span>
+          <button
+            class="rounded-full btn-nb-in"
+            @click="$router.push({ name: 'register' })"
+          >
+            Register
+          </button>
+        </span>
       </div>
     </div>
   </div>
@@ -151,6 +131,7 @@
 <script>
 import BaseList from "~/components/ui/BaseList.vue";
 import { mapGetters } from "vuex";
+import localConfig from "~/local_config";
 
 export default {
   name: "TabBlock",
@@ -179,6 +160,11 @@ export default {
     tabItems() {
       return this.items;
     },
+    secondLocal() {
+      return (
+        localConfig?.themes?.[this.currentTheme]?.second_color || "#ffac2a"
+      );
+    },
   },
   methods: {
     handleTabClick(idx, tabName) {
@@ -190,3 +176,23 @@ export default {
   },
 };
 </script>
+<style>
+.btn-nb {
+  position: relative;
+  /* top: 50%;
+            left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  pointer-events: auto;
+  z-index: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.btn-nb-in {
+  color: v-bind(secondLocal) !important;
+  font-weight: 300;
+  font-size: 16px;
+}
+</style>

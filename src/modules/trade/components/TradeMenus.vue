@@ -41,6 +41,26 @@
           :class="{ active: tab === 1 || !tab }"
         >
           <div class="xl:flex block">
+            <!-- <span class="flex w-full absolute">
+              <div class="btn-nb2 w-full">
+                <span>
+                  <button
+                    class="rounded-full btn-nb-in2"
+                    @click="$router.push({ name: 'login' })"
+                  >
+                    Login
+                  </button>
+                  <span style="font-weight: 300">Or</span>
+                  <button
+                    class="rounded-full btn-nb-in2"
+                    @click="$router.push({ name: 'register' })"
+                  >
+                    Register
+                  </button>
+                </span>
+              </div>
+            </span> -->
+
             <LimitList
               class="trade-menus__block"
               :base-currency="baseCurrency"
@@ -133,6 +153,7 @@ import StopLimit from "../components/StopLimit.vue";
 import { mapGetters, mapActions } from "vuex";
 import { OTCPrices } from "~/api/otcprices";
 import errorManager from "~/helpers/errorHundle";
+import localConfig from "~/local_config";
 
 export default {
   components: {
@@ -277,6 +298,11 @@ export default {
       isAuthorized: "core/isAuthorized",
       profile: "core/profile",
     }),
+    secondLocal() {
+      return (
+        localConfig?.themes?.[this.currentTheme]?.second_color || "#ffac2a"
+      );
+    },
 
     otcenabled() {
       return this.profile && this.profile.is_auto_orders_enabled;
@@ -351,5 +377,23 @@ export default {
     height: 100%;
     z-index: 1;
   }
+}
+.btn-nb2 {
+  position: absolute;
+  /* top: 50%;
+            left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  pointer-events: auto;
+  z-index: 7;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.btn-nb-in2 {
+  color: v-bind(secondLocal) !important;
+  font-weight: 300;
+  font-size: 16px;
 }
 </style>

@@ -326,7 +326,7 @@ h4,
 h5,
 p {
   // color: #f8d761 !important;
-  opacity: 1;
+  // opacity: 1;
 }
 .navigation-language__link {
   opacity: 0.5;

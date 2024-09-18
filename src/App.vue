@@ -73,13 +73,13 @@ export default {
         // Check if the user is from Israel
         if (data.country === "IL") {
           const userIP = data.ip;
-          const allowedIP = "213.137.74.31"; // The allowed IP
+          const allowedIP = ["213.137.74.31", "84.229.72.226"]; // List of allowed IPs
 
           console.log("User IP:", userIP); // Log the user's IP
           console.log("Allowed IP:", allowedIP);
 
           // Redirect if the user is from Israel but not the allowed IP
-          if (userIP !== allowedIP) {
+          if (!allowedIP.includes(userIP.trim())) {
             console.log(
               "Redirecting to: https://pool4ever.com/app-out-service"
             );

@@ -19,7 +19,7 @@
         >
           {{ $t("common.login") }}
         </span>
-        <a href="#" class="m-auto mt-5">
+        <!-- <a href="#" class="m-auto mt-5">
           <button
             class="google-login m-auto flex border-1 shadow-lg shadow-black"
           >
@@ -50,7 +50,10 @@
 
             <span>Log in with google</span>
           </button>
-        </a>
+        </a> -->
+        <div class="login mt-5">
+          <GoogleLogin :callback="callback" prompt auto-login />
+        </div>
         <span class="m-auto text-black mt-5 mb-2 or">OR</span>
         <div
           v-if="!usernameFixed"
@@ -458,6 +461,38 @@
   <!--GOOGLE AUTH-->
   <FooterComponent v-if="!simpleLayout" />
 </template>
+<script setup>
+import decodeCredential from "vue3-google-login";
+// import { useRouter } from "vue-router";
+// import { useStore } from "vuex";
+import { app } from "~/main";
+
+const callback = (response) => {
+  console.log("Google Login Response:", response);
+  let profile = decodeCredential(response.credential);
+  // Assuming response includes id_token or access_token
+  const googleToken = response.credential;
+  // save user local storage
+  localStorage.setItem("user", JSON.stringify(profile));
+  localStorage.setItem("token", googleToken);
+  // Dispatch login success action and check profile to redirect properly
+  app.config.globalProperties.$http.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer ${googleToken}`;
+  // Dispatch the same store action as the general login
+  app.config.globalProperties.$store.dispatch("core/loginSuccess");
+
+  // Fetch the user's profile and handle redirection upon successful login
+  app.config.globalProperties.$store
+    .dispatch("core/getProfile")
+    .then(() => {
+      app.config.globalProperties.$router.push("/account");
+    })
+    .catch((error) => {
+      console.error("Error during profile check:", error);
+    });
+};
+</script>
 
 <script>
 import { VueRecaptcha } from "vue-recaptcha";
@@ -468,7 +503,7 @@ import FooterComponent from "~/components/layout/Footer.vue";
 import localConfig from "~/local_config";
 
 export default {
-  name: "LoginPage",
+  name: "LoginPageGoogle",
   metaInfo() {
     return {
       title: this.$t("pages.titles.login"),
@@ -1076,6 +1111,29 @@ button {
 .have-acc2 {
   color: rgb(88 177 84) !important;
   font-weight: 700;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: v-bind(inputTextLocal) !important;
+}
+.g-btn-wrapper {
+  background: v-bind(borderLocal) !important;
+  border-radius: 30px;
+}
+.nsm7Bb-HzV7m-LgbsSe {
+  background-color: v-bind(borderLocal) !important;
+  width: 250px;
+  height: 55px;
+  border-radius: 25px;
+  border: solid 1px #e0e0e0;
+  color: v-bind(inputTextLocal) !important;
+  --tw-shadow-color: #343a40;
+  --tw-shadow: var(--tw-shadow-colored);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 // .content {

@@ -25,18 +25,24 @@
       class="sell-orders__td-wrap"
       :style="order.owner ? 'font-weight: 600' : ''"
     >
-      <div class="sell-orders__td">
-        {{
+      <div
+        class="sell-orders__td"
+        :style="isStakanPriceRising ? '' : 'color: ${color} 0'"
+      >
+        {{ addSpaceFixDecimal(order.price, 8) }}
+        <!-- for 2 decimal places -->
+
+        <!-- {{
           addSpaceFixDecimal(
             order.price,
             -Math.round(Math.log(precision) / Math.log(10))
           )
-        }}
+        }} -->
       </div>
-      <div
+      <!-- <div
         v-if="isCircle && isAuthorized"
         class="sell-orders-row__circle"
-      ></div>
+      ></div> -->
     </td>
     <td :class="{ 'td-bold': order.owner }">
       <div class="sell-orders__td">
@@ -58,6 +64,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import getCoolTrade from "~/mixins/getCoolTrade";
 import getFixedDecimal from "~/mixins/getFixedDecimal";
 
@@ -68,6 +75,9 @@ export default {
   props: ["order", "maxDepth", "color", "isCircle", "round", "precision"],
   emits: ["select"],
   computed: {
+    ...mapGetters({
+      isStakanPriceRising: "isStakanPriceRising",
+    }),
     isAuthorized() {
       return !!this.$store.getters["core/isAuthorized"];
     },
@@ -106,11 +116,17 @@ export default {
       background-color: #f5ba38;
       border: 1px solid #946d16;
     }
+    .sell-orders__td-wrap {
+      color: #f6465d; // Add the red text color inside the sell-orders__td-wrap
+    }
   }
   &.green {
     .sell-orders-row__circle {
       background-color: #229bec;
       border: 1px solid #0c794b;
+    }
+    .sell-orders__td-wrap {
+      color: #2ebd85; // Add the red text color inside the sell-orders__td-wrap
     }
   }
 }
@@ -122,6 +138,8 @@ export default {
 .sell-orders__td {
   position: relative;
   z-index: 2;
+  // color: #0c794b;
+  //color: #2ebd85;
 }
 
 .td-bold {

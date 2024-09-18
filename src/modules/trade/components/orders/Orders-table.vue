@@ -174,7 +174,7 @@ export default {
 
 @media screen and (max-width: 767px) {
   .desktop-orders-wrapper {
-    display: none;
+    // display: none;
   }
 
   .mobile-orders-wrapper {

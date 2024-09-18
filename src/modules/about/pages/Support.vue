@@ -107,6 +107,7 @@
 import supportLocales from "../locales";
 import copyToBuffer from "~/mixins/copyToBuffer";
 import "~/helpers/widget";
+import localConfig from "~/local_config";
 
 const ICONS = {
   general_questions: "bars",
@@ -136,6 +137,9 @@ export default {
         (question) => question.category === this.$route.query.c
       );
       return index === -1 ? 0 : index;
+    },
+    mainTextLocal() {
+      return localConfig?.themes?.[this.currentTheme]?.main_text || "#000000";
     },
     questions() {
       const arr = [];
@@ -414,13 +418,16 @@ export default {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color: #0c0e15;
+  background-color: v-bind(mainTextLocal);
   mask-image: url("/public/img/faq/bars.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   position: relative;
   margin-right: 8px;
   top: 4px;
+}
+.faq-icon:hover {
+  background-color: v-bind(mainTextLocal) !important;
 }
 .support__nav-link--active .faq-icon {
   background-color: #5eac81;

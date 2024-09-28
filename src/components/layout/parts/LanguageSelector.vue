@@ -150,10 +150,10 @@ export default {
 }
 
 .mainflag {
-  width: 22px;
+  width: 25px;
   font-size: 16px;
-  height: 22px;
-  margin: 4px auto auto;
+  height: 25px;
+  // margin: 4px auto auto;
   background-size: contain;
   display: block;
 }

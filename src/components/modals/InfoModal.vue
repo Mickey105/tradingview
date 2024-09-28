@@ -10,7 +10,7 @@
           <h3 class="text-capitalize">{{ shownNotification.title }}</h3>
           <div class="security-notice">
             <!-- eslint-disable vue/no-v-html -->
-            <p class="my-3" v-html="shownNotification.text"></p>
+            <p class="my-4" v-html="shownNotification.text"></p>
             <div class="text-center">
               <button
                 type="button"

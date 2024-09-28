@@ -77,7 +77,7 @@
       "
       :placeholder="quoteCurrency"
     />
-    <div class="otc__row mt-3 otc__caption">
+    <div class="otc__row mt-4 otc__caption">
       <span
         >{{ $t("common." + (operation == "buy" ? "give_to" : "get")) }}:</span
       >

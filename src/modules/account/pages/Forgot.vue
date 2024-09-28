@@ -1,10 +1,10 @@
 <template>
   <div
-    class="auth forgot-password logIn pb-5"
+    class="auth forgot-password logIn pb-8"
     :style="loginBackground ? `background: ${loginBackground} !important` : {}"
   >
     <ModalPagesHeader />
-    <div class="flex flex-col white mt-5">
+    <div class="flex flex-col white mt-8">
       <template v-if="!showBanner">
         <div
           class="logIn__title"
@@ -27,7 +27,7 @@
             placeholder="Email"
             style="margin-bottom: 1rem"
           />
-          <div class="pb-3">
+          <div class="pb-4">
             <!--CAPTCHA-->
             <vue-recaptcha
               ref="recaptcha"
@@ -96,7 +96,7 @@
           {{ $t("common.passwordrecovery") }}
         </div>
         <div class="logIn__form">
-          <div class="logIn__popup logIn__popup_white-checkmark mb-5">
+          <div class="logIn__popup logIn__popup_white-checkmark mb-8">
             {{ $t("common.emailins") }}
           </div>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mb-4 mt-4 flex flex-col" :class="stateClass">
+  <div class="relative mb-6 mt-6 flex flex-col" :class="stateClass">
     <label class="whitespace-nowrap">{{ label }}</label>
     <div class="select">
       <select

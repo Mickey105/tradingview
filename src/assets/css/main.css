@@ -1,6 +1,15 @@
 @import "primeicons/primeicons.css";
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"); 
+
+/* Wrap your theme imports in classes
+.arya-orange {
+  @import "../arya-orange/theme.css";
+}
+
+.sage-orange {
+  @import "../saga-orange/theme.css";
+} */
 
 input[type="text"]::-webkit-input-placeholder {color: #ccc;}
 input[type="text"]::-moz-placeholder          {color: #ccc;}
@@ -60,7 +69,7 @@ img {
 }
 .header {
   padding: 0 0.5rem;
-  background: #36373c;
+  background: var(--p-content-background);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -76,11 +85,11 @@ img {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   right: 0;
-  top: 0;
-  z-index: 1001;
+  top: 60px;
+  /* z-index: 1001; */
 }
 .header__links {
   display: -webkit-box;
@@ -92,12 +101,12 @@ img {
   font-weight: 100;
 }
 .header__links-link {
-  color: white;
+  /* color: white; */
   display: block;
   font-size: 13px;
 }
 .header__links-link:before {
-  color: #fff;
+  /* color: #fff; */
   content: "/";
   padding: 0 5px;
 }
@@ -251,7 +260,7 @@ img {
   -ms-flex-align: center;
   align-items: center;
   padding: 0 2rem;
-  border-right: 1px solid #29324a;
+  /* border-right: 1px solid #29324a; */
 }
 @media screen and (max-width: 675px) {
   .header__ether {
@@ -272,7 +281,7 @@ img {
 .header__ether-info {
   font-size: 14px;
   font-family: "Open Sans", arial, sans-serif;
-  color: white;
+  /* color: white; */
   line-height: 1.2;
 }
 .header__ether-info-text {
@@ -310,12 +319,15 @@ img {
 }
 .header__language {
   position: relative;
-  margin-left: 15px;
+  /* margin-left: 15px; */
   border-radius: 50px;
   cursor: pointer;
-  width: 40px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
   text-align: center;
+  display: flex;
+  align-items: center;
+
 }
 .header__links-item:nth-child(2) .header__links-link:before,
 .header__links .first:before {
@@ -326,7 +338,7 @@ img {
   font-size: 14px;
   font-family: "Open Sans", arial, sans-serif;
   font-weight: bold;
-  color: white;
+  /* color: white; */
   line-height: 1.2;
 }
 .middle-list__title .header__ether-info-text {
@@ -659,10 +671,10 @@ img {
   visibility: visible;
 }
 .mainflag {
-  width: 22px;
+  width: 25px;
   font-size: 16px;
-  height: 22px;
-  margin: 4px auto auto;
+  height: 25px;
+  /* margin: 4px auto auto; */
   -webkit-background-size: contain;
   background-size: contain;
   display: block;
@@ -711,10 +723,10 @@ img {
 .header-responsive {
   display: none;
 }
-
+ 
 .currency-list,
 .wallet-list {
-  background-color: #fff;
+  background: var(--p-content-background);
   -webkit-box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
   margin-top: 15px;
@@ -750,7 +762,7 @@ img {
 
 .currency-list .nav-tabs,
 .wallet-list .nav-tabs {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-bottom: none;
   display: -webkit-box;
   display: -webkit-flex;
@@ -960,7 +972,7 @@ img {
 }
 
 .wallet-list {
-  background-color: #fff;
+  /* background-color: #fff; */
   -webkit-box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
   margin-top: 15px;
@@ -1103,7 +1115,7 @@ img {
 }
 
 .content {
-  padding-top: 80px;
+  padding-top: 10px;
   /* margin-bottom: 40px; */
 }
 
@@ -1390,7 +1402,7 @@ thead .sell-orders__td b {
   background-color: rgb(255, 93, 85);
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  color: #ffffff;
+  /* color: #ffffff; */
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
   display: inline-block;
@@ -1402,7 +1414,7 @@ thead .sell-orders__td b {
 .trades-table .action-label {
   background-color: var(--theme-primary-color);
   border-radius: 3px;
-  color: #ffffff;
+  /* color: #ffffff; */
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
   display: inline-block;
@@ -1420,7 +1432,7 @@ thead .sell-orders__td b {
   background-color: rgb(114, 187, 83);
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  color: #ffffff;
+  /* color: #ffffff; */
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
   display: inline-block;
@@ -1657,7 +1669,7 @@ ul {
   font-weight: 400;
   line-height: 1.5;
   /* color: #495057; */
-  background-color: #fff;
+  /* background-color: #fff; */
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
@@ -1802,7 +1814,7 @@ input:-moz-placeholder {
   .header-responsive .header__ether-info,
   .header-responsive .header__etc .middle-list__title,
   .header-responsive .header__links-link:before {
-    color: #38393a;
+    /* color: #38393a; */
   }
 
   .header-responsive .header__etc-middle,
@@ -4743,7 +4755,7 @@ iframe.wizard {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
+  /* border-bottom: 1px solid #dee2e6; */
 }
 .nav {
   display: -ms-flexbox;
@@ -4769,7 +4781,7 @@ iframe.wizard {
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: #f8d761;
-  background-color: #fff;
+  /* background-color: #fff; */
   border-color: #dee2e6 #dee2e6 #fff;
 }
 
@@ -4792,9 +4804,9 @@ iframe.wizard {
 }
 
 .trade-menus__nav-item {
-  border-left: 1px solid #eceeef;
-  border-top: 1px solid #eceeef;
-  border-right: 1px solid #eceeef;
+  border-left: 0.5px solid var(--surface-50);
+  border-top: 0.5px solid var(--surface-50);
+  border-right: 0.5px solid var(--surface-50);
   border-bottom: none;
   margin-right: -1px;
 }

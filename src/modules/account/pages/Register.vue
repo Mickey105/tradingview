@@ -2,14 +2,14 @@
   <HeaderComponent v-if="!simpleLayout" />
   <div class="auth">
     <div
-      class="register pb-5 px-1 pt-7"
+      class="register pb-8 px-1 pt-16"
       :style="
         loginBackground ? `background: ${loginBackground} !important` : {}
       "
     >
       <ModalPagesHeader />
       <template v-if="stage === 'data_gathering'">
-        <div class="box mt-5">
+        <div class="box mt-8">
           <div class="text-center">
             <div
               class="register__title inline-block"
@@ -354,15 +354,15 @@
           <div class="logIn__title" style="max-width: 600px">
             {{ $t("common.email_confirmation") }}
           </div>
-          <div class="logIn__descr mb-4">
+          <div class="logIn__descr mb-6">
             <strong>{{ $t("common.email_sent") }}</strong>
           </div>
-          <strong class="logIn__descr mb-4" style="color: #c93d3d">
+          <strong class="logIn__descr mb-6" style="color: #c93d3d">
             If you do not see the email in a few minutes, check your
             <span style="color: aquamarine">“junk mail”</span>
             folder or <span style="color: aquamarine">“spam”</span> folder.
           </strong>
-          <strong class="logIn__descr mb-4" style="color: #f7f7f7">
+          <strong class="logIn__descr mb-6" style="color: #f7f7f7">
             If you have any other issue, please contact us at
             <a href="mailto:admin@pool4ever.com">
               <span style="color: aquamarine">admin@pool4ever.com.</span>
@@ -377,10 +377,10 @@
               v-model="confirmationCode"
               required
               autocomplete="google2fa"
-              class="text-center mb-4"
+              class="text-center mb-6"
               type="text"
             />
-            <div v-if="confirmEmailTimer > 0" class="logIn__descr mb-4">
+            <div v-if="confirmEmailTimer > 0" class="logIn__descr mb-6">
               <strong>{{ $t("common.getCode") }}</strong>
               {{ $t("common.againAfter", { n: confirmEmailTimer }) }}
             </div>

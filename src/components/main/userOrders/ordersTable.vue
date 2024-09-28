@@ -99,7 +99,7 @@
           />
         </svg> -->
       <!-- </div> -->
-      <div class="txt mb-4">{{ $t("common.nodata") }}</div>
+      <div class="txt mb-6">{{ $t("common.nodata") }}</div>
       <span class="btn-nb1">
         <button
           class="rounded-full btn-nb-in1"

@@ -6,7 +6,7 @@
       readonly="readonly"
       :value="value"
     />
-    <button class="ml-3 p-0" @click="copyToBuffer(value)">
+    <button class="ml-4 p-0" @click="copyToBuffer(value)">
       <div class="base-copy-input__icon base-copy-input__active-element">
         <img src="/public/img/copy.svg" />
       </div>

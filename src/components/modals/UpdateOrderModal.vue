@@ -113,7 +113,7 @@
           </button>
         </form>
       </div>
-      <div v-else class="p-4 text-center">
+      <div v-else class="p-6 text-center">
         <img
           class="inline-block"
           src="/public/img/check-circle.svg"
@@ -337,7 +337,7 @@ export default {
 .update-order-modal {
   max-width: 343px;
   font-size: 25px;
-  background-color: #fff;
+  // background-color: #fff;
 
   &__label {
     margin-top: 17px;

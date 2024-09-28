@@ -15,11 +15,11 @@
           class="nav-link"
           @click="setTopCurrency(ticker)"
         >
-          <sapn>
+          <span>
             <img :src="getCurrencyLogo(ticker)" class="currency-logo" />
-          </sapn>
-          {{ ticker }}</a
-        >
+          </span>
+          {{ ticker }}
+        </a>
       </li>
     </ul>
     <div id="currencyTabsContent" class="tab-content">
@@ -179,12 +179,7 @@
                       <div
                         v-if="pair.active"
                         class="currency-table__td"
-                        style="
-                          cursor: pointer;
-                          display: flex;
-                          align-content: center;
-                          justify-content: flex-end;
-                        "
+                        style="cursor: pointer; display: inline-block"
                         @click="setCurrentPair(pair['base'], pair['quote'])"
                       >
                         {{ pair.price }}
@@ -203,12 +198,7 @@
                     <td>
                       <div
                         class="currency-table__td"
-                        style="
-                          cursor: pointer;
-                          display: flex;
-                          align-content: center;
-                          justify-content: center;
-                        "
+                        style="cursor: pointer; display: inline-block"
                       >
                         <span
                           class="percent"
@@ -261,8 +251,8 @@ export default {
       searchParameter: "",
       topCurrency: null,
       sorting: {
-        column: null,
-        direction: null,
+        column: "price", // Set default sorting column to 'price'
+        direction: "DESC", // Set default sorting direction to 'DESC' for high to low
       },
     };
   },
@@ -324,19 +314,32 @@ export default {
         TEXT_COLUMNS = ["currency"];
 
       if (column && direction) {
-        let output = [...this.filteredPairs].sort((a, b) =>
-          TEXT_COLUMNS.includes(column)
-            ? a.base < b.base
-              ? -1
-              : 1
-            : a[column] - b[column]
-        );
+        let output = [...this.filteredPairs].sort((a, b) => {
+          if (TEXT_COLUMNS.includes(column)) {
+            return a.base < b.base ? -1 : 1;
+          } else if (column === "price") {
+            // Convert price to a number for correct sorting
+            const priceA = parseFloat(a.price.replace(/,/g, ""));
+            const priceB = parseFloat(b.price.replace(/,/g, ""));
+            return priceB - priceA; // Change to priceB - priceA for high to low
+          } else if (column === "24hChange") {
+            // Convert percentage to a number for correct sorting
+            const changeA = parseFloat(a["24hChange"].replace(/%/g, ""));
+            const changeB = parseFloat(b["24hChange"].replace(/%/g, ""));
+            return changeB - changeA; // Change to changeB - changeA for high to low
+          } else {
+            return b[column] - a[column]; // Default for numerical values (high to low)
+          }
+        });
 
-        if (this.sorting.direction === this.SORT_DIRECTIONS.DESC)
-          output.reverse();
+        if (this.sorting.direction === "ASC") {
+          output.reverse(); // Only reverse for ASC, to get low to high
+        }
 
         return output;
-      } else return this.filteredPairs;
+      } else {
+        return this.filteredPairs;
+      }
     },
   },
   watch: {
@@ -523,7 +526,7 @@ tr.disabled {
   left: 15px;
 }
 .ps {
-  height: 378px;
+  height: 350px;
 }
 .currency-table__name {
   // color: red !important;

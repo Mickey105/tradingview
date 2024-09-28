@@ -1,7 +1,7 @@
 <template>
   <div
     aria-live="assertive"
-    class="notifications fixed inset-0 flex items-start px-4 py-6 pointer-events-none sm:p-6 sm:start z-40"
+    class="notifications fixed inset-0 flex items-start px-6 py-12 pointer-events-none sm:p-12 sm:start z-40"
   >
     <div
       class="w-full flex flex-col items-center space-y-4 sm:items-end"
@@ -21,14 +21,14 @@
           class="max-w-sm w-full bg-white shadow-lg pointer-events-auto overflow-hidden notification-item"
           :class="notification.type"
         >
-          <div class="p-4">
+          <div class="p-6">
             <component
               :is="notification.component"
               v-if="notification.component"
               :notification="notification"
             />
             <div v-else class="flex items-start">
-              <div class="ml-3 w-0 flex-1 pt-0.5">
+              <div class="ml-4 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium text-white">
                   {{ notification.title }}
                 </p>

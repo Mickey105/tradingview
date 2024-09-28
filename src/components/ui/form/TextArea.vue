@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mt-4 mb-4 flex flex-col" :class="stateClass">
+  <div class="relative mt-6 mb-6 flex flex-col" :class="stateClass">
     <label>{{ label }}</label>
     <textarea
       :value="inputValue"

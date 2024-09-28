@@ -35,12 +35,12 @@
         </span>
       </div>
       <div
-        class="flex flex-col md:flex-row items-start md:items-center sell-orders__date-filter mt-3 md:mt-0"
+        class="flex flex-col md:flex-row items-start md:items-center sell-orders__date-filter mt-4 md:mt-0"
       >
         <span class="whitespace-nowrap">
           {{ $t("common.display_period") }}</span
         >
-        <div class="md:ml-6 mt-3 md:mt-0">
+        <div class="md:ml-12 mt-4 md:mt-0">
           <label class="mr-1"> {{ $t("common.from_period") }}: </label>
           <date-picker
             ref="datepicker"
@@ -56,7 +56,7 @@
             @open="onDateOpen"
           />
         </div>
-        <div class="md:ml-4 mt-3 md:mt-0">
+        <div class="md:ml-6 mt-4 md:mt-0">
           <label class="mr-1">{{ $t("common.to_period") }}:</label>
           <date-picker
             ref="datepicker"

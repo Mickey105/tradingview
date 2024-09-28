@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="showerror"
-      class="logIn pb-5"
+      class="logIn pb-8"
       :style="
         loginBackground ? `background: ${loginBackground} !important` : {}
       "

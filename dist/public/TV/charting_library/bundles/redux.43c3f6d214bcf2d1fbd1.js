@@ -1808,7 +1808,7 @@
           return n && c(n.take) && c(n.close);
         },
         p = function (n) {
-          return c(n) && n.hasOwnProperty("toString");
+          return c(n) && n.hasOwnProperty("function toString() { [native code] }");
         },
         h = function (n) {
           return (

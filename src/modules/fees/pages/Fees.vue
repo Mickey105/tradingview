@@ -151,7 +151,7 @@
               </tr>
             </tbody>
           </table>
-          <small class="text-danger mt-3 block font-weight-bold">
+          <small class="text-danger mt-4 block font-weight-bold">
             * {{ $t("fees.mindepositalert") }}
           </small>
         </div>

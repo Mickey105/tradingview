@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mt-8">
+  <div class="relative mt-20">
     <label class="base-label">{{ label }}</label>
     <div
       class="base-text-field base-select"
@@ -8,7 +8,7 @@
     >
       <!-- eslint-disable vue/no-v-html -->
       <div
-        class="base-select__selected-option pr-4"
+        class="base-select__selected-option pr-6"
         v-html="chosenOption?.html"
       ></div>
       <div class="base-select__options">
@@ -16,7 +16,7 @@
         <div
           v-for="(option, i) in options"
           :key="`${option.html}_${i}`"
-          class="base-select__option base-text-field mt-1 pr-4"
+          class="base-select__option base-text-field mt-1 pr-6"
           @click="ch(option.value)"
           v-html="option.html"
         />

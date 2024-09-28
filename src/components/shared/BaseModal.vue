@@ -4,7 +4,7 @@
       class="base-modal__content"
       :class="{ [`base-modal__content_${size}`]: size !== 'md' }"
     >
-      <div class="base-modal__title pb-4">{{ title }}</div>
+      <div class="base-modal__title pb-6">{{ title }}</div>
       <slot />
       <img
         v-if="!hideHeaderClose"

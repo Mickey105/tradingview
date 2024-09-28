@@ -7,7 +7,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <div class="confirm-message">
-          <p style="font-size: 16px" class="mb-4">
+          <p style="font-size: 16px" class="mb-6">
             {{ $t("common.confirm_action") }}
           </p>
           <slot></slot>

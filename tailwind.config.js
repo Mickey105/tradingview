@@ -1,4 +1,6 @@
 module.exports = {
+  darkMode: ["selector", '[class*="app-dark"]'],
+  plugins: [require("tailwindcss-primeui")],
   content: {
     content: [
       "./index.html",
@@ -54,6 +56,7 @@ module.exports = {
       lg: "1024px",
       xl: "1280px",
       xxl: "1536px",
+      "2xl": "1920px",
     },
     colors: {
       transparent: "transparent",
@@ -696,5 +699,5 @@ module.exports = {
     transitionDelay: ["responsive"],
   },
   corePlugins: {},
-  plugins: [],
+  // plugins: [],
 };

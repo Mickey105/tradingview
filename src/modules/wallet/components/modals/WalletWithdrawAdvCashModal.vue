@@ -93,7 +93,7 @@
           style="border-left: none; margin-bottom: 0px; font-size: 19px"
         >
           <img
-            class="inline-block mt-4"
+            class="inline-block mt-6"
             src="/public/img/check-circle.svg"
             width="20"
             alt=""

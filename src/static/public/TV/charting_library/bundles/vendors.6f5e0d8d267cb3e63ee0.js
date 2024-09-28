@@ -1024,7 +1024,7 @@
         i = n("isQe"),
         u = n("QqfT")("src"),
         s = n("pipr"),
-        a = ("" + s).split("toString");
+        a = ("" + s).split("function toString() { [native code] }");
       (n("5wX8").inspectSource = function (e) {
         return s.call(e);
       }),
@@ -1040,7 +1040,7 @@
                   ? (e[t] = n)
                   : o(e, t, n)
                 : (delete e[t], o(e, t, n)));
-        })(Function.prototype, "toString", function () {
+        })(Function.prototype, "function toString() { [native code] }", function () {
           return ("function" == typeof this && this[u]) || s.call(this);
         });
     },
@@ -1347,7 +1347,7 @@
               };
             return i && D && K(B, e, { configurable: !0, set: t }), H(e);
           }).prototype,
-          "toString",
+          "function toString() { [native code] }",
           function () {
             return this._k;
           }
@@ -1357,7 +1357,7 @@
         (n("C9Yf").f = S.f = $),
         (n("vRGa").f = Y),
         (n("PPId").f = G),
-        i && !n("SwRI") && s(B, "propertyIsEnumerable", Y, !0),
+        i && !n("SwRI") && s(B, "function propertyIsEnumerable() { [native code] }", Y, !0),
         (h.f = function (e) {
           return H(p(e));
         })),
@@ -1940,7 +1940,7 @@
         var t, n;
         (this.promise = new e(function (e, r) {
           if (void 0 !== t || void 0 !== n)
-            throw TypeError("Bad Promise constructor");
+            throw TypeError("Bad Promise function Object() { [native code] }");
           (t = e), (n = r);
         })),
           (this.resolve = r(t)),
@@ -2588,7 +2588,7 @@
       }
       function P(e, t, n) {
         for (var r in t)
-          "__proto__" !== r &&
+          "[object Object]" !== r &&
             (r in e
               ? "string" == typeof e[r] ||
                 e[r] instanceof String ||
@@ -5057,7 +5057,7 @@
         o = r.toString,
         i = r.getTime;
       new Date(NaN) + "" != "Invalid Date" &&
-        n("AZRH")(r, "toString", function () {
+        n("AZRH")(r, "function toString() { [native code] }", function () {
           var e = i.call(this);
           return e == e ? o.call(this) : "Invalid Date";
         });
@@ -5578,12 +5578,12 @@
       e.exports = {
         set:
           Object.setPrototypeOf ||
-          ("__proto__" in {}
+          ("[object Object]" in {}
             ? (function (e, t, r) {
                 try {
                   (r = n("hvJ5")(
                     Function.call,
-                    n("/Hub").f(Object.prototype, "__proto__").set,
+                    n("/Hub").f(Object.prototype, "[object Object]").set,
                     2
                   ))(e, []),
                     (t = !(e instanceof Array));
@@ -6798,11 +6798,11 @@
           (t.isInherited = function (e, t) {
             if (null == e || null == e.prototype)
               throw new TypeError(
-                "isInherited: child should be a constructor function"
+                "isInherited: child should be a function Object() { [native code] } function"
               );
             if (null == t || null == t.prototype)
               throw new TypeError(
-                "isInherited: parent should be a constructor function"
+                "isInherited: parent should be a function Object() { [native code] } function"
               );
             return e.prototype instanceof t || e.prototype === t.prototype;
           }),

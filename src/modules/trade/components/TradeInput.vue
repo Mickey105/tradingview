@@ -11,7 +11,7 @@
         :disabled="disabled"
         :type="textInput ? 'text' : 'number'"
         step="0.00000001"
-        class="trade-input__input pr-4"
+        class="trade-input__input pr-6"
         :min="negative ? -Infinity : 0"
         :class="{ 'trade-input__input_disabled': disabled }"
         @focus="$emit('focus')"

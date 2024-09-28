@@ -7,6 +7,10 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), eslintPlugin()],
+  define: {
+    // Disable the hydration mismatch details in production for better tree-shaking
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
+  },
   publicDir: path.resolve(__dirname, "./src/static"),
   resolve: {
     alias: {

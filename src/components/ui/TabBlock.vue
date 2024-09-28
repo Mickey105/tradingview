@@ -106,7 +106,7 @@
     >
       <!-- <div class="icon smile"></div> -->
       <div class="txt flex flex-col">
-        <span class="mb-4"> {{ $t("common.nodata") }} </span>
+        <span class="mb-6"> {{ $t("common.nodata") }} </span>
         <!-- <span>Log In or Register Now to trade</span> -->
         <span class="btn-nb">
           <button

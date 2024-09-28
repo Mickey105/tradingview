@@ -76,8 +76,13 @@
           >
         </div>
       </div>
-      <div class="pb-4 flex justify-center">
-        <img src="/public/img/minmax.svg" class="mr-8" width="30" height="30" />
+      <div class="pb-6 flex justify-center">
+        <img
+          src="/public/img/minmax.svg"
+          class="mr-20"
+          width="30"
+          height="30"
+        />
         <div class="text-left">
           {{ $t("common.second_table_deposit_fee") }} <br />
           <strong class="font-weight-bold">
@@ -87,7 +92,7 @@
         </div>
       </div>
       <p
-        class="text-danger mb-3 px-4 block font-weight-bold"
+        class="text-danger mb-4 px-6 block font-weight-bold"
         style="text-transform: uppercase; font-size: 16px"
       >
         {{ $t("common.mindepositalert") }}

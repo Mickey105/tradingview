@@ -3899,9 +3899,11 @@ html.theme-dark
 .tv-transition--slide-out {
   animation: tv-transition--slide-out 0.35s ease forwards;
 }
-@font-face {
+/* @font-face {
   font-family: EuclidCircular;
   font-style: normal;
-  font-weight: 400;
-  src: url(b1a63a011fd92dfb93db6db243bb036c.woff2) format("woff2");
-}
+  font-weight: 400; */
+  /* src: url(b1a63a011fd92dfb93db6db243bb036c.woff2)  */
+  /* src: url('public/TV/charting_library/bundles/b1a63a011fd92dfb93db6db243bb036c.woff2') format('woff2');
+
+} */

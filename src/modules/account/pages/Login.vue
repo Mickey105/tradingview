@@ -7,25 +7,25 @@
   >
     <div
       v-if="!showGoogleCodeInput"
-      class="flex flex-col w-1/2 mob-in mb-8 pb-8"
+      class="flex flex-col w-1/2 mob-in mb-20 pb-20"
       :class="{ isBlur: isLoading }"
       style="margin-top: 70px"
     >
       <span class="flex flex-col mob-in1">
-        <ModalPagesHeader class="mt-6" />
+        <ModalPagesHeader class="mt-12" />
         <span
           class="logIn__title text-center m-auto"
           :style="loginText ? `color: ${loginText} !important` : {}"
         >
           {{ $t("common.login") }}
         </span>
-        <!-- <a href="#" class="m-auto mt-5">
+        <!-- <a href="#" class="m-auto mt-8">
           <button
-            class="google-login m-auto flex border-1 shadow-lg shadow-black"
+            class="google-login m-auto flex border shadow-lg shadow-black"
           >
             <span>
               <svg
-                class="w-5"
+                class="w-5/12"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
               >
@@ -51,10 +51,10 @@
             <span>Log in with google</span>
           </button>
         </a> -->
-        <div class="login mt-5">
+        <div class="login mt-8">
           <GoogleLogin :callback="callback" prompt auto-login />
         </div>
-        <span class="m-auto text-black mt-5 mb-2 or">OR</span>
+        <span class="m-auto text-black mt-8 mb-2 or">OR</span>
         <div
           v-if="!usernameFixed"
           class="logIn__descr m-auto mt-2"
@@ -69,7 +69,7 @@
           :style="loginText ? `color: ${loginText} !important` : {}"
         >
           {{ $t("common.enterPass") }}
-          <p class="mb-4">
+          <p class="mb-6">
             {{ username }}
             <span class="change" @click="goTo1Step"
               >{{ $t("common.change") }}
@@ -90,7 +90,7 @@
               placeholder="Email"
             />
           </template>
-          <div class="input-group mb-4 border-1 relative">
+          <div class="input-group mb-6 border relative">
             <input
               id="passinp"
               ref="passwordInput"
@@ -106,7 +106,7 @@
               style="top: 6px; right: 4px"
             >
               <button
-                class="btn border-0 show-password-icon-btn"
+                class="btn border-surface-0 dark:border-surface-900 show-password-icon-btn"
                 type="button"
                 @click="showPassword = !showPassword"
               >
@@ -138,7 +138,7 @@
             </div>
           </div>
           <!--CAPTCHA-->
-          <div class="mb-3">
+          <div class="mb-4">
             <vue-recaptcha
               v-show="usernameFixed"
               ref="recaptcha"
@@ -174,7 +174,7 @@
           </div>
           <router-link
             to="/forgot"
-            class="logIn__recovery mb-4"
+            class="logIn__recovery mb-6"
             :style="loginText ? `color: ${loginText} !important` : {}"
             ><span style="color: royalblue">
               Forget your password ?
@@ -183,7 +183,7 @@
           </router-link>
           <router-link
             to="/support"
-            class="logIn__recovery mb-4"
+            class="logIn__recovery mb-6"
             :style="loginText ? `color: #ffd54f !important` : {}"
             rel="noopener noreferrer nofollow"
             target="_blank"
@@ -215,7 +215,7 @@
     </div>
     <div
       v-if="!showGoogleCodeInput"
-      class="logIn pb-5 w-1/2 mob-in"
+      class="logIn pb-8 w-1/2 mob-in"
       :style="
         loginBackground ? `background: ${loginBackground} !important` : {}
       "
@@ -223,10 +223,10 @@
     >
       <!-- <ModalPagesHeader /> -->
       <div
-        class="flex box white flex-col logIn__title_header gap-5"
+        class="flex box white flex-col logIn__title_header gap-8"
         :class="{ isBlur: isLoading }"
       >
-        <p class="m-auto have-acc mt-5">Dont have account?</p>
+        <p class="m-auto have-acc mt-8">Dont have account?</p>
         <span class="m-auto flex items-center gap-2 have-acc2">
           <i class="pi pi-pen-to-square" style="font-size: 1rem"></i>
           <span>Register now, Fast & Simple</span>
@@ -235,7 +235,7 @@
         <div class="text-center">
           <router-link :to="'/register'">
             <button
-              class="logIn__register mb-5 shadow-lg shadow-black"
+              class="logIn__register mb-8 shadow-lg shadow-black"
               style="border-radius: 25px; background: #ffd54f !important"
             >
               {{ $t("common.register") }}
@@ -244,7 +244,7 @@
         </div>
         <img
           src="/public/img/reg.gif"
-          class="img-reg shadow-lg shadow-black mt-5"
+          class="img-reg shadow-lg shadow-black mt-8"
         />
 
         <!-- <div
@@ -267,7 +267,7 @@
           :style="loginText ? `color: ${loginText} !important` : {}"
         >
           {{ $t("common.enterPass") }}
-          <p class="mb-4">
+          <p class="mb-6">
             {{ username }}
             <span class="change" @click="goTo1Step"
               >{{ $t("common.change") }}
@@ -288,12 +288,12 @@
               placeholder="Email"
             />
           </template>
-          <div class="input-group mb-4 border-1 relative">
+          <div class="input-group mb-6 border relative">
             <input
               id="passinp"
               ref="passwordInput"
               v-model="password"
-              class="form-control logIn__form__input border-0"
+              class="form-control logIn__form__input border-surface-0 dark:border-surface-900"
               :class="{ 'input-has-error': errorspassword }"
               :type="showPassword ? 'text' : 'password'"
               name="pass"
@@ -304,7 +304,7 @@
               style="top: 6px; right: 4px"
             >
               <button
-                class="btn border-0 show-password-icon-btn"
+                class="btn border-surface-0 dark:border-surface-900 show-password-icon-btn"
                 type="button"
                 @click="showPassword = !showPassword"
               >
@@ -336,7 +336,7 @@
             </div>
           </div>
           --CAPTCHA-
-          <div class="mb-3">
+          <div class="mb-4">
             <vue-recaptcha
               v-show="usernameFixed"
               ref="recaptcha"
@@ -372,7 +372,7 @@
           </div>
           <router-link
             to="/forgot"
-            class="logIn__recovery mb-4"
+            class="logIn__recovery mb-6"
             :style="loginText ? `color: ${loginText} !important` : {}"
             ><span style="color: royalblue">
               Forget your password ?
@@ -381,7 +381,7 @@
           </router-link>
           <router-link
             to="/support"
-            class="logIn__recovery mb-4"
+            class="logIn__recovery mb-6"
             :style="loginText ? `color: #ffd54f !important` : {}"
             rel="noopener noreferrer nofollow"
             target="_blank"
@@ -409,7 +409,7 @@
     </div>
     <div
       v-else
-      class="logIn pb-5"
+      class="logIn pb-8"
       style="text-align: center"
       :style="
         loginBackground ? `background: ${loginBackground} !important` : {}
@@ -418,7 +418,7 @@
       <ModalPagesHeader />
       <div class="flex flex-col box white">
         <div class="logIn__title" style="max-width: 600px">2FA</div>
-        <div class="logIn__descr mb-4">
+        <div class="logIn__descr mb-6">
           <strong>{{ $t("common.entergooglecode") }}</strong>
         </div>
         <form
@@ -435,11 +435,11 @@
             autocomplete="google2fa"
             pattern="[0-9]{6}"
             placeholder="XXX XXX"
-            class="secretclass1 mb-4"
+            class="secretclass1 mb-6"
             type="text"
             @input="formatGoogleCode"
           />
-          <p v-if="errtext" class="text-danger mb-4">{{ errtext }}</p>
+          <p v-if="errtext" class="text-danger mb-6">{{ errtext }}</p>
           <button
             :disabled="isInvalidFaCode"
             class="logIn__form__input logIn__form__input_button block"

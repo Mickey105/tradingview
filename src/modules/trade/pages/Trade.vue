@@ -1,9 +1,33 @@
 <template>
-  <div class="m-auto flex-wrap mt-4 mb-2">
+  <!-- <PrimeCard class="flex flex-wrap">
+    <template #header></template>
+    <template #content>
+      <span class="leading-normal join-us">Join our</span
+      ><a href="https://t.me/+Z7Eli0cVuegxZDA0" target="_blank"
+        ><img
+          src="https://pool4ever.com/Pool4ever-Designs/telegram.png"
+          width="20"
+          class="mr-2 ml-2"
+        />
+        <span>Telegram </span>
+        <span> Or</span>
+      </a>
+      <a href="https://t.me/+Z7Eli0cVuegxZDA0" target="_blank"
+        ><img
+          src="https://pool4ever.com/Pool4ever-Designs/discord.png"
+          width="20"
+          class="mr-2 ml-2"
+        />
+        <span>Discord</span>
+      </a>
+      <span class="join-us"> Community & Support</span>
+    </template>
+  </PrimeCard> -->
+  <div class="m-auto flex-wrap mt-6 mb-2">
     <div
       class="flex flex-wrap justify-center items-center text-center banner p-2 gap-1 shadow-lg"
     >
-      <span class="line-height-3 join-us">Join our</span
+      <span class="leading-normal join-us">Join our</span
       ><a href="https://t.me/+Z7Eli0cVuegxZDA0" target="_blank"
         ><img
           src="https://pool4ever.com/Pool4ever-Designs/telegram.png"
@@ -27,7 +51,7 @@
   <div v-if="showPage">
     <div class="flex flex-wrap xl:-mt-2">
       <div class="md:w-3/12 order-tables">
-        <v-card class="rounded-[3px] overflow-hidden mt-4 card-trade">
+        <v-card class="rounded-[3px] overflow-hidden mt-6 card-trade">
           <SellOrders
             :decimals="coins[currentBaseCurrency].decimals"
             :base-currency="currentBaseCurrency"
@@ -40,7 +64,7 @@
           ></SellOrders>
         </v-card>
       </div>
-      <div class="md:w-6/12 graphic-order xl:px-4">
+      <div class="md:w-6/12 graphic-order xl:px-6">
         <div class="graphic-order-wrapper">
           <TradeGraphic
             :precision="Math.min(savedPrecision * 1, 0.01) || 0.01"
@@ -57,8 +81,8 @@
           </v-card>
         </div>
       </div>
-      <div class="md:w-3/12 data-order xl:pb-0 pb-4">
-        <div class="mt-4 currency-list">
+      <div class="md:w-3/12 data-order xl:pb-0 pb-6">
+        <div class="mt-6 currency-list">
           <v-card>
             <CurrencyList
               :default-pair="pairprop"
@@ -86,7 +110,7 @@
       </div>
     </div>
 
-    <div class="xl:grid lg:grid-cols-2 lg:gap-4 pb-8">
+    <div class="xl:grid lg:grid-cols-2 lg:gap-6 pb-20">
       <UserOrders @error="showErrorMessage" @pull-orders="getOrders" />
       <Recent />
     </div>
@@ -743,7 +767,8 @@ export default {
 .card-trade {
   border-radius: 10px;
   padding: 5px;
-  background: v-bind(blockColorLocal);
+  // background: v-bind(blockColorLocal);
+  background: var(--p-content-background);
 }
 .card-trade:hover {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
@@ -752,11 +777,11 @@ export default {
 .trade-menus {
   margin-top: 15px;
   border-radius: 10px;
-  background: v-bind(blockColorLocal);
+  // background: v-bind(blockColorLocal);
 }
 .wallet-list--tooltip-layer {
   z-index: 2;
-  background: #fff;
+  // background: #fff;
   opacity: 0.4;
 }
 .wallet {
@@ -796,8 +821,11 @@ export default {
   }
 }
 .banner {
-  background-color: v-bind(blockColorLocal);
+  // background-color: v-bind(blockColorLocal);
   border-radius: 15px;
+  // background-color: #ffffff;
+  // background-color: var(--surface-card);
+  background: var(--p-content-background);
 }
 .banner:hover {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.585),
@@ -805,5 +833,6 @@ export default {
 }
 .join-us {
   color: v-bind(secondLocal) !important;
+  font-weight: 600 !important;
 }
 </style>

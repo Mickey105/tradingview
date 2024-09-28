@@ -183,7 +183,10 @@
     <div v-if="twofaStepNumber === 2" style="height: 444px">
       <div style="position: relative">
         <div style="top: 0; left: 0; width: 100%">
-          <div class="grid grid-cols-2" style="height: 389px">
+          <div
+            class="grid grid-cols-12 gap-4 grid-cols-2"
+            style="height: 389px"
+          >
             <div>
               <div id="qrcode1" class="twofaPmargintop mx-auto">
                 <!-- eslint-disable vue/no-v-html -->

@@ -5,7 +5,9 @@
     </metainfo>
     <router-view v-slot="{ Component }">
       <transition name="fade">
-        <component :is="Component" :key="ind" />
+        <div v-if="Component">
+          <component :is="Component" :key="ind" />
+        </div>
       </transition>
     </router-view>
   </BaseComponent>

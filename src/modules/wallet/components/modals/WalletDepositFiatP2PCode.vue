@@ -32,7 +32,7 @@
         <!--SUCCESS-->
         <div v-if="requestStatus === 'success'" class="success">
           <img
-            class="inline-block mt-4"
+            class="inline-block mt-6"
             src="/public/img/check-circle.svg"
             width="20"
             alt=""

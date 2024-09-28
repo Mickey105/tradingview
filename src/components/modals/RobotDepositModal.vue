@@ -15,12 +15,12 @@
           </div>
           <div v-if="requestStatus === 'success'" class="text-center">
             <img
-              class="inline-block mt-4"
+              class="inline-block mt-6"
               src="/public/img/check-circle.svg"
               width="20"
               alt=""
             />
-            <h3 class="px-5 py-3">{{ $t("common.success") }}</h3>
+            <h3 class="px-8 py-4">{{ $t("common.success") }}</h3>
           </div>
           <form
             v-if="requestStatus === 'pending'"

@@ -1,6 +1,6 @@
 <template>
   <div v-if="cur1 !== '' && cur2 !== ''">
-    <div class="fastBuy-wpapper md:grid gap-2 xl:grid-cols-2 xl:gap-4">
+    <div class="fastBuy-wpapper md:grid gap-2 xl:grid-cols-2 xl:gap-6">
       <FastBuySellWalletList @set-pair="setPair" />
       <div class="">
         <div class="exchange">

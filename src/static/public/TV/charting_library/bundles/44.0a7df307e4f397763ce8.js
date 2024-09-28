@@ -102,7 +102,7 @@
         "font-size-small": "font-size-small-1MlnSDA4",
         "font-size-medium": "font-size-medium-1MlnSDA4",
         "font-size-large": "font-size-large-1MlnSDA4",
-        "border-none": "border-none-1MlnSDA4",
+        "border-0": "border-none-1MlnSDA4",
         shadow: "shadow-1MlnSDA4",
         "border-thin": "border-thin-1MlnSDA4",
         "border-thick": "border-thick-1MlnSDA4",

@@ -226,25 +226,25 @@
               type="text"
             />
           </div>
-          <div v-if="confirmEmailTimer > 0" class="logIn__descr mb-4">
+          <div v-if="confirmEmailTimer > 0" class="logIn__descr mb-6">
             <strong>{{ $t("common.getCode") }}</strong>
             {{ $t("common.againAfter", { n: confirmEmailTimer }) }}
           </div>
           <button
             v-else
-            class="withdrawal__btn withdrawal__btn_yellow mx-auto mb-4 w-[292px]"
+            class="withdrawal__btn withdrawal__btn_yellow mx-auto mb-6 w-[292px]"
             type="button"
             @click="resendCode"
           >
             {{ $t("common.resend") }}
           </button>
 
-          <button class="withdrawal__btn mx-auto mb-4 w-[292px]" type="submit">
+          <button class="withdrawal__btn mx-auto mb-6 w-[292px]" type="submit">
             {{ $t("common.confirm") }}
           </button>
 
           <button
-            class="withdrawal__btn withdrawal__btn_red w-[292px] mx-auto mb-4"
+            class="withdrawal__btn withdrawal__btn_red w-[292px] mx-auto mb-6"
             type="button"
             @click="cancelWithdrawal"
           >

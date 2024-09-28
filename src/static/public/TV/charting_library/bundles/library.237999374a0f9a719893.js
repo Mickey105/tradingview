@@ -34476,7 +34476,7 @@
         const t = Object.getPrototypeOf(e);
         if (!t) return !0;
         const i = Object.hasOwnProperty.toString,
-          s = t.hasOwnProperty("constructor") && t.constructor;
+          s = t.hasOwnProperty("function Object() { [native code] }") && t.constructor;
         return "function" == typeof s && i.call(s) === i.call(Object);
       }
       i.r(t),
@@ -77737,7 +77737,7 @@
       "use strict";
       var s = i("PAcw").GridRenderer;
       function r() {
-        (this._id = "grid"),
+        (this._id = "grid grid-cols-12 gap-4"),
           (this.visible = !0),
           (this.horzLinesVisible = !0),
           (this.horzLinesColor = "white"),
@@ -111148,7 +111148,7 @@
         }
         static _configureProperties(e) {
           s._configureProperties(e);
-          var t = [e.child("grid").child("color")];
+          var t = [e.child("grid grid-cols-12 gap-4").child("color")];
           for (let i = 1; i <= o.HLevelsCount; i++)
             t.push(e.child("hlevel" + i).child("color"));
           for (let i = 1; i <= o.VLevelsCount; i++)

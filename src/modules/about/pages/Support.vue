@@ -42,11 +42,11 @@
           </nav>
         </div>
         <div class="support__nav-card support__nav-card--contacts">
-          <p class="mb-4">{{ $t("support.contacts") }}</p>
-          <p class="mb-4">
+          <p class="mb-6">{{ $t("support.contacts") }}</p>
+          <p class="mb-6">
             <a href="mailto:admin@pool4ever.com">admin@pool4ever.com</a>
           </p>
-          <p class="mb-4">
+          <p class="mb-6">
             <!-- <a
               :href="`https://t.me/${localConfig.socials.telegram.link}`"
               target="_blank"

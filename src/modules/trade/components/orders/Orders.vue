@@ -182,7 +182,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 8px;
-  background: #fff;
+  // background: #fff;
   border-bottom: 1px solid #e0e0e0;
   span.order-book-title {
     font-weight: 700;
@@ -200,7 +200,7 @@ export default {
     display: inline-block;
     border-radius: 0;
     padding: 0 0 0 5px;
-    color: #4a4a4a;
+    // color: #4a4a4a;
     font-size: 12px;
     width: 90px;
     height: 28px;

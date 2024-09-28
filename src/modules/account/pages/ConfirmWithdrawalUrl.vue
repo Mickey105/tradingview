@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="!show_data"
-      class="logIn pb-5"
+      class="logIn pb-8"
       :style="
         loginBackground ? `background: ${loginBackground} !important` : {}
       "
@@ -17,7 +17,7 @@
     </div>
     <div
       v-if="show_data && wrong_token"
-      class="logIn pb-5"
+      class="logIn pb-8"
       :style="
         loginBackground ? `background: ${loginBackground} !important` : {}
       "
@@ -37,7 +37,7 @@
     </div>
     <div
       v-if="show_data && !wrong_token"
-      class="logIn pb-5"
+      class="logIn pb-8"
       :style="
         loginBackground ? `background: ${loginBackground} !important` : {}
       "
@@ -48,7 +48,7 @@
       </div>
       <br v-if="!isEverythingOk" />
       <div v-if="!isEverythingOk">
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-12 gap-4 grid-cols-2">
           <div class="col-xs-6" style="text-align: left">
             <div style="max-width: 426px" class="wr-line">
               <b>{{ $t("common.date") }}:</b>

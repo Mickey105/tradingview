@@ -7,6 +7,7 @@
           : {}
       "
     >
+      <!-- <NavbarComponent></NavbarComponent> -->
       <HeaderComponent v-if="!simpleLayout" />
       <div class="content" :class="{ 'content--simple': simpleLayout }">
         <slot />
@@ -15,7 +16,8 @@
       <notification-root />
       <modal-root />
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-html="customCss"></div>
+      <!-- <div v-html="customCss"></div> -->
+      <!-- <div :style="customCss"></div> -->
     </div>
   </div>
 </template>
@@ -29,6 +31,7 @@ import FooterComponent from "~/components/layout/Footer.vue";
 import { Init } from "~/utilities/manager";
 import localConfig from "~/local_config";
 import { useCookies } from "vue3-cookies";
+// import NavbarComponent from "~/components/layout/Navbar.vue";
 
 export default {
   name: "LayoutComponent",
@@ -37,6 +40,7 @@ export default {
     FooterComponent,
     NotificationRoot,
     ModalRoot,
+    // NavbarComponent,
   },
   props: {
     contentClass: {
@@ -158,7 +162,7 @@ export default {
 
 <style lang="scss">
 .content--simple {
-  background: #36373c;
+  // background: #36373c;
   padding: 0 !important;
 }
 .stack-precision #select-stack-precision,
@@ -172,9 +176,9 @@ export default {
 .formField__input,
 .trade-input__input,
 .mx-input {
-  color: v-bind(secondLocal) !important;
-  background: v-bind(borderLocal) !important;
-  border-color: v-bind(borderLocal) !important;
+  // color: v-bind(secondLocal) !important;
+  // background: v-bind(borderLocal) !important;
+  // border-color: v-bind(borderLocal) !important;
 }
 .coinSelector__elem {
   background: v-bind(borderLocal) !important;
@@ -206,7 +210,9 @@ export default {
 .user-orders,
 .plate,
 .card {
-  background: v-bind(blockColorLocal);
+  // background: v-bind(blockColorLocal);
+  background: var(--p-content-background);
+
   // border-radius: 10px;
 }
 
@@ -219,12 +225,12 @@ export default {
 .btn-primary,
 .withdrawal__btn,
 #header {
-  background: v-bind(mainColorLocal) !important;
+  background: var(--p-content-background);
 }
 .support__title-bar {
-  background: v-bind(blockColorLocal) !important;
+  background: var(--p-content-background);
   border-radius: 15px !important;
-  color: v-bind(secondLocal) !important;
+  // color: v-bind(secondLocal) !important;
   font-size: 22px !important;
 }
 .footer-links-column a,
@@ -249,7 +255,8 @@ export default {
 .support__content-card,
 .support__nav-card,
 .select__item {
-  background-color: v-bind(blockColorLocal) !important;
+  // background-color: v-bind(blockColorLocal) !important;
+  background: var(--p-content-background);
 }
 .select__item p {
   color: v-bind(mainTextLocal) !important;
@@ -393,14 +400,16 @@ th.walletTable__header,
 .trade-menus__links,
 .trade-menus__content,
 .trade-menus__block {
-  border-color: v-bind(borderLocal) !important;
-  background: v-bind(blockColorLocal);
+  // border-right: 0.5px solid var(--surface-50);
 }
-
+.trade-menus__content,
+.trade-menus__block {
+  border-right: 0.5px solid var(--surface-50);
+}
 .stake-field_input-max {
   background: v-bind(blockColorLocal) !important;
   color: v-bind(mainTextLocal) !important;
-  border-color: v-bind(borderLocal) !important;
+  border-color: solid var(--surface-50) !important;
 }
 .show-password-icon path {
   background: v-bind(mainColorLocal) !important;

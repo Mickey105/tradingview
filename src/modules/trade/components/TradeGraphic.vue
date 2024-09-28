@@ -9,6 +9,8 @@ import { widget } from "~/assets/TradingView/charting_library/charting_library.e
 import localConfig from "~/local_config";
 
 export default {
+  back: "var(--p-content-background)",
+  text: "var(--text-color)",
   // eslint-disable-next-line vue/require-prop-types
   props: {
     precision: {
@@ -28,8 +30,9 @@ export default {
       quoteCurrency: "getCurrentQuoteCurrency",
     }),
     blockColorLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.block_color || "#FFF";
+      return "this.back";
     },
+
     mainTextLocal() {
       return localConfig?.themes?.[this.currentTheme]?.main_text || "#000000";
     },
@@ -89,7 +92,7 @@ export default {
           .getElementById("graphic")
           .getElementsByTagName("iframe")[0];
         let element = document.createElement("style");
-        element.innerHTML = `.layout__area--top { background: ${this.blockColorLocal}; height: 39px !important;} .layout__area--top * { color: ${this.mainTextLocal} !important; }`;
+        element.innerHTML = `.layout__area--top { background: var(--p-content-background); height: 39px !important;} .layout__area--top * {  color: var(--p-text-color) !important; }`;
         if (iframe) iframe.contentWindow.document.body.appendChild(element);
       }, 1000);
     },
@@ -99,49 +102,81 @@ export default {
       }
       this.datafeed = getDatafeed(this.precision);
       const intervalFromLocalStorage =
-          localStorage.getItem("chart_interval") || "5",
-        tvWidget = new widget({
-          symbol: this.baseCurrency + "/" + this.quoteCurrency,
-          interval: intervalFromLocalStorage,
-          timezone: "Etc/UTC",
-          container: this.$refs.graphic,
-          locale: this.lang,
-          datafeed: this.datafeed,
-          library_path: "/public/TV/charting_library/",
-          autosize: true,
-          toolbar_bg: "#f6f6f8",
-          disabled_features: [
-            "left_toolbar",
-            "header_symbol_search",
-            "header_indicators",
-            "header_compare",
-            "header_undo_redo",
-            "header_interval_dialog_button",
-            "show_interval_dialog_on_key_press",
-            "header_fullscreen_button",
-            "timeframes_toolbar",
-            "context_menus",
-          ],
-        });
+        localStorage.getItem("chart_interval") || "5";
 
-      tvWidget.onChartReady(() => {
-        try {
-          tvWidget
-            .chart()
-            .onIntervalChanged()
-            .subscribe(null, (interval) =>
-              localStorage.setItem("chart_interval", interval)
-            );
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
+      this.tvWidget = new widget({
+        symbol: this.baseCurrency + "/" + this.quoteCurrency,
+        interval: intervalFromLocalStorage,
+        timezone: "Etc/UTC",
+        container: this.$refs.graphic,
+        locale: this.lang,
+        datafeed: this.datafeed,
+        library_path: "/public/TV/charting_library/",
+        autosize: true,
+        toolbar_bg: "#f6f6f8",
+        disabled_features: [
+          "left_toolbar",
+          "header_symbol_search",
+          "header_indicators",
+          "header_compare",
+          "header_undo_redo",
+          "header_interval_dialog_button",
+          "show_interval_dialog_on_key_press",
+          "header_fullscreen_button",
+          "timeframes_toolbar",
+          "context_menus",
+        ],
+        overrides: {
+          "paneProperties.background": this.resolvedBackgroundColor,
+          "scalesProperties.textColor": this.resolvedTextColor,
+          "scalesProperties.backgroundColor": this.resolvedBackgroundColor,
+          "paneProperties.vertGridProperties.color": "rgba(42, 46, 57, 0.5)",
+          "paneProperties.horzGridProperties.color": "rgba(42, 46, 57, 0.5)",
+        },
+        // overrides: {
+        //   "paneProperties.background": resolvedBackgroundColor, // Correct background color
+        //   // Other overrides...
+        // },
       });
+
+      this.tvWidget.onChartReady(() => {
+        this.tvWidget
+          .chart()
+          .onIntervalChanged()
+          .subscribe(null, (interval) =>
+            localStorage.setItem("chart_interval", interval)
+          );
+      });
+
+      this.applyTopColor();
+    },
+    applyTopColor() {
+      setTimeout(() => {
+        const iframe = document
+          .getElementById("graphic")
+          .getElementsByTagName("iframe")[0];
+        const styleElement = document.createElement("style");
+        styleElement.innerHTML = `
+          .layout__area--top { background: ${this.resolvedBackgroundColor}; height: 39px !important; }
+          .layout__area--top * { color: ${this.resolvedTextColor} !important; }
+        `;
+        if (iframe) {
+          iframe.contentWindow.document.body.appendChild(styleElement);
+        }
+      }, 1000);
     },
     setGraphColor() {
-      let graphTheme = {
+      const resolvedBackgroundColor = getComputedStyle(
+        document.documentElement
+      ).getPropertyValue("--p-content-background");
+
+      const graphTheme = {
         timezone: "Etc/UTC",
         priceScaleSelectionStrategyName: "auto",
         dataWindowProperties: {
-          background: this.blockColorLocal,
+          background: getComputedStyle(
+            document.documentElement
+          ).getPropertyValue("--p-content-background"),
           border: "rgba( 96, 96, 144, 1)",
           font: "Verdana",
           fontBold: false,
@@ -151,16 +186,17 @@ export default {
           visible: true,
         },
         paneProperties: {
-          backgroundType: "solid",
-          background: this.blockColorLocal,
-          backgroundGradientStartColor: this.blockColorLocal,
-          backgroundGradientEndColor: this.blockColorLocal,
+          // backgroundType: "solid",
+          background: resolvedBackgroundColor,
+          backgroundGradientStartColor: resolvedBackgroundColor,
+          backgroundGradientEndColor: resolvedBackgroundColor,
+
           vertGridProperties: {
-            color: "rgba(42, 46, 57, 0.06)",
+            color: "rgba(42, 46, 57, 0.5)",
             style: 0,
           },
           horzGridProperties: {
-            color: "rgba(42, 46, 57, 0.06)",
+            color: "rgba(42, 46, 57, 0.5)",
             style: 0,
           },
           crossHairProperties: {
@@ -197,9 +233,9 @@ export default {
           },
         },
         scalesProperties: {
-          backgroundColor: "#ffffff",
+          backgroundColor: resolvedBackgroundColor,
           lineColor: "rgba(42, 46, 57, 0.14)",
-          textColor: this.mainTextLocal,
+          textColor: this.text,
           fontSize: 12,
           scaleSeriesOnly: false,
           showSeriesLastValue: true,
@@ -552,7 +588,9 @@ export default {
           JSON.stringify(graphTheme)
         );
         // eslint-disable-next-line no-empty
-      } catch {}
+      } catch (e) {
+        console.error("Error saving graph properties:", e);
+      }
       this.changeTopColor();
     },
   },

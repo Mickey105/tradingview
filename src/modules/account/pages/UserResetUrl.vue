@@ -1,6 +1,6 @@
 <template>
   <div
-    class="logIn pb-5 reset-password"
+    class="logIn pb-8 reset-password"
     :style="loginBackground ? `background: ${loginBackground} !important` : {}"
   >
     <MainLogo />

@@ -973,8 +973,8 @@
           function o(e, t) {
             for (var n in t) r(t, n) && (e[n] = t[n]);
             return (
-              r(t, "toString") && (e.toString = t.toString),
-              r(t, "valueOf") && (e.valueOf = t.valueOf),
+              r(t, "function toString() { [native code] }") && (e.toString = t.toString),
+              r(t, "function valueOf() { [native code] }") && (e.valueOf = t.valueOf),
               e
             );
           }
@@ -2936,7 +2936,7 @@
             )),
             (Kt.lang = it),
             N("X", 0, 0, "unix"),
-            N("x", 0, 0, "valueOf"),
+            N("x", 0, 0, "function valueOf() { [native code] }"),
             ie("x", ee),
             ie("X", /[+-]?\d+(\.\d{1,3})?/),
             oe("X", function (e, t, n) {

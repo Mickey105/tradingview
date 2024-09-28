@@ -73,7 +73,7 @@
           </tr>
         </tbody>
       </table>
-      <div v-if="!isLoading && items.length == 0" class="text-center mt-4 mb-4">
+      <div v-if="!isLoading && items.length == 0" class="text-center mt-6 mb-6">
         {{ $t("common.nodata") }}
       </div>
     </div>

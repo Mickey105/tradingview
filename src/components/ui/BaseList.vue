@@ -220,7 +220,7 @@ export default {
     position: absolute;
     top: 41px;
     left: 0;
-    background-color: #fff;
+    // background-color: #fff;
   }
 }
 .tab-pane__search--wrapper {

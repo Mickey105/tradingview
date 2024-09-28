@@ -1,6 +1,6 @@
 <template>
   <div
-    class="select non-auth-page pb-5 px-1"
+    class="select non-auth-page pb-8 px-1"
     :style="loginBackground ? `background: ${loginBackground} !important` : {}"
   >
     <ModalPagesHeader />
@@ -18,7 +18,7 @@
     </div>
     <div class="select__container">
       <div class="select__item select__item--exchange" @click="goExchange">
-        <p class="select__description-title text-white mb-3">
+        <p class="select__description-title text-white mb-4">
           {{ $t("common.basic") }}
         </p>
         <p class="select__description-subtitle text-white">
@@ -26,7 +26,7 @@
         </p>
       </div>
       <div class="select__item select__item--trade" @click="goTrade">
-        <p class="select__description-title text-white mb-3">
+        <p class="select__description-title text-white mb-4">
           {{ $t("common.advanced") }}
         </p>
         <p class="select__description-subtitle text-white">

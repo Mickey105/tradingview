@@ -1,6 +1,6 @@
 <template>
   <div
-    class="logIn pb-5 confirm_reg_email"
+    class="logIn pb-8 confirm_reg_email"
     :style="loginBackground ? `background: ${loginBackground} !important` : {}"
   >
     <MainLogo />
@@ -9,7 +9,7 @@
         {{ $t("common.email_confirmation") }}
       </div>
     </div>
-    <div class="logIn__descr mb-4">
+    <div class="logIn__descr mb-6">
       <strong>{{ $t("common.email_sent") }}</strong>
     </div>
     <form class="logIn_form" autocomplete="off" @submit.prevent="confirmEmail">
@@ -17,11 +17,11 @@
         v-model="confirmationCode"
         required
         autocomplete="google2fa"
-        class="text-center mb-4"
+        class="text-center mb-6"
         type="text"
       />
       <template v-if="email">
-        <div v-if="showBanner" class="logIn__descr mb-4">
+        <div v-if="showBanner" class="logIn__descr mb-6">
           <strong>{{ $t("common.getCode") }}</strong>
           {{ $t("common.againAfter", { n: timer }) }}
         </div>

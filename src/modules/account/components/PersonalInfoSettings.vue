@@ -3,7 +3,7 @@
     <div class="settings__NAME">
       {{ $t("common.personalInfo") }}
     </div>
-    <div class="px-4 pt-5">
+    <div class="px-6 pt-8">
       <p class="pb-2 flex">
         <strong class="pt-2 mr-2">{{ $t("common.firstname") }}:</strong>
         <span v-if="firstNameEdit" class="flex">
@@ -94,11 +94,11 @@
           {{ profile.country.name }}
         </span>
       </p>
-      <p class="pb-6">
+      <p class="pb-12">
         <strong class="mr-2">{{ $t("common.email") }}:</strong>
         {{ profile.user.username }}
       </p>
-      <p v-if="profile.referrer" class="pb-4">
+      <p v-if="profile.referrer" class="pb-6">
         <strong class="mr-2">{{ $t("common.referrer") }}:</strong>
         {{ profile.referrer }}
       </p>

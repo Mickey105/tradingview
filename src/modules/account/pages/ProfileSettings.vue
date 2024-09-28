@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="grid xl:grid-cols-2 gap-4">
+    <div class="grid grid-cols-12 gap-4 xl:grid-cols-2 gap-6">
       <div>
         <setting-section></setting-section>
         <div class="walletlist" style="width: 100%; height: 500px">

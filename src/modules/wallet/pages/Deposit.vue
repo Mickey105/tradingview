@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container-lg">
-      <div class="deposit xl:grid grid-cols-5 gap-4">
+      <div class="deposit xl:grid grid-cols-5 gap-6">
         <div class="col-span-2">
           <div class="plate">
             <div class="plate-back" @click="$router.push({ name: `wallet` })">

@@ -314,7 +314,9 @@ export default {
 <style lang="scss" scoped>
 .trade-menus {
   position: relative;
-  background: v-bind(blockColorLocal);
+  // background: v-bind(blockColorLocal);
+  background: var(--p-content-background);
+
   border-radius: 3px;
   box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
   overflow: hidden;
@@ -334,7 +336,7 @@ export default {
   }
 
   &__links {
-    border-bottom: 1px solid #eceeef;
+    border-bottom: 0.5px solid var(--surface-50);
   }
 
   &__link {
@@ -347,25 +349,25 @@ export default {
   }
 
   &__nav-item {
-    border-left: 1px solid #eceeef;
-    border-top: 1px solid #eceeef;
-    border-right: 1px solid #eceeef;
+    border-left: 0.5px solid var(--surface-50);
+    border-top: 0.5px solid var(--surface-50);
+    border-right: 0.5px solid var(--surface-50);
     border-bottom: none;
     margin-right: -1px;
   }
 
   &__content {
-    border-bottom: 1px solid #eceeef;
-    border-left: 1px solid #eceeef;
+    border-bottom: 0.5px solid var(--surface-50);
+    border-left: 0.5px solid var(--surface-50);
   }
 
   &__block {
     height: 309px;
-    border-right: 1px solid #eceeef;
+    // border-right: 0.5px solid var(--surface-50);
     flex-grow: 1;
     @media (max-width: 767px) {
       height: auto;
-      border-bottom: 1px solid #eceeef;
+      border-bottom: 0.5px solid var(--surface-50);
     }
   }
 

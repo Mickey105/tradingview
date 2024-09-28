@@ -1,4 +1,80 @@
 <template>
+  <div class="block-content">
+    <div class="ng-star-inserted">
+      <div
+        class="bg-surface-0 dark:bg-surface-900 px-6 py-12 md:px-12 lg:px-20 text-center"
+      >
+        <p-divider></p-divider>
+        <div class="grid grid-cols-12 gap-4 justify-center items-center gap-4">
+          <div
+            class="col-span-12 md:col-span-3 flex flex-wrap justify-center md:mb-0 mb-1"
+          >
+            <img
+              src="https://pool4ever.com/Pool4ever-Designs/LogoText.png"
+              style="width: 300px; padding: 5px"
+              alt="Image"
+            />
+          </div>
+          <!-- <p-divider layout="vertical" /> -->
+
+          <div class="col-span-12 md:col-span-3">
+            <div class="font-medium leading-normal mb-4">Mining Pools</div>
+            <a class="text-color leading-normal block cursor-pointer mb-2"
+              >Pools Table</a
+            >
+            <a class="text-color leading-normal block cursor-pointer mb-2"
+              >Pools Search</a
+            >
+            <a class="text-color leading-normal block cursor-pointer mb-2"
+              >Worker Dashboard</a
+            >
+            <a class="text-color leading-normal block cursor-pointer mb-2"
+              >Hashrate Calculator</a
+            >
+          </div>
+          <div class="col-span-12 md:col-span-3">
+            <div class="font-medium leading-normal mb-4">App & Services</div>
+            <a class="text-color leading-normal block cursor-pointer mb-2"
+              >App Download</a
+            >
+            <a class="text-color leading-normal block cursor-pointer mb-2"
+              >Rest API</a
+            >
+            <a class="text-color leading-normal block cursor-pointer mb-2"
+              >Sitemap</a
+            >
+            <a
+              class="text-color leading-normal block cursor-pointer mb-2 flex justify-center gap-2 items-center"
+            >
+              <span>Theme</span>
+              <app-day-night></app-day-night>
+            </a>
+          </div>
+        </div>
+        <p-divider></p-divider>
+        <div class="card"></div>
+        <p-divider class="w-full"></p-divider>
+        <div class="copyright-note">
+          © 2021-2024 <span class="text-primary">Pool4Ever.com</span> All rights
+          reserved<br /><br />
+        </div>
+        <span
+          ><a
+            class="text-primary"
+            href="mailto:admin@pool4ever.com"
+            target="_blank"
+            >admin&#64;pool4ever.com</a
+          ></span
+        >
+      </div>
+    </div>
+  </div>
+  <!-- 
+<div class="col-span-12 md:col-span-3">
+    <div class=" mb-4">
+        <i class="pi pi-inbox rounded-border p-1 mr-2"></i>
+    </div>
+</div> -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-content-wrapper">

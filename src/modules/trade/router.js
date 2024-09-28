@@ -5,6 +5,9 @@ export default [
     path: "/trade/:pairprop",
     name: "trade-pair",
     component: lazyLoadView(import("~/modules/trade/pages/Trade.vue")),
+    // component: lazyLoadView(() => import("~/modules/trade/pages/Trade.vue")),
+    // component: () => import("~/modules/trade/pages/Trade.vue"),
+
     props: true,
   },
   {

@@ -1,4 +1,5 @@
 <template>
+  <NavbarComponent />
   <header
     v-show="isVisible"
     id="header"
@@ -11,14 +12,14 @@
     ]"
   >
     <div class="header__logo">
-      <a class="header__logo-link" href="/">
+      <!-- <a class="header__logo-link" href="/">
         <img
           width="135"
           :src="
             localConfig.logo ? localConfig.logo : '/public/img/logo-white.svg'
           "
         />
-      </a>
+      </a> -->
     </div>
 
     <div v-if="accountData" class="header__ether">
@@ -72,7 +73,7 @@
           </ul>
         </div>
       </div>
-      <div class="header__author-wrap">
+      <!-- <div class="header__author-wrap">
         <a
           class="buy"
           href="https://pool4ever.com/app-buy-page"
@@ -169,10 +170,10 @@
                   <i class="fa" :class="item.iconClass" aria-hidden="true"></i>
                   {{ $t(`common.${item.key}`) }}
                 </a>
-              </li>
+              </li> -->
 
-              <!-- eslint-disable-next-line -->
-              <router-link v-else :to="item.path" class="author-list__item">
+      <!-- eslint-disable-next-line -->
+              <!-- <router-link v-else :to="item.path" class="author-list__item">
                 <a
                   v-if="item.iconClass === 'username'"
                   class="author-list__item"
@@ -238,10 +239,10 @@
             </li>
           </ul>
         </div>
-      </div>
-      <MenuComponent />
-      <LanguageSelector />
-      <div
+      </div> -->
+      <!-- <MenuComponent /> -->
+      <!-- <LanguageSelector /> -->
+      <!-- <div
         style="display: flex; align-items: center"
         class="themeSelector"
         :class="{ dark: theme === 'dark' }"
@@ -263,24 +264,26 @@
             </g>
           </g>
         </svg>
-      </div>
+      </div> -->
     </div>
   </header>
+  <!-- <NavbarComponent /> -->
 </template>
 
 <script>
-import MenuComponent from "~/components/layout/parts/Menu.vue";
+// import MenuComponent from "~/components/layout/parts/Menu.vue";
 import { mapGetters } from "vuex";
 import menuHelper from "~/mixins/menuHelper";
 import helpers from "~/mixins/helpers";
 import handleLogout from "~/mixins/handleLogout";
 import getFixedDecimal from "~/mixins/getFixedDecimal";
-import LanguageSelector from "~/components/layout/parts/LanguageSelector.vue";
+// import LanguageSelector from "~/components/layout/parts/LanguageSelector.vue";
 import { useCookies } from "vue3-cookies";
+import NavbarComponent from "~/components/layout/Navbar.vue";
 
 export default {
   name: "HeaderComponent",
-  components: { LanguageSelector, MenuComponent },
+  components: { NavbarComponent },
   mixins: [menuHelper, handleLogout, helpers, getFixedDecimal],
   props: {
     routeName: {
@@ -382,16 +385,16 @@ export default {
 <style lang="scss" scoped>
 .header {
   padding: 0 0.5rem;
-  background: var(--theme-secondary-color);
+  background: var(--p-content-background);
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  // position: fixed;
   left: 0;
   right: 0;
-  top: 0;
-  z-index: 500;
+  top: 60px;
+  // z-index: 500;
 
   &__links {
     display: flex;
@@ -439,7 +442,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid #29324a;
+    // border-right: 1px solid #29324a;
     min-height: 70px;
 
     & img {
@@ -536,7 +539,7 @@ export default {
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    border-right: 1px solid #29324a;
+    // border-right: 1px solid #29324a;
 
     @media screen and (max-width: 675px) {
       border-right: none;
@@ -555,7 +558,7 @@ export default {
   &__ether-info {
     font-size: 14px;
     font-family: "Open Sans", arial, sans-serif;
-    color: white;
+    // color: white;
     line-height: 1.2;
   }
 
@@ -609,7 +612,7 @@ export default {
   font-size: 14px;
   font-family: "Open Sans", arial, sans-serif;
   font-weight: bold;
-  color: white;
+  // color: white;
   line-height: 1.2;
 
   .header__ether-info-text {

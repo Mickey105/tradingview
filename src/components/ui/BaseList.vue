@@ -51,7 +51,10 @@
                   v-if="isImgField({ [column]: row[column] })"
                   :src="row[column]"
                 />
-                <span v-else-if="row.hasOwnProperty(column)">
+                <span
+                  v-else-if="row.hasOwnProperty(column)"
+                  style="margin-left: 10px"
+                >
                   {{ row[column] }}
                 </span>
               </div>
@@ -206,6 +209,7 @@ export default {
     }
     .table-list__table-td {
       font-size: 12px;
+      // margin-left: 5px;
     }
   }
   .currency-td {

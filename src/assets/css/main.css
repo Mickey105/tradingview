@@ -11,10 +11,10 @@
   @import "../saga-orange/theme.css";
 } */
 
-input[type="text"]::-webkit-input-placeholder {color: #ccc;}
+/* input[type="text"]::-webkit-input-placeholder {color: #ccc;}
 input[type="text"]::-moz-placeholder          {color: #ccc;}
 input[type="text"]:-moz-placeholder           {color: #ccc;}
-input[type="text"]:-ms-input-placeholder      {color: #ccc;}
+input[type="text"]:-ms-input-placeholder      {color: #ccc;} */
 :root {
   --theme-hover-color: rgba(244, 191, 11, 0.22); /* Equivalent to #f4bf0b38 */
   --theme-gen-color: #212529
@@ -2678,7 +2678,7 @@ input[type="tel"],
 input[type="url"],
 input[type="text"],
 textarea {
-  background: #fff;
+  /* background: #fff; */
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
@@ -2686,7 +2686,7 @@ textarea {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: solid 1px #e0e0e0;
-  color: #222222;
+  /* color: #222222; */
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
@@ -2752,7 +2752,7 @@ input[type="number"]::-webkit-outer-spin-button {
   overflow: hidden;
   margin-top: 15px;
   border-radius: 3px;
-  background-color: #fff;
+  /* background-color: #fff; */
   box-shadow: 0.53px -0.848px 6px 0px rgba(0, 0, 0, 0.14);
 }
 
@@ -3483,14 +3483,14 @@ input[type="password"].logIn__form__input::placeholder {
   color: white;
 }
 .service-list li .pop-learn span {
-  color: #222222;
+  /* color: #222222; */
   font-size: 25px;
   font-weight: 400;
   line-height: 29px;
 }
 
 .service-list li .pop-learn p {
-  color: #222222;
+  /* color: #222222; */
   font-size: 16px;
   font-weight: 400;
   margin: 15px 0 25px 0;
@@ -3842,14 +3842,14 @@ main-new {
 }
 
 .service-list li .pop-learn span {
-  color: #222222;
+  /* color: #222222; */
   font-size: 25px;
   font-weight: 400;
   line-height: 29px;
 }
 
 .service-list li .pop-learn p {
-  color: #222222;
+  /* color: #222222; */
   font-size: 16px;
   font-weight: 400;
   margin: 15px 0 25px 0;
@@ -4243,7 +4243,7 @@ main-new {
 }
 
 .currency-list-main-page thead b {
-  color: #222222;
+  /* color: #222222; */
   font-size: 16px;
   font-weight: 400;
 }

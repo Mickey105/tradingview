@@ -266,7 +266,7 @@ input[type="tel"],
 input[type="url"],
 input[type="text"],
 textarea {
-  background: #fff;
+  // background: #fff;
   font-size: 16px;
   width: 100%;
   height: 100%;
@@ -274,7 +274,7 @@ textarea {
   outline: none;
   box-shadow: none;
   border: solid 1px #e0e0e0;
-  color: #222222;
+  // color: #222222;
   border-radius: 5px;
   font-weight: 700;
 }
@@ -329,7 +329,7 @@ button {
   }
 
   .mx-input {
-    background-color: white;
+    // background-color: white;
   }
 
   .mx-input-append {

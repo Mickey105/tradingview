@@ -9,5 +9,19 @@ const storeModules = {
     core
   },
 };
+  const state = {
+    currentTheme: "light", // Default theme
+  };
+  
+  const mutations = {
+    setTheme(state, newTheme) {
+      state.currentTheme = newTheme; // Update the current theme
+    },
+  };
+  
+  const getters = {
+    currentTheme: (state) => state.currentTheme, // Getter for current theme
+  };
+
 
 export default createStore(storeModules);

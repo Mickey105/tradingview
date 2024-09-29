@@ -60,7 +60,7 @@ watch(modals, (value) => {
   min-width: 300px;
   max-width: 100%;
   // min-height: 200px;
-  background: #fff;
+  // background: #fff;
   padding: 30px;
   z-index: 222;
   max-height: calc(100vh - 70px);

@@ -825,7 +825,7 @@ button {
   }
 
   .mx-input {
-    background-color: white;
+    // background-color: white;
   }
 
   .mx-input-append {

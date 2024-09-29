@@ -353,7 +353,7 @@ export default {
 }
 .wallet-list--tooltip-layer {
   z-index: 2;
-  background: #fff;
+  /* background: #fff; */
   opacity: 0.4;
   position: absolute;
   height: 100%;

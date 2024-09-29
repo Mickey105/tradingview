@@ -225,10 +225,10 @@ export default {
 .btn-primary,
 .withdrawal__btn,
 #header {
-  background: var(--p-content-background);
+  background-color: var(--p-content-background) !important;
 }
 .support__title-bar {
-  background: var(--p-content-background);
+  background: var(--surface-card);
   border-radius: 15px !important;
   // color: v-bind(secondLocal) !important;
   font-size: 22px !important;

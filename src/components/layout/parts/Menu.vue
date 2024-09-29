@@ -202,7 +202,7 @@ export default {
     opacity: 1;
     visibility: visible;
     position: absolute;
-    background-color: #fff;
+    // background-color: #fff;
     top: 40px;
     right: 40px;
     z-index: 1;

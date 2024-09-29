@@ -5043,7 +5043,7 @@
 
   .p-menubar {
     padding: 0.5rem;
-    background: #f8f9fa;
+    /* background: #f8f9fa; */
     color: #495057;
     border: 1px solid #dee2e6;
     border-radius: 3px;

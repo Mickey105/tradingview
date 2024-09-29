@@ -109,7 +109,7 @@ export default {
     }
   }
   &__caption {
-    color: #eceeef;
+    // color: #eceeef;
     font-weight: bold;
     font-size: 12px;
     position: absolute;

@@ -162,14 +162,7 @@
                         "
                       >
                         <svg width="18" height="18" class="inline">
-                          <use
-                            :fill="
-                              mainColor
-                                ? `${mainColor}`
-                                : 'var(--theme-primary-color)'
-                            "
-                            href="/public/sprite.svg#deposit"
-                          ></use>
+                          <!--  -->
                         </svg>
                         {{ $t("common.deposit").toUpperCase() }}
                       </span>
@@ -198,7 +191,9 @@
                             d="M13.1667 3.83333L11.9917 5.00833L14.1417 7.16667H5.66666V8.83333H14.1417L11.9917 10.9833L13.1667 12.1667L17.3333 8L13.1667 3.83333ZM2.33332 2.16667H8.99999V0.5H2.33332C1.41666 0.5 0.666656 1.25 0.666656 2.16667V13.8333C0.666656 14.75 1.41666 15.5 2.33332 15.5H8.99999V13.8333H2.33332V2.16667Z"
                           />
                         </svg>
-                        {{ $t("common.withdrawal").toUpperCase() }}
+                        <span class="text-green-500">
+                          {{ $t("common.withdrawal").toUpperCase() }}</span
+                        >
                       </span>
                       <span
                         class="wallet__action wallet__action--history"
@@ -682,7 +677,7 @@ button:focus {
   padding: 0 5px;
 }
 .walletTable__header {
-  background: #f5f5f5;
+  // background: #f5f5f5;
   font-weight: 600;
   font-family: "Open Sans";
   font-size: 14px;

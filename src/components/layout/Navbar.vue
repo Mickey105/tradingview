@@ -12,9 +12,16 @@ const toggle = (event) => {
   menu.value.toggle(event);
 };
 
-function toggleDarkMode() {
-  document.documentElement.classList.toggle("my-app-dark");
-}
+// const toggleDarkMode = () => {
+//   document.documentElement.classList.toggle("my-app-dark");
+//   // Optionally persist the user's choice in localStorage
+//   const isDark = document.documentElement.classList.contains("my-app-dark");
+//   localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+
+//   // Rebuild or update the chart to reflect the new theme
+//   this.setGraphColor();
+//   this.makeChart();
+// };
 
 // Watch for changes to `checked` and toggle the theme
 // watch(checked, (newValue) => {
@@ -28,7 +35,7 @@ function toggleDarkMode() {
   <div v-show="isVisible" class="card">
     <PrimeMenubar
       :model="items"
-      class="border-round-3xl border-surface-0 dark:border-surface-900 navbar surface-hover"
+      class="surface-card dark:bg-surface-900 border-round-3xl border-surface-0 dark:border-surface-900 navbar"
     >
       <!-- Start slot: Add the logo or anything you'd like to start the menu -->
       <template #start>
@@ -142,7 +149,7 @@ function toggleDarkMode() {
             style="width: 120px"
             @click="toggle"
           >
-            <i class="pi pi-user" style="font-size: 1rem"></i>
+            <i class="pi pi-user test-pi" style="font-size: 1rem"></i>
             {{ profile.user.first_name }}
             <i class="pi pi-angle-down" style="font-size: 0.75rem"></i>
           </PrimeButton>
@@ -403,6 +410,17 @@ export default {
     getLinkInfo(ticker) {
       return this.coins?.[ticker]?.["links"];
     },
+    toggleDarkMode() {
+      document.documentElement.classList.toggle("my-app-dark");
+
+      // Optionally persist the user's choice in localStorage
+      const isDark = document.documentElement.classList.contains("my-app-dark");
+      localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+
+      // Rebuild or update the chart to reflect the new theme
+      this.setGraphColor();
+      this.makeChart();
+    },
   },
 };
 </script>
@@ -491,6 +509,7 @@ export default {
   padding: 0.5rem !important;
   font-size: 0.85rem !important;
   font-weight: 400 !important;
+  /* background: var(--) !important; */
 
   .pi {
     color: rgb(191, 163, 37) !important;
@@ -525,5 +544,11 @@ export default {
   background: transparent !important;
   background-color: transparent !important;
   color: transparent !important;
+}
+
+.test-pi {
+  .pi {
+    color: var(--p-button-primary-color) !important;
+  }
 }
 </style>

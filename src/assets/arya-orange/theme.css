@@ -5043,7 +5043,7 @@
 
   .p-menubar {
     padding: 0.5rem;
-    background: #1e1e1e;
+    /* background: #1e1e1e; */
     color: rgba(255, 255, 255, 0.87);
     border: 1px solid #383838;
     border-radius: 3px;

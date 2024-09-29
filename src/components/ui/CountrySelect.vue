@@ -227,7 +227,7 @@ export default {
       -webkit-box-shadow: none;
       box-shadow: none;
       border: solid 1px #e0e0e0;
-      color: #222222;
+      // color: #222222;
       border-radius: 5px;
       font-weight: 700;
     }

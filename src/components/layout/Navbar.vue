@@ -1,212 +1,67 @@
 <script setup>
 // import { useLayout } from "./composables/layout";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import eventBus from "../../static/public/evenBus"; // Using alias for easier path resolution
+
 // import { useCookies } from "vue3-cookies";
 
 // const { toggleDarkMode, isDarkTheme } = useLayout();
 const menu = ref();
 // const checked = ref(isDarkTheme.value); // Bind `checked` to the initial theme state
 // const { cookies } = useCookies();
-
 const toggle = (event) => {
   menu.value.toggle(event);
 };
+// Theme toggle logic
 
-// const toggleDarkMode = () => {
-//   document.documentElement.classList.toggle("my-app-dark");
-//   // Optionally persist the user's choice in localStorage
-//   const isDark = document.documentElement.classList.contains("my-app-dark");
-//   localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+// const setGraphColor = (isDark) => {
+//   const backgroundColor = isDark ? darkBackgroundColor : blockColorLocal;
 
-//   // Rebuild or update the chart to reflect the new theme
-//   this.setGraphColor();
-//   this.makeChart();
+//   let graphTheme = {
+//     timezone: "Etc/UTC",
+//     priceScaleSelectionStrategyName: "auto",
+//     dataWindowProperties: {
+//       background: backgroundColor,
+//       border: "rgba(96, 96, 144, 1)",
+//     },
+//   };
+
+//   try {
+//     localStorage.setItem(
+//       "tradingview.chartproperties",
+//       JSON.stringify(graphTheme)
+//     );
+//   } catch (error) {
+//     console.error("Error saving graph theme:", error);
+//   }
 // };
+// Check for dark mode preference on initial load
 
-// Watch for changes to `checked` and toggle the theme
-// watch(checked, (newValue) => {
-//   toggleDarkMode();
-//   const theme = newValue ? "dark" : "light";
-//   cookies.set("theme", theme); // Store the theme in cookies
-// });
+const toggleDarkMode = () => {
+  // Toggle the "my-app-dark" class on the root element
+  document.documentElement.classList.toggle("my-app-dark");
+  // Check if the dark mode is enabled
+  const isDark = document.documentElement.classList.contains("my-app-dark");
+  // Store the preference in localStorage
+  localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+  // Emit the theme toggle event via event bus for other components to listen to
+  eventBus.emit("toggleTheme", isDark);
+};
+
+// Ensure the correct theme is applied on load
+onMounted(() => {
+  const darkMode = localStorage.getItem("darkMode");
+  if (darkMode === "enabled") {
+    document.documentElement.classList.add("my-app-dark");
+  }
+});
 </script>
 
-<template>
-  <div v-show="isVisible" class="card">
-    <PrimeMenubar
-      :model="items"
-      class="surface-card dark:bg-surface-900 border-round-3xl border-surface-0 dark:border-surface-900 navbar"
-    >
-      <!-- Start slot: Add the logo or anything you'd like to start the menu -->
-      <template #start>
-        <a href="/">
-          <img width="135" src="/public/img/logo-white.svg" />
-        </a>
-      </template>
-      <!-- Customizing menu items (optional, you can skip this template if not needed) -->
-      <template #item="{ item, props, hasSubmenu, root }">
-        <div
-          v-if="root && item.label === 'Buy Crypto'"
-          class="card inline-flex items-center gap-1 px-2 py-2 item-header item-header border-surface-0"
-        >
-          <PrimeButton
-            v-if="!isAuthorized"
-            label="Sign Up"
-            size="small"
-            icon="pi pi-pen-to-square"
-            class=""
-            @click="$router.push({ name: 'register' })"
-          ></PrimeButton>
-          <!-- <PrimeButton
-            v-if="!isAuthorized"
-            label="Login"
-            size="small"
-            icon="pi pi-sign-in"
-            severity="secondary"
-            @click="$router.push({ name: 'login' })"
-          >
-          </PrimeButton> -->
-        </div>
-        <span
-          v-if="showHeader"
-          class="inline-flex items-center gap-1 px-2 py-2"
-        >
-          <img width="135" src="/public/img/logo-white.svg" />
-          <span class="text-xl font-semibold">
-            PRIME<span class="text-primary">APP</span>
-          </span>
-        </span>
-        <span v-if="showHeader" class="hidden"></span>
-        <router-link
-          v-if="item.route"
-          v-slot="{ href, navigate }"
-          :to="item.route"
-          custom
-        >
-          <a
-            v-ripple
-            :href="href"
-            :class="{ test: item.label === 'Sign Up' }"
-            class="flex items-center"
-            v-bind="props.action"
-            @click="navigate"
-          >
-            <span :class="item.icon" />
-            <span class="ml-2">{{ item.label }}</span></a
-          >
-        </router-link>
-        <a
-          v-else
-          v-ripple
-          :class="{ test: item.label === 'Sign Up' }"
-          :href="item.url"
-          :target="item.target"
-          v-bind="props.action"
-        >
-          <span :class="item.icon" />
-          <span class="ml-2">{{ item.label }}</span>
-          <span
-            v-if="item.shortcut"
-            class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1"
-            >{{ item.shortcut }}</span
-          >
-          <i
-            v-if="hasSubmenu"
-            :class="[
-              'pi pi-angle-down',
-              { 'pi-angle-down ml-2': root, 'pi-angle-right ml-auto': !root },
-            ]"
-          ></i>
-        </a>
-      </template>
-
-      <!-- End slot: Add any elements like search, profile icons, etc. -->
-      <template #end>
-        <div class="flex items-center gap-2">
-          <PrimeButton
-            v-if="!isAuthorized"
-            label="Sign Up"
-            size="small"
-            icon="pi pi-pen-to-square"
-            class="btn-hide"
-            @click="$router.push({ name: 'register' })"
-          ></PrimeButton>
-          <PrimeButton
-            v-if="!isAuthorized"
-            label="Login"
-            size="small"
-            icon="pi pi-sign-in"
-            severity="secondary"
-            @click="$router.push({ name: 'login' })"
-          >
-          </PrimeButton>
-          <PrimeButton
-            v-if="isAuthorized"
-            type="button"
-            aria-haspopup="true"
-            aria-controls="overlay_menu"
-            size="small"
-            style="width: 120px"
-            @click="toggle"
-          >
-            <i class="pi pi-user test-pi" style="font-size: 1rem"></i>
-            {{ profile.user.first_name }}
-            <i class="pi pi-angle-down" style="font-size: 0.75rem"></i>
-          </PrimeButton>
-          <PrimeMenu
-            id="overlay_menu"
-            ref="menu"
-            :model="userItems"
-            :popup="true"
-          >
-            <template #item="{ item, props }">
-              <router-link
-                v-if="item.route"
-                v-slot="{ href, navigate }"
-                :to="item.route"
-                custom
-              >
-                <a
-                  v-ripple
-                  :href="href"
-                  v-bind="props.action"
-                  @click="navigate"
-                >
-                  <span :class="item.icon" />
-                  <span class="ml-2">{{ item.label }}</span>
-                </a>
-              </router-link>
-              <a
-                v-else
-                v-ripple
-                :href="item.url"
-                :target="item.target"
-                v-bind="props.action"
-              >
-                <span :class="item.icon" />
-                <span class="ml-2">{{ item.label }}</span>
-              </a>
-            </template>
-          </PrimeMenu>
-          <LanguageSelector class="mr-2" />
-
-          <ToggleButton
-            v-model="checked"
-            on-icon="pi pi-moon"
-            off-icon="pi pi-sun"
-            class=""
-            outlined
-            @click="toggleDarkMode"
-          />
-        </div>
-      </template>
-    </PrimeMenubar>
-  </div>
-</template>
 <script>
 import LanguageSelector from "~/components/layout/parts/LanguageSelector.vue";
 import { mapGetters } from "vuex";
 // import { useCookies } from "vue3-cookies";
+// import { ref } from "vue";
 import menuHelper from "~/mixins/menuHelper";
 import helpers from "~/mixins/helpers";
 import handleLogout from "~/mixins/handleLogout";
@@ -221,6 +76,54 @@ export default {
       type: String,
       default: "",
     },
+  },
+  setup() {
+    // Pull the colors from PrimeVue theme variables instead of hardcoding
+    const blockColorLocal = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--block-bg"); // Light mode background color
+
+    const darkBackgroundColor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--dark-bg"); // Dark mode background // Dark mode text color
+
+    const setGraphColor = (isDark) => {
+      const backgroundColor = isDark ? darkBackgroundColor : blockColorLocal;
+      // const textColor = isDark ? darkTextColor : mainTextLocal;
+
+      let graphTheme = {
+        timezone: "Etc/UTC",
+        priceScaleSelectionStrategyName: "auto",
+        dataWindowProperties: {
+          background: backgroundColor,
+          border: "rgba(96, 96, 144, 1)",
+        },
+      };
+
+      try {
+        localStorage.setItem(
+          "tradingview.chartproperties",
+          JSON.stringify(graphTheme)
+        );
+      } catch (error) {
+        console.error("Error saving graph theme:", error);
+      }
+
+      // changeTopColor(); // Make sure this function is defined elsewhere in your code
+    };
+
+    // Method to toggle dark mode
+    const toggleDarkMode = () => {
+      document.documentElement.classList.toggle("my-app-dark");
+      const isDark = document.documentElement.classList.contains("my-app-dark");
+      localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      setGraphColor(isDark); // Call setGraphColor with the current state of isDark
+      // makeChart(); // Ensure this function is defined elsewhere
+    };
+
+    return {
+      toggleDarkMode,
+    };
   },
 
   data() {
@@ -242,7 +145,7 @@ export default {
           icon: "pi pi-chart-bar",
           items: [
             {
-              label: "Wallet",
+              label: this.$t("common.wallet"),
               icon: "pi pi-wallet",
               route: "/wallet",
             },
@@ -252,12 +155,12 @@ export default {
               route: "/trade",
             },
             {
-              label: "Quick Swap",
+              label: this.$t("common.exchange"),
               icon: "pi pi-pencil",
               route: "/quick-swap",
             },
             {
-              label: "Fees & Limits",
+              label: this.$t("common.fees"),
               icon: "pi pi-receipt",
               route: "/fees",
             },
@@ -290,36 +193,37 @@ export default {
         {
           label: "Mining Pools",
           icon: "pi pi-table",
+          url: "https://pool4ever.com",
         },
         {
-          label: "Help Center",
+          label: this.$t("common.support"),
           icon: "pi pi-info-circle",
-          badge: 3,
+          route: "/support",
         },
       ],
       userItems: [
         {
-          label: "Account Setting",
+          label: this.$t("common.settings"),
           icon: "pi pi-cog",
           route: "/settings",
         },
         {
-          label: "Wallet",
+          label: this.$t("common.wallet"),
           icon: "pi pi-wallet",
           route: "/wallet",
         },
         {
-          label: "Deposit",
+          label: this.$t("common.deposit"),
           icon: "pi pi-money-bill",
           route: "/wallet/deposit/",
         },
         {
-          label: "Support",
+          label: this.$t("common.support"), // Another example
           icon: "pi pi-headphones",
           route: "/support",
         },
         {
-          label: "Logout",
+          label: this.$t("common.logout"),
           icon: "pi pi-sign-out",
           command: () => {
             this.handleLogout();
@@ -340,6 +244,8 @@ export default {
         "interface-select",
         "email-verify",
       ],
+      checked: localStorage.getItem("darkMode") === "enabled", // Initialize based on localStorage
+      showHeader: false, // Initialize to true or set based on your logic
     };
   },
   computed: {
@@ -391,8 +297,14 @@ export default {
     changeTheme() {
       const newTheme = this.theme === "dark" ? "light" : "dark";
       this.$store.dispatch("core/changeTheme", newTheme);
-      // this.cookies.set("theme", newTheme);
+      this.cookies.set("theme", newTheme);
     },
+
+    // changeTheme() {
+    //   const newTheme = this.theme === "dark" ? "light" : "dark";
+    //   this.$store.dispatch("core/changeTheme", newTheme);
+    //   // this.cookies.set("theme", newTheme);
+    // },
     volume() {
       return parseFloat(
         this.getFromObj(
@@ -410,20 +322,172 @@ export default {
     getLinkInfo(ticker) {
       return this.coins?.[ticker]?.["links"];
     },
-    toggleDarkMode() {
-      document.documentElement.classList.toggle("my-app-dark");
-
-      // Optionally persist the user's choice in localStorage
-      const isDark = document.documentElement.classList.contains("my-app-dark");
-      localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
-
-      // Rebuild or update the chart to reflect the new theme
-      this.setGraphColor();
-      this.makeChart();
-    },
   },
 };
 </script>
+
+<template>
+  <div v-show="isVisible" class="">
+    <PrimeMenubar :model="items" class="navbar" :checked="checked">
+      <!-- Start slot: Add the logo or anything you'd like to start the menu -->
+      <template #start>
+        <a href="/account">
+          <img width="135" src="/public/img/logo-white.svg" />
+        </a>
+      </template>
+      <!-- Customizing menu items (optional, you can skip this template if not needed) -->
+      <template #item="{ item, props, hasSubmenu, root }">
+        <!-- <div
+          v-if="root && item.label === 'Buy Crypto'"
+          class="card inline-flex items-center gap-1 px-2 py-2 item-header item-header border-surface-0"
+        > -->
+        <!-- <PrimeButton
+          v-if="!isAuthorized"
+          label="Sign Up"
+          size="small"
+          icon="pi pi-pen-to-square"
+          class=""
+          @click="$router.push({ name: 'register' })"
+        ></PrimeButton> -->
+        <!-- <PrimeButton
+            v-if="!isAuthorized"
+            label="Login"
+            size="small"
+            icon="pi pi-sign-in"
+            severity="secondary"
+            @click="$router.push({ name: 'login' })"
+          >
+          </PrimeButton> -->
+        <!-- </div> -->
+        <span
+          v-if="showHeader"
+          class="inline-flex items-center gap-1 px-2 py-2"
+        >
+          <img width="135" src="/public/img/logo-white.svg" />
+          <span class="text-xl font-semibold">
+            PRIME<span class="text-primary">APP</span>
+          </span>
+        </span>
+        <span v-if="showHeader" class="hidden"></span>
+        <router-link
+          v-if="item.route"
+          v-slot="{ href, navigate }"
+          :to="item.route"
+          custom
+        >
+          <a
+            :href="href"
+            :class="{ test: item.label === 'Sign Up' }"
+            class="flex items-center"
+            v-bind="props.action"
+            @click="navigate"
+          >
+            <span :class="item.icon" />
+            <span class="ml-2">{{ item.label }}</span></a
+          >
+        </router-link>
+        <a
+          v-else
+          :class="{ test: item.label === 'Sign Up' }"
+          :href="item.url"
+          :target="item.target"
+          v-bind="props.action"
+        >
+          <span :class="item.icon" />
+          <span class="ml-2">{{ item.label }}</span>
+          <span
+            v-if="item.shortcut"
+            class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1"
+            >{{ item.shortcut }}</span
+          >
+          <i
+            v-if="hasSubmenu"
+            :class="[
+              'pi pi-angle-down',
+              { 'pi-angle-down ml-2': root, 'pi-angle-right ml-auto': !root },
+            ]"
+          ></i>
+        </a>
+      </template>
+
+      <!-- End slot: Add any elements like search, profile icons, etc. -->
+      <template #end>
+        <div class="flex items-center gap-2">
+          <PrimeButton
+            v-if="!isAuthorized"
+            label="Sign Up"
+            size="small"
+            icon="pi pi-pen-to-square"
+            class="btn-hide"
+            @click="$router.push({ name: 'register' })"
+          ></PrimeButton>
+          <PrimeButton
+            v-if="!isAuthorized"
+            label="Login"
+            size="small"
+            icon="pi pi-sign-in"
+            severity="secondary"
+            class="idan"
+            @click="$router.push({ name: 'login' })"
+          >
+          </PrimeButton>
+          <PrimeButton
+            v-if="isAuthorized"
+            type="button"
+            aria-haspopup="true"
+            aria-controls="overlay_menu"
+            size="small"
+            style="width: 120px"
+            @click="toggle"
+          >
+            <i class="pi pi-user test-pi" style="font-size: 1rem"></i>
+            {{ profile.user.first_name }}
+            <i class="pi pi-angle-down" style="font-size: 0.75rem"></i>
+          </PrimeButton>
+          <PrimeMenu
+            id="overlay_menu"
+            ref="menu"
+            :model="userItems"
+            :popup="true"
+          >
+            <template #item="{ item, props }">
+              <router-link
+                v-if="item.route"
+                v-slot="{ href, navigate }"
+                :to="item.route"
+                custom
+              >
+                <a :href="href" v-bind="props.action" @click="navigate">
+                  <span :class="item.icon" />
+                  <span class="ml-2">{{ item.label }}</span>
+                </a>
+              </router-link>
+              <a
+                v-else
+                :href="item.url"
+                :target="item.target"
+                v-bind="props.action"
+              >
+                <span :class="item.icon" />
+                <span class="ml-2">{{ item.label }}</span>
+              </a>
+            </template>
+          </PrimeMenu>
+          <LanguageSelector class="mr-2" />
+
+          <ToggleButton
+            v-model="checked"
+            on-icon="pi pi-moon"
+            off-icon="pi pi-sun"
+            class=""
+            outlined
+            @click="toggleDarkMode"
+          />
+        </div>
+      </template>
+    </PrimeMenubar>
+  </div>
+</template>
 
 <style>
 .main {
@@ -502,7 +566,7 @@ export default {
 }
 .p-togglebutton-icon {
   font-size: 1.2rem !important;
-  color: var(--p-button-primary-color) !important;
+  color: var(--p-primary-color) !important;
 }
 .p-menubar {
   min-height: 55px !important;
@@ -510,9 +574,10 @@ export default {
   font-size: 0.85rem !important;
   font-weight: 400 !important;
   /* background: var(--) !important; */
-
+}
+.p-menubar-item-link {
   .pi {
-    color: rgb(191, 163, 37) !important;
+    color: var(--p-primary-color) !important;
   }
 }
 .test {
@@ -550,5 +615,7 @@ export default {
   .pi {
     color: var(--p-button-primary-color) !important;
   }
+}
+.idan {
 }
 </style>

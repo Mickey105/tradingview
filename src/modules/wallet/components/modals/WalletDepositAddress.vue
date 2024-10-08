@@ -64,13 +64,18 @@
           <img src="/public/img/minmax.svg" width="30" height="30" />
         </div>
         <div class="deposit__minMax-blockCenter">
-          {{ $t("common.mindepositamount") }} <br />
+          <span style="color: var(--p-primary-color)">
+            {{ $t("common.mindepositamount") }}</span
+          >
+          <br />
           <strong class="font-weight-bold"
             >{{ addSpace(coin?.limits?.deposit.min) }} {{ ticker }}</strong
           >
         </div>
         <div class="deposit__minMax-blockRight">
-          {{ $t("common.maxdepositamount") }} <br />
+          <span style="color: var(--p-primary-color)">
+            {{ $t("common.maxdepositamount") }} </span
+          ><br />
           <strong class="font-weight-bold"
             >{{ addSpace(coin?.limits?.deposit.max) }} {{ ticker }}</strong
           >
@@ -84,7 +89,10 @@
           height="30"
         />
         <div class="text-left">
-          {{ $t("common.second_table_deposit_fee") }} <br />
+          <span style="color: var(--p-primary-color)">
+            {{ $t("common.second_table_deposit_fee") }}</span
+          >
+          <br />
           <strong class="font-weight-bold">
             {{ toFxd(getRegularNumber(coin?.fee?.deposit?.address), 8) }}
             {{ ticker }}
@@ -131,7 +139,9 @@
         class="title"
         style="color: #a5b3a7; font-size: 16px; text-transform: uppercase"
       >
-        {{ $t("common.coinsafter1") }}
+        <span style="color: var(--p-primary-color)">
+          {{ $t("common.coinsafter1") }}</span
+        >
       </p>
     </template>
     <!-- SHOW END -->
@@ -321,7 +331,7 @@ export default {
   text-align: center;
   line-height: 22px;
   font-size: 12px;
-  background: #e8f1fb;
+  // background: #e8f1fb;
   font-weight: bold;
   border-radius: 5px;
   height: 34px;
@@ -350,6 +360,7 @@ export default {
 .deposit__minMax-blockCenter {
   width: 160px;
   text-align: left;
+  // color: var(--p-primary-color);
 }
 .deposit__minMax-blockRight {
   width: 160px;

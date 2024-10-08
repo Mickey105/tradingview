@@ -176,15 +176,15 @@ export default {
 .formField__input,
 .trade-input__input,
 .mx-input {
-  // color: v-bind(secondLocal) !important;
+  // color: v-bind(ssurface-cardecondLocal) !important;
   // background: v-bind(borderLocal) !important;
   // border-color: v-bind(borderLocal) !important;
 }
 .coinSelector__elem {
-  background: v-bind(borderLocal) !important;
+  // background: v-bind(borderLocal) !important;
 }
 .coinSelector__elem:hover {
-  background: v-bind(secondLocal) !important;
+  // background: v-bind(secondLocal) !important;
 }
 .eye-pass,
 .show-password-icon-btn,
@@ -212,8 +212,7 @@ export default {
 .card {
   // background: v-bind(blockColorLocal);
   background: var(--p-content-background);
-
-  // border-radius: 10px;
+  // color: var(--text-color);
 }
 
 .smile-st3 {
@@ -222,24 +221,29 @@ export default {
 .big_btn,
 .modal-action-button,
 .logIn__popup,
-.btn-primary,
 .withdrawal__btn,
 #header {
+  // background-color: var(--p-content-background) !important;
   background-color: var(--p-content-background) !important;
 }
+.btn-primary {
+}
 .support__title-bar {
-  background: var(--surface-card);
-  border-radius: 15px !important;
+  // background: var(--surface-card);
+  // border-radius: 15px !important;
+  border-top: 15px !important;
+  background-color: var(--p-content-background) !important;
   // color: v-bind(secondLocal) !important;
   font-size: 22px !important;
 }
 .footer-links-column a,
 .support__content-item a,
 .support__nav-item:hover a {
-  color: v-bind(mainTextLocal) !important;
+  // color: v-bind(mainTextLocal) !important;
+  background: var(--p-content-background);
 }
 .support__nav-item:hover .faq-icon {
-  background-color: v-bind(mainColorLocal) !important;
+  // background-color: v-bind(mainColorLocal) !important;
 }
 .wallet-history__header,
 .walletTable__header,
@@ -257,6 +261,7 @@ export default {
 .select__item {
   // background-color: v-bind(blockColorLocal) !important;
   background: var(--p-content-background);
+  // color: var(--p-primary-color) !important;
 }
 .select__item p {
   color: v-bind(mainTextLocal) !important;
@@ -380,7 +385,8 @@ th.walletTable__header,
 .support__content-item a,
 .support__nav-card--contacts a,
 .support__content-voc span {
-  color: v-bind(secondLocal) !important;
+  // color: v-bind(secondLocal) !important;
+  // background-color: var(--p-content-background) !important;
 }
 #themeSelector,
 .wallet__action--deposit use {

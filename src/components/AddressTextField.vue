@@ -49,7 +49,8 @@ export default {
   color: #000;
   line-height: 22px;
   font-size: 12px;
-  background: #e8f1fb;
+  background: var(--p-primary-color);
+  // background: #e8f1fb;
   font-weight: bold;
   border-radius: 5px;
   height: 34px;

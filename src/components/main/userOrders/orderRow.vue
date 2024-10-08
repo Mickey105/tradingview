@@ -263,10 +263,19 @@ export default {
     },
   },
   emits: ["updateOrder", "deleteOrder"],
+  data() {
+    return {
+      // Add tableLabel as a data property or computed property
+      tableLabel: this.$t("common.date"), // Replace 'common.date' with the appropriate translation key if needed
+    };
+  },
   computed: {
     ...mapGetters({ coins: "core/coins" }),
     currentQuoteCurrency() {
       return this.$store.getters.getCurrentQuoteCurrency;
+    },
+    currentBaseCurrency() {
+      return this.base; // Assuming you want to use the base currency derived from the order's pair
     },
     vwapOrPrice() {
       return this.order.vwap || this.order.price;

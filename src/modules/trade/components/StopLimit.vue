@@ -81,13 +81,7 @@
     <button
       class="otc__submit-button mt-4"
       :class="`otc__submit-button_${color}`"
-      :style="
-        mainColor
-          ? color === 'green'
-            ? `background: ${mainColor} !important`
-            : `background: ${secondolor} !important`
-          : {}
-      "
+      :style="mainColor ? color === 'green' : {}"
       type="submit"
       :disabled="disableOperations"
     >

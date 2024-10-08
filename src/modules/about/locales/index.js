@@ -174,7 +174,7 @@ const support = {
     },
   },
   en: {
-    welcome: "Welcome to support center",
+    welcome: "Welcome To Pool4Ever Exchange Support Center",
     create_ticket: "Create ticket",
     contacts: "Contact Us",
     general_questions: {

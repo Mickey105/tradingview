@@ -135,7 +135,7 @@ export default {
   position: absolute;
   top: 65px;
   width: 100%;
-  background: #fff;
+  // background: #fff;
   border: 1px solid #c5c5c5;
   border-top: none;
   box-sizing: border-box;

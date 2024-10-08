@@ -37,7 +37,7 @@
       v-model="operationData.price"
       :decimals="coins[quoteCurrency].decimals"
       required
-      class="mt-4 w-full"
+      class="mt-3 w-full"
       :label="$t('common.price')"
       :placeholder="quoteCurrency"
     />
@@ -45,7 +45,7 @@
       v-model="operationData.quantity"
       :decimals="coins[baseCurrency].decimals"
       required
-      class="mt-4 w-full"
+      class="mt-3 w-full"
       :label="operation == 'buy' ? $t('common.get') : $t('common.give_to')"
       :placeholder="baseCurrency"
       @focus="lastEditedField = fields.QUANTITY"
@@ -92,7 +92,7 @@
       :placeholder="quoteCurrency"
       @focus="lastEditedField = fields.SUM"
     />
-    <div class="limit-list__row mt-4 limit-list__caption">
+    <div class="limit-list__row mt-2 limit-list__caption">
       <span>{{ $t("common.fee") }}:</span>
       <span>
         {{ fee }} {{ operation == "buy" ? baseCurrency : quoteCurrency }}
@@ -392,10 +392,12 @@ export default {
   &__submit-button {
     cursor: pointer;
     border: none;
-    color: #ffffff;
+    color: #ffffffeb;
     border-radius: 5px;
-    height: 36px;
-    width: 100%;
+    height: 23px;
+    width: 85%;
+    margin: auto;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;

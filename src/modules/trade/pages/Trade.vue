@@ -23,7 +23,7 @@
       <span class="join-us"> Community & Support</span>
     </template>
   </PrimeCard> -->
-  <div class="m-auto flex-wrap mt-6 mb-2">
+  <div class="m-auto flex-wrap mt-3 mb-2">
     <div
       class="flex flex-wrap justify-center items-center text-center banner p-2 gap-1 shadow-lg"
     >
@@ -51,7 +51,7 @@
   <div v-if="showPage">
     <div class="flex flex-wrap xl:-mt-2">
       <div class="md:w-3/12 order-tables">
-        <v-card class="rounded-[3px] overflow-hidden mt-6 card-trade">
+        <v-card class="rounded-[3px] overflow-hidden card-trade">
           <SellOrders
             :decimals="coins[currentBaseCurrency].decimals"
             :base-currency="currentBaseCurrency"
@@ -64,14 +64,14 @@
           ></SellOrders>
         </v-card>
       </div>
-      <div class="md:w-6/12 graphic-order xl:px-6">
+      <div class="md:w-6/12 graphic-order xl:px-3">
         <div class="graphic-order-wrapper">
           <TradeGraphic
             :precision="Math.min(savedPrecision * 1, 0.01) || 0.01"
           />
         </div>
         <div>
-          <v-card>
+          <v-card class="border-round-xl">
             <TradeMenus
               class="trade-menus"
               :base-currency="currentBaseCurrency"
@@ -82,7 +82,7 @@
         </div>
       </div>
       <div class="md:w-3/12 data-order xl:pb-0 pb-6">
-        <div class="mt-6 currency-list">
+        <div class="currency-list">
           <v-card>
             <CurrencyList
               :default-pair="pairprop"
@@ -762,7 +762,7 @@ export default {
 
 .order-tables {
   position: relative;
-  top: -1px;
+  margin-top: 15px;
 }
 .card-trade {
   border-radius: 10px;
@@ -822,7 +822,7 @@ export default {
 }
 .banner {
   // background-color: v-bind(blockColorLocal);
-  border-radius: 15px;
+  border-radius: 10px;
   // background-color: #ffffff;
   // background-color: var(--surface-card);
   background: var(--p-content-background);

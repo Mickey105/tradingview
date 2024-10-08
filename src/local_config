@@ -28,7 +28,7 @@ const localConfig = {
       input_color: "white",
       input_text: "#2a2259",
       block_color: "#f0f3fa",
-      border_color: "#f0f0f0",
+      border_color: "",
       hover_color: "f4bf0b38",
     },
     {
@@ -44,7 +44,7 @@ const localConfig = {
       input_color: "#f2d87826",
       input_text: "#d0d0d0",
       block_color: "#212529",
-      border_color: "#353535",
+      border_color: "",
       hover_color: "f4bf0b38",
     },
   ],

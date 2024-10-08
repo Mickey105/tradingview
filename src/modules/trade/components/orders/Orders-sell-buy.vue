@@ -75,6 +75,7 @@
 import { mapGetters } from "vuex";
 import getCoolTrade from "~/mixins/getCoolTrade";
 import getFixedDecimal from "~/mixins/getFixedDecimal";
+import eventBus from "../../../../static/public/evenBus"; // Using alias for easier path resolution
 
 export default {
   name: "OrdersSellBuy",
@@ -139,6 +140,8 @@ export default {
           );
         this.currentPriceStakan = trades[0].price;
         this.recentTradesFirstTime = false;
+        // Emit the calculated price using EventBus
+        eventBus.emit("calculatedPriceUpdated", this.getPriceForStakan);
       },
     },
   },

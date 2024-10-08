@@ -2,9 +2,9 @@
   <div class="block-content">
     <div class="ng-star-inserted">
       <div
-        class="bg-surface-0 dark:bg-surface-900 px-6 py-12 md:px-12 lg:px-20 text-center"
+        class="bg-surface-0 dark:bg-surface-800 px-6 py-12 md:px-12 lg:px-20 text-center"
       >
-        <p-divider></p-divider>
+        <PrimeDivider></PrimeDivider>
         <div class="grid grid-cols-12 gap-4 justify-center items-center gap-4">
           <div
             class="col-span-12 md:col-span-3 flex flex-wrap justify-center md:mb-0 mb-1"
@@ -47,13 +47,13 @@
               class="text-color leading-normal block cursor-pointer mb-2 flex justify-center gap-2 items-center"
             >
               <span>Theme</span>
-              <app-day-night></app-day-night>
+              <!-- <app-day-night></app-day-night> -->
             </a>
           </div>
         </div>
-        <p-divider></p-divider>
+        <PrimeDivider></PrimeDivider>
         <div class="card"></div>
-        <p-divider class="w-full"></p-divider>
+        <PrimeDivider class="w-full"></PrimeDivider>
         <div class="copyright-note">
           © 2021-2024 <span class="text-primary">Pool4Ever.com</span> All rights
           reserved<br /><br />

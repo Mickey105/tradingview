@@ -13,6 +13,7 @@ import "~/assets/css/tailwind.css";
 import "~/assets/css/main.css";
 import "~/assets/css/theme.scss";
 import "~/assets/css/modules/_index.scss";
+import "primeflex/primeflex.css";
 import "vue3-tel-input/dist/vue3-tel-input.css";
 // @ts-ignore
 import initPlugins from "~/plugins/index";
@@ -33,12 +34,10 @@ import Button from "primevue/button";
 import ToggleButton from "primevue/togglebutton";
 import Menu from "primevue/menu";
 import Card from "primevue/card";
-// import {
-//   layoutConfig,
-//   useLayout,
-// } from "./components/layout/composables/layout.js";
-import Aura from "@primevue/themes/aura";
-import { definePreset } from "@primevue/themes";
+import MyPreset from "./assets/css/MyPresey";
+import Ripple from "primevue/ripple";
+import Divider from "primevue/divider";
+import CascadeSelect from "primevue/cascadeselect";
 
 export const app = createApp(App);
 
@@ -67,35 +66,12 @@ app.use(Vue3GoogleLogin, {
   clientId:
     "945663563720-o7vik62t724s2mmedlgee1j3g79n887b.apps.googleusercontent.com",
 });
-// app.use(PrimeVue, {
-//   theme: layoutConfig.darkTheme ? "arya-orange" : "sage-orange", // Update theme dynamically based on state
-// });
-// const layout = useLayout(); // Import the layout logic
 
-// const executeDarkModeToggle = () => {
-//   layout.toggleDarkMode(); // Call the toggle method from layoutConfig
-
-//   console.log("After Class List:", document.documentElement.classList);
-// };
-const MyPreset = definePreset(Aura, {
-  semantic: {
-    primary: {
-      50: "{yellow.50}",
-      100: "{yellow.100}",
-      200: "{yellow.200}",
-      300: "{yellow.300}",
-      400: "{yellow.400}",
-      500: "{yellow.500}",
-      600: "{yellow.600}",
-      700: "{yellow.700}",
-      800: "{yellow.800}",
-      900: "{yellow.900}",
-      950: "{yellow.950}",
-    },
-  },
-});
-
-document.documentElement.classList.add("my-app-dark");
+// Immediately check and apply dark mode class before page starts rendering
+const darkMode = localStorage.getItem("darkMode") === "enabled";
+if (darkMode) {
+  document.documentElement.classList.add("my-app-dark");
+}
 
 app.use(PrimeVue, {
   // Default theme configuration
@@ -109,14 +85,13 @@ app.use(PrimeVue, {
   },
 });
 
-// Initialize theme
-// executeDarkModeToggle();
-// document.documentElement.classList.add("app-dark");
-
 app.component("PrimeButton", Button);
 app.component("ToggleButton", ToggleButton);
 app.component("PrimeMenu", Menu);
 app.component("PrimeCard", Card);
+app.component("PrimeDivider", Divider);
+app.directive("ripple", Ripple);
+app.component("CascadeSelect", CascadeSelect);
 
 // Register the Menubar component
 app.component("PrimeMenubar", Menubar);

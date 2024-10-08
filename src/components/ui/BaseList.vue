@@ -247,5 +247,6 @@ export default {
 }
 .ps {
   height: 250px;
+  margin-top: 25px;
 }
 </style>

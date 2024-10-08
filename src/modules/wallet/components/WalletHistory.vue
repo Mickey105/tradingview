@@ -403,7 +403,7 @@ export default {
   margin-bottom: 20px;
 }
 .wallet-history__header {
-  background: #f5f5f5;
+  // background: #f5f5f5;
   font-weight: 600;
   font-family: "Open Sans";
   font-size: 14px !important;

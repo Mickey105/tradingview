@@ -1,5 +1,26 @@
 <template>
-  <div v-click-outside="closeMenu" class="header__language">
+  <PrimeButton
+    type="button"
+    aria-haspopup="true"
+    size="small"
+    aria-controls="overlay_menu"
+    class="surface-hover border-0 border-round-3xl p-0"
+    style="width: 25px; height: 25px"
+    @click="toggle"
+  >
+    <!-- <img src="/public/img/lang/eng_circle.png" style="width: 20px" /> -->
+    <i
+      class="mainflag"
+      :class="{
+        'icn-lang-en': selectedLang === 'en',
+        'icn-lang-ru': selectedLang === 'ru',
+        'icn-lang-es': selectedLang === 'es',
+        'icn-lang-fr': selectedLang === 'fr',
+      }"
+    ></i>
+  </PrimeButton>
+  <PrimeMenu id="overlay_menu" ref="menu" :model="items" :popup="true" />
+  <!-- <div v-click-outside="closeMenu" class="header__language">
     <div class="header__language__block" @click="toggleIsOpen">
       <i
         class="mainflag"
@@ -29,7 +50,7 @@
         >
       </li>
     </ul>
-  </div>
+  </div> -->
 </template>
 <script>
 import config from "~/app-config";
@@ -44,6 +65,24 @@ export default {
       langChanged: false,
       selectedLang: "",
       supportedLanguages: config.supportedLanguages,
+      items: [
+        {
+          label: "Select Language",
+          items: [
+            {
+              label: "English",
+              icon: "pi pi-refresh",
+              img: "",
+              command: () => this.setLang("en"), // Call setLang on click
+            },
+            {
+              label: "Russain",
+              icon: "pi pi-upload",
+              command: () => this.setLang("ru"), // Call setLang on click
+            },
+          ],
+        },
+      ],
     };
   },
   computed: {
@@ -92,6 +131,9 @@ export default {
       this.setLocale(lang);
       this.selectedLang = lang;
     },
+    toggle(event) {
+      this.$refs.menu.toggle(event);
+    },
   },
 };
 </script>
@@ -106,7 +148,7 @@ export default {
   -webkit-border-radius: 0;
   border-radius: 0;
   position: absolute;
-  background-color: #fff;
+  // background-color: #fff;
   top: 40px;
   right: 1rem;
   width: 50px;
@@ -129,12 +171,12 @@ export default {
     cursor: pointer;
 
     &.selected {
-      background-color: #ece7f1;
+      // background-color: #ece7f1;
     }
 
     &:hover {
       text-decoration: none;
-      background-color: #dcdcdc;
+      // background-color: #dcdcdc;
     }
 
     img {
@@ -150,9 +192,9 @@ export default {
 }
 
 .mainflag {
-  width: 25px;
+  width: 20px;
   font-size: 16px;
-  height: 25px;
+  height: 20px;
   // margin: 4px auto auto;
   background-size: contain;
   display: block;

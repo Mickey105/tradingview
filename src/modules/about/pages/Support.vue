@@ -273,12 +273,12 @@ export default {
 
   &__title-bar {
     padding: 10px;
-    background-color: var(--theme-primary-color);
-    color: #ffffff;
+    // background-color: var(--theme-primary-color);
+    // color: #ffffff;
     font-size: 16px;
     text-align: center;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
   }
 
   &__sidebar {
@@ -299,6 +299,7 @@ export default {
 
     &--contacts {
       padding: 20px;
+      background-color: var(--p-content-background) !important;
 
       p:last-child {
         margin-bottom: 0;
@@ -318,6 +319,7 @@ export default {
 
   &__nav {
     padding: 20px 25px;
+    background-color: var(--p-content-background) !important;
   }
 
   &__nav-list {
@@ -362,6 +364,8 @@ export default {
 
   &__content {
     padding: 20px 25px 50px;
+    background-color: var(--p-content-background) !important;
+    border-bottom: 15px !important;
   }
 
   &__content-voc {

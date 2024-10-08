@@ -1,9 +1,6 @@
 <template>
   <div class="tab-block">
-    <ul
-      class="tab-block__nav justify-start"
-      style="justify-content: start !important; justify-content: center"
-    >
+    <ul class="tab-block__nav">
       <li
         v-for="(coin, ticker) in filteredCoins"
         :key="'pairs_' + ticker"
@@ -156,7 +153,9 @@
                               class="currency-logo"
                             />
                           </span>
-                          {{ pair["quote"] }}
+                          <span style="color: var(--p-text-color) !important">{{
+                            pair["quote"]
+                          }}</span>
                         </div>
                       </div>
                     </td>
@@ -178,8 +177,12 @@
                     <td>
                       <div
                         v-if="pair.active"
-                        class="currency-table__td"
-                        style="cursor: pointer; display: inline-block"
+                        class="currency-table__td flex align-content-center justify-content-center"
+                        style="
+                          cursor: pointer;
+                          display: inline-block;
+                          color: var(--p-text-color) !important;
+                        "
                         @click="setCurrentPair(pair['base'], pair['quote'])"
                       >
                         {{ pair.price }}
@@ -197,7 +200,7 @@
                     </td> -->
                     <td>
                       <div
-                        class="currency-table__td"
+                        class="currency-table__td flex align-content-center justify-content-center"
                         style="cursor: pointer; display: inline-block"
                       >
                         <span
@@ -444,9 +447,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .cur-color {
-  color: #ffd54f;
-  -webkit-text-stroke-width: 0.2px;
-  -webkit-text-stroke-color: rgba(0, 0, 0, 0.623);
+  color: var(--p-primary-color) !important;
 }
 
 tr.disabled {

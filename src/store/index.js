@@ -10,7 +10,7 @@ const storeModules = {
   },
 };
   const state = {
-    currentTheme: "light", // Default theme
+    currentTheme: "dark", // Default theme
   };
   
   const mutations = {
@@ -21,6 +21,7 @@ const storeModules = {
   
   const getters = {
     currentTheme: (state) => state.currentTheme, // Getter for current theme
+    
   };
 
 

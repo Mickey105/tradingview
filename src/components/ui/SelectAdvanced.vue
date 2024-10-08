@@ -173,12 +173,13 @@ export default {
   position: absolute;
   top: 34px;
   width: 100%;
-  background: #fff;
+  // background: #fff;
   border: 1px solid #c5c5c5;
   border-top: none;
   box-sizing: border-box;
   border-radius: 5px;
   z-index: 4;
+  background-color: var(--surface-card) !important;
 }
 .selector__current {
   border: 1px solid #c5c5c5;
@@ -217,7 +218,7 @@ export default {
 }
 .coinSelector__price {
   font-size: 14px;
-  color: #343535;
+  // color: #343535;
   font-weight: 600;
   float: right;
   margin-right: 5px;

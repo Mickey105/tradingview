@@ -4,6 +4,7 @@ import { floor10 } from "~/utilities/helpers";
 export default {
   computed: {
     ...mapGetters({ coins: "core/coins" }),
+    currentBaseCurrency: "getCurrentBaseCurrency",
   },
   methods: {
     isFiat(currency) {

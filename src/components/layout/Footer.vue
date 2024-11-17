@@ -5,7 +5,9 @@
         class="bg-surface-0 dark:bg-surface-800 px-6 py-12 md:px-12 lg:px-20 text-center"
       >
         <PrimeDivider></PrimeDivider>
-        <div class="grid grid-cols-12 gap-4 justify-center items-center gap-4">
+        <div
+          class="grid grid-cols-12 gap-4 justify-content-evenly items-center gap-4"
+        >
           <div
             class="col-span-12 md:col-span-3 flex flex-wrap justify-center md:mb-0 mb-1"
           >
@@ -18,35 +20,35 @@
           <!-- <p-divider layout="vertical" /> -->
 
           <div class="col-span-12 md:col-span-3">
-            <div class="font-medium leading-normal mb-4">Mining Pools</div>
+            <div class="font-medium leading-normal mb-4">Spot</div>
             <a class="text-color leading-normal block cursor-pointer mb-2"
-              >Pools Table</a
+              >Wallet</a
             >
             <a class="text-color leading-normal block cursor-pointer mb-2"
-              >Pools Search</a
+              >Trade</a
             >
             <a class="text-color leading-normal block cursor-pointer mb-2"
-              >Worker Dashboard</a
+              >Quick Swap</a
             >
             <a class="text-color leading-normal block cursor-pointer mb-2"
-              >Hashrate Calculator</a
+              >Fees % Limits</a
             >
           </div>
           <div class="col-span-12 md:col-span-3">
-            <div class="font-medium leading-normal mb-4">App & Services</div>
+            <div class="font-medium leading-normal mb-4">More</div>
             <a class="text-color leading-normal block cursor-pointer mb-2"
-              >App Download</a
+              >Buy Crypto</a
             >
             <a class="text-color leading-normal block cursor-pointer mb-2"
-              >Rest API</a
+              >Markets Rates</a
             >
             <a class="text-color leading-normal block cursor-pointer mb-2"
-              >Sitemap</a
+              >Mining Pools</a
             >
             <a
               class="text-color leading-normal block cursor-pointer mb-2 flex justify-center gap-2 items-center"
             >
-              <span>Theme</span>
+              <span>Help Center</span>
               <!-- <app-day-night></app-day-night> -->
             </a>
           </div>
@@ -75,147 +77,6 @@
         <i class="pi pi-inbox rounded-border p-1 mr-2"></i>
     </div>
 </div> -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-content-wrapper">
-        <div class="footer-copy">
-          <div class="copyright">
-            {{ new Date().getFullYear() }} ©
-            {{ $t("common.copyright", { title: localConfig.project_title }) }}
-          </div>
-          <!-- <div class="rights !mb-2">{{ $t("common.built_by") }}</div> -->
-          <div class="rights">{{ $t("common.rights") }}</div>
-          <div class="footer__socials-container">
-            <a
-              class="footer__social-item"
-              href="https://www.facebook.com/pool4ever.com.official"
-              target="_blank"
-            >
-              <span class="pl-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="17"
-                  viewBox="0 0 10 17"
-                >
-                  <g>
-                    <g>
-                      <path
-                        fill="#42a4ff"
-                        d="M7 15.998a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6H0V5.996h3v-3a3 3 0 0 1 3-3c.182 0 .352.053.5.14a.988.988 0 0 1 .5-.14h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7v2h3v4H7z"
-                      />
-                    </g>
-                  </g>
-                </svg>
-              </span>
-              Pool4Ever
-            </a>
-            <a
-              class="footer__social-item"
-              href="https://twitter.com/Pool4everCom"
-            >
-              <span class="pl-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  viewBox="0 0 12 17"
-                >
-                  <path
-                    d="M4 11c0 1.7 1.2 2 1.8 2H10c1.1 0 2 .9 2 2s-.9 2-2 2H6c-1.7 0-3.1-.6-4.3-1.9C.6 13.9 0 12.4 0 10.6V2C0 .9.9 0 2 0s2 .9 2 2v3h6c1.1 0 2 .9 2 2s-.9 2-2 2H4v2z"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    fill="#42a4ff"
-                  />
-                </svg>
-              </span>
-              Pool4Ever
-            </a>
-            <a class="footer__social-item" href="https://t.me/Pool4EverCom2022">
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 19 17"
-                >
-                  <g>
-                    <g>
-                      <path
-                        fill="#42a4ff"
-                        d="M.31 7.16L18.316.041c.382-.152.776.192.693.602L15.778 16.57a.514.514 0 0 1-.81.32l-4.411-3.281a.716.716 0 0 0-.89.025l-2.446 2.043a.512.512 0 0 1-.82-.253L4.703 9.828.316 8.15c-.446-.17-.45-.815-.006-.99zm5.44 2.77l.928 3.338c.065.237.4.212.432-.032l.241-1.83c.046-.345.206-.662.455-.9l7.076-6.74c.133-.125-.026-.339-.18-.242L6.128 8.935a.896.896 0 0 0-.378.996z"
-                      />
-                    </g>
-                  </g>
-                </svg>
-              </span>
-              Pool4Ever
-            </a>
-            <a
-              v-if="
-                localConfig.socials.linkedin &&
-                localConfig.socials.linkedin !== ''
-              "
-              class="footer__social-item"
-              :href="`https://linkedin.com/company/${localConfig.socials.linkedin.link}`"
-            >
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="20"
-                  viewBox="0 0 72 72"
-                  width="20"
-                >
-                  <g fill="none" fill-rule="evenodd">
-                    <path
-                      d="M59,57 L49.959375,57 L49.959375,41.6017895 C49.959375,37.3800228 48.3552083,35.0207581 45.0136719,35.0207581 C41.3785156,35.0207581 39.4792969,37.4759395 39.4792969,41.6017895 L39.4792969,57 L30.7666667,57 L30.7666667,27.6666667 L39.4792969,27.6666667 L39.4792969,31.6178624 C39.4792969,31.6178624 42.0989583,26.7704897 48.3236979,26.7704897 C54.5455729,26.7704897 59,30.5699366 59,38.4279486 L59,57 Z M20.372526,23.8257036 C17.4048177,23.8257036 15,21.4020172 15,18.4128518 C15,15.4236864 17.4048177,13 20.372526,13 C23.3402344,13 25.7436198,15.4236864 25.7436198,18.4128518 C25.7436198,21.4020172 23.3402344,23.8257036 20.372526,23.8257036 Z M15.8736979,57 L24.958724,57 L24.958724,27.6666667 L15.8736979,27.6666667 L15.8736979,57 Z"
-                      fill="#42a4ff"
-                    />
-                  </g>
-                </svg>
-              </span>
-              {{ localConfig.socials.linkedin.link }}
-            </a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <div class="footer-links-column">
-            <div class="footer-links-title">
-              {{ $t("common.products") }}
-            </div>
-            <router-link to="/trade/BTC-USDT">
-              {{ $t("common.buysell") }}
-            </router-link>
-            <router-link to="/quick-swap">
-              {{ $t("common.exchange") }}
-            </router-link>
-            <router-link to="/wallet">
-              {{ $t("common.wallet") }}
-            </router-link>
-          </div>
-          <div class="footer-links-column">
-            <div class="footer-links-title">
-              {{ $t("common.information") }}
-            </div>
-            <a href="/account/support">
-              {{ $t("common.customer_support") }}
-            </a>
-            <router-link to="/fees">
-              {{ $t("common.feeslimits") }}
-            </router-link>
-            <a href="/account/settings">{{ $t("common.settings") }}</a>
-          </div>
-        </div>
-        <div class="footer-text">
-          <div class="footer-text-title">
-            {{ $t("common.tradeOn", { trade: localConfig.project_title }) }}
-          </div>
-          <div class="footer-text-p">
-            {{ $t("common.allDay") }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
 </template>
 
 <script>

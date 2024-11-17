@@ -1,73 +1,28 @@
 <template>
-  <HeaderComponent v-if="!simpleLayout" />
-
-  <div
-    class="auth flex flex-wrap justify-evenly content-center mob"
-    :style="loginBackground ? `background: ${loginBackground} !important` : {}"
-  >
-    <div
-      v-if="!showGoogleCodeInput"
-      class="flex flex-col w-1/2 mob-in mb-20 pb-20"
-      :class="{ isBlur: isLoading }"
-      style="margin-top: 70px"
-    >
-      <span class="flex flex-col mob-in1">
-        <ModalPagesHeader class="mt-12" />
-        <span
-          class="logIn__title text-center m-auto"
-          :style="loginText ? `color: ${loginText} !important` : {}"
-        >
-          {{ $t("common.login") }}
-        </span>
-        <!-- <a href="#" class="m-auto mt-8">
-          <button
-            class="google-login m-auto flex border shadow-lg shadow-black"
-          >
-            <span>
-              <svg
-                class="w-5/12"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  d="M113.47 309.408L95.648 375.94l-65.139 1.378C11.042 341.211 0 299.9 0 256c0-42.451 10.324-82.483 28.624-117.732h.014L86.63 148.9l25.404 57.644c-5.317 15.501-8.215 32.141-8.215 49.456.002 18.792 3.406 36.797 9.651 53.408z"
-                  fill="#fbbb00"
-                />
-                <path
-                  d="M507.527 208.176C510.467 223.662 512 239.655 512 256c0 18.328-1.927 36.206-5.598 53.451-12.462 58.683-45.025 109.925-90.134 146.187l-.014-.014-73.044-3.727-10.338-64.535c29.932-17.554 53.324-45.025 65.646-77.911h-136.89V208.176h245.899z"
-                  fill="#518ef8"
-                />
-                <path
-                  d="M416.253 455.624l.014.014C372.396 490.901 316.666 512 256 512c-97.491 0-182.252-54.491-225.491-134.681l82.961-67.91c21.619 57.698 77.278 98.771 142.53 98.771 28.047 0 54.323-7.582 76.87-20.818l83.383 68.262z"
-                  fill="#28b446"
-                />
-                <path
-                  d="M419.404 58.936l-82.933 67.896C313.136 112.246 285.552 103.82 256 103.82c-66.729 0-123.429 42.957-143.965 102.724l-83.397-68.276h-.014C71.23 56.123 157.06 0 256 0c62.115 0 119.068 22.126 163.404 58.936z"
-                  fill="#f14336"
-                />
-              </svg>
-            </span>
-
-            <span>Log in with google</span>
-          </button>
-        </a> -->
-        <div class="login mt-8">
-          <GoogleLogin :callback="callback" prompt auto-login />
-        </div>
-        <span class="m-auto text-black mt-8 mb-2 or">OR</span>
+  <HeaderComponent />
+  <PrimeCard class="max-w-30rem m-auto p-3 mt-5 mb-5"
+    ><template #title>
+      <span class="flex flex-column gap-1">
+        <span class="m-auto"
+          ><img src="/public/img/logo-white.svg" class="max-w-16rem"
+        /></span>
+        <PrimeDivider></PrimeDivider>
+        <span class="text-4xl font-semibold text-center mt-4">{{
+          $t("common.login")
+        }}</span>
+        <span class="text-xl font-light text-center">Welcome Back</span>
+      </span>
+    </template>
+    <template #content>
+      <div v-if="!showGoogleCodeInput" :class="{ isBlur: isLoading }">
         <div
           v-if="!usernameFixed"
-          class="logIn__descr m-auto mt-2"
+          class="logIn__descr m-auto mb-2"
           style="max-width: 302px"
-          :style="loginText ? `color: ${loginText} !important` : {}"
         >
           {{ $t("common.useemail") }}
         </div>
-        <div
-          v-else
-          class="logIn__descr m-auto mt-2"
-          :style="loginText ? `color: ${loginText} !important` : {}"
-        >
+        <div v-else class="logIn__descr m-auto mt-2">
           {{ $t("common.enterPass") }}
           <p class="mb-6">
             {{ username }}
@@ -90,7 +45,7 @@
               placeholder="Email"
             />
           </template>
-          <div class="input-group mb-6 border relative">
+          <div class="input-group mb-2 border relative">
             <input
               id="passinp"
               ref="passwordInput"
@@ -137,6 +92,15 @@
               </button>
             </div>
           </div>
+          <span class="flex gap-2 justify-content-center mt-3">
+            <span>Don't have an account?</span>
+            <router-link
+              to="/register"
+              class="underline text-primary cursor-pointer"
+            >
+              <span>Sign up</span>
+            </router-link>
+          </span>
           <!--CAPTCHA-->
           <div class="mb-4">
             <vue-recaptcha
@@ -161,8 +125,7 @@
             <input
               id="loginbtn"
               name="btn"
-              :style="mainColor ? `background: ${localColor}` : {}"
-              class="login_but logIn__form__input_button opacitychangebtn cursor-pointer inline-block"
+              class="login_but logIn__form__input_button opacitychangebtn cursor-pointer p-button border-round-3xl"
               :class="{ 'blocked-btn': captchaIsON && !captchaResponse }"
               type="submit"
               :disabled="captchaIsON && !captchaResponse"
@@ -172,7 +135,7 @@
               @click="handleLogin"
             />
           </div>
-          <router-link
+          <!-- <router-link
             to="/forgot"
             class="logIn__recovery mb-6"
             :style="loginText ? `color: ${loginText} !important` : {}"
@@ -180,284 +143,31 @@
               Forget your password ?
               {{ $t("common.passwordrecovery") }}</span
             >
-          </router-link>
-          <router-link
+          </router-link> -->
+          <span class="flex flex-column gap-2 justify-content-center mt-2 mb-3">
+            <span>Forget your password?</span>
+            <router-link
+              to="/forgot"
+              class="underline text-primary cursor-pointer"
+            >
+              <span>{{ $t("common.passwordrecovery") }}</span>
+            </router-link>
+          </span>
+          <!-- <router-link
             to="/support"
             class="logIn__recovery mb-6"
             :style="loginText ? `color: #ffd54f !important` : {}"
             rel="noopener noreferrer nofollow"
             target="_blank"
             >{{ $t("common.support") }}</router-link
-          >
+          > -->
         </form>
-        <div
-          class="text-center mb-2"
-          style="font-size: 14px"
-          :style="loginText ? `color: ${loginText} !important` : {}"
-        >
-          <span class="or">{{ $t("common.or") }}</span>
-        </div>
-        <div class="text-center">
-          <router-link :to="'/register'">
-            <button
-              class="logIn__register"
-              style="border-radius: 25px; background: #ffd54f !important"
-            >
-              {{ $t("common.register") }}
-            </button>
-          </router-link>
-        </div>
-
-        <!-- <i class="pi pi-user" style="font-size: 2.5rem"></i> -->
-      </span>
-      <!-- <span>as</span>
-      <span>asas</span> -->
-    </div>
-    <div
-      v-if="!showGoogleCodeInput"
-      class="logIn pb-8 w-1/2 mob-in"
-      :style="
-        loginBackground ? `background: ${loginBackground} !important` : {}
-      "
-      style="margin-top: 70px"
-    >
-      <!-- <ModalPagesHeader /> -->
-      <div
-        class="flex box white flex-col logIn__title_header gap-8"
-        :class="{ isBlur: isLoading }"
-      >
-        <p class="m-auto have-acc mt-8">Dont have account?</p>
-        <span class="m-auto flex items-center gap-2 have-acc2">
-          <i class="pi pi-pen-to-square" style="font-size: 1rem"></i>
-          <span>Register now, Fast & Simple</span>
-        </span>
-
-        <div class="text-center">
-          <router-link :to="'/register'">
-            <button
-              class="logIn__register mb-8 shadow-lg shadow-black"
-              style="border-radius: 25px; background: #ffd54f !important"
-            >
-              {{ $t("common.register") }}
-            </button>
-          </router-link>
-        </div>
-        <img
-          src="/public/img/reg.gif"
-          class="img-reg shadow-lg shadow-black mt-8"
-        />
-
-        <!-- <div
-          class="logIn__title"
-          :style="loginText ? `color: ${loginText} !important` : {}"
-        >
-          {{ $t("common.login") }}
-        </div>
-        <div
-          v-if="!usernameFixed"
-          class="logIn__descr"
-          style="max-width: 302px"
-          :style="loginText ? `color: ${loginText} !important` : {}"
-        >
-          {{ $t("common.useemail") }}
-        </div>
-        <div
-          v-else
-          class="logIn__descr"
-          :style="loginText ? `color: ${loginText} !important` : {}"
-        >
-          {{ $t("common.enterPass") }}
-          <p class="mb-6">
-            {{ username }}
-            <span class="change" @click="goTo1Step"
-              >{{ $t("common.change") }}
-            </span>
-          </p>
-        </div> -->
-        <!-- <form class="logIn__form" @submit.prevent>
-          <template v-if="!usernameFixed">
-            <input
-              id="emailinp"
-              ref="username"
-              v-model="username"
-              v-pattern:email
-              type="text"
-              name="usname"
-              :class="{ 'input-has-error': errorsemail }"
-              class="logIn__form__input"
-              placeholder="Email"
-            />
-          </template>
-          <div class="input-group mb-6 border relative">
-            <input
-              id="passinp"
-              ref="passwordInput"
-              v-model="password"
-              class="form-control logIn__form__input border-surface-0 dark:border-surface-900"
-              :class="{ 'input-has-error': errorspassword }"
-              :type="showPassword ? 'text' : 'password'"
-              name="pass"
-              placeholder="Password"
-            />
-            <div
-              class="input-group-append absolute"
-              style="top: 6px; right: 4px"
-            >
-              <button
-                class="btn border-surface-0 dark:border-surface-900 show-password-icon-btn"
-                type="button"
-                @click="showPassword = !showPassword"
-              >
-                <svg
-                  v-show="!showPassword"
-                  class="show-password-icon"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 1792 1792"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M555 1335l78-141q-87-63-136-159t-49-203q0-121 61-225-229 117-381 353 167 258 427 375zm389-759q0-20-14-34t-34-14q-125 0-214.5 89.5t-89.5 214.5q0 20 14 34t34 14 34-14 14-34q0-86 61-147t147-61q20 0 34-14t14-34zm363-191q0 7-1 9-106 189-316 567t-315 566l-49 89q-10 16-28 16-12 0-134-70-16-10-16-28 0-12 44-87-143-65-263.5-173t-208.5-245q-20-31-20-69t20-69q153-235 380-371t496-136q89 0 180 17l54-97q10-16 28-16 5 0 18 6t31 15.5 33 18.5 31.5 18.5 19.5 11.5q16 10 16 27zm37 447q0 139-79 253.5t-209 164.5l280-502q8 45 8 84zm448 128q0 35-20 69-39 64-109 145-150 172-347.5 267t-419.5 95l74-132q212-18 392.5-137t301.5-307q-115-179-282-294l63-112q95 64 182.5 153t144.5 184q20 34 20 69z"
-                  />
-                </svg>
-                <svg
-                  v-show="showPassword"
-                  class="show-password-icon"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 1792 1792"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1664 960q-152-236-381-353 61 104 61 225 0 185-131.5 316.5t-316.5 131.5-316.5-131.5-131.5-316.5q0-121 61-225-229 117-381 353 133 205 333.5 326.5t434.5 121.5 434.5-121.5 333.5-326.5zm-720-384q0-20-14-34t-34-14q-125 0-214.5 89.5t-89.5 214.5q0 20 14 34t34 14 34-14 14-34q0-86 61-147t147-61q20 0 34-14t14-34zm848 384q0 34-20 69-140 230-376.5 368.5t-499.5 138.5-499.5-139-376.5-368q-20-35-20-69t20-69q140-229 376.5-368t499.5-139 499.5 139 376.5 368q20 35 20 69z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          --CAPTCHA-
-          <div class="mb-4">
-            <vue-recaptcha
-              v-show="usernameFixed"
-              ref="recaptcha"
-              :sitekey="localConfig.recaptcha_site_key"
-              style="display: table"
-              @verify="handleCaptcha"
-              @expired="onExpired"
-            ></vue-recaptcha>
-          </div>
-          --CAPTCHA-
-          <p
-            v-for="(text, id) in getFilteredDangerText"
-            :key="id"
-            class="text-danger"
-            style="width: 304px"
-          >
-            {{ text }}
-          </p>
-          <div class="text-center">
-            <input
-              id="loginbtn"
-              name="btn"
-              :style="mainColor ? `background: ${mainColor}` : {}"
-              class="login_but logIn__form__input_button opacitychangebtn cursor-pointer inline-block"
-              :class="{ 'blocked-btn': captchaIsON && !captchaResponse }"
-              type="submit"
-              :disabled="captchaIsON && !captchaResponse"
-              :value="
-                usernameFixed ? $t('common.login_upper') : $t('common.continue')
-              "
-              @click="handleLogin"
-            />
-          </div>
-          <router-link
-            to="/forgot"
-            class="logIn__recovery mb-6"
-            :style="loginText ? `color: ${loginText} !important` : {}"
-            ><span style="color: royalblue">
-              Forget your password ?
-              {{ $t("common.passwordrecovery") }}</span
-            >
-          </router-link>
-          <router-link
-            to="/support"
-            class="logIn__recovery mb-6"
-            :style="loginText ? `color: #ffd54f !important` : {}"
-            rel="noopener noreferrer nofollow"
-            target="_blank"
-            >{{ $t("common.support") }}</router-link
-          >
-        </form> -->
-        <!-- <div
-          class="text-center mb-2"
-          style="font-size: 14px"
-          :style="loginText ? `color: ${loginText} !important` : {}"
-        >
-          {{ $t("common.or") }}
-        </div> -->
-        <!-- <div class="text-center">
-          <router-link :to="'/register'">
-            <button
-              class="logIn__register"
-              style="border-radius: 25px; background: #ffd54f !important"
-            >
-              {{ $t("common.register") }}
-            </button>
-          </router-link>
-        </div> -->
       </div>
-    </div>
-    <div
-      v-else
-      class="logIn pb-8"
-      style="text-align: center"
-      :style="
-        loginBackground ? `background: ${loginBackground} !important` : {}
-      "
-    >
-      <ModalPagesHeader />
-      <div class="flex flex-col box white">
-        <div class="logIn__title" style="max-width: 600px">2FA</div>
-        <div class="logIn__descr mb-6">
-          <strong>{{ $t("common.entergooglecode") }}</strong>
-        </div>
-        <form
-          class="logIn_form"
-          autocomplete="off"
-          @submit.prevent="enterGoogleCode()"
-        >
-          <input
-            ref="googlecodeinput"
-            v-model="googlecode"
-            v-numeric.number
-            name="googlecode"
-            maxlength="6"
-            autocomplete="google2fa"
-            pattern="[0-9]{6}"
-            placeholder="XXX XXX"
-            class="secretclass1 mb-6"
-            type="text"
-            @input="formatGoogleCode"
-          />
-          <p v-if="errtext" class="text-danger mb-6">{{ errtext }}</p>
-          <button
-            :disabled="isInvalidFaCode"
-            class="logIn__form__input logIn__form__input_button block"
-            :style="mainColor ? `background: ${mainColor} !important` : {}"
-            type="submit"
-          >
-            {{ $t("common.login_upper") }}
-          </button>
-        </form>
-        <input
-          class="forgot-password__button forgot-password__button_red logIn__form__input logIn__form__input_button back-button"
-          type="button"
-          :value="$t('common.back_to_login')"
-          @click="reload()"
-        />
-      </div>
-    </div>
-  </div>
+      <div class="login mt-8">
+        <GoogleLogin :callback="callback" prompt auto-login />
+      </div> </template
+  ></PrimeCard>
+
   <!--GOOGLE AUTH-->
   <FooterComponent v-if="!simpleLayout" />
 </template>
@@ -496,7 +206,7 @@ const callback = (response) => {
 
 <script>
 import { VueRecaptcha } from "vue-recaptcha";
-import ModalPagesHeader from "~/components/layout/ModalPagesHeader.vue";
+// import ModalPagesHeader from "~/components/layout/ModalPagesHeader.vue";
 import loginMixin from "~/mixins/login";
 import HeaderComponent from "~/components/layout/Header.vue";
 import FooterComponent from "~/components/layout/Footer.vue";
@@ -519,11 +229,15 @@ export default {
   },
   components: {
     VueRecaptcha,
-    ModalPagesHeader,
     HeaderComponent,
     FooterComponent,
   },
   mixins: [loginMixin],
+  data() {
+    return {
+      username: "", // Email input field
+    };
+  },
   computed: {
     getFilteredDangerText() {
       return Object.fromEntries(
@@ -542,6 +256,14 @@ export default {
       return (
         localConfig?.themes?.[this.currentTheme]?.second_color || "#ffac2a"
       );
+    },
+  },
+  watch: {
+    // Watch for changes in the username and convert it to lowercase
+    username(newVal) {
+      if (newVal !== newVal.toLowerCase()) {
+        this.username = newVal.toLowerCase();
+      }
     },
   },
   beforeCreate() {
@@ -631,7 +353,7 @@ button:disabled {
   color: #fff;
   align-items: center;
   justify-content: center;
-  background-color: #36373c;
+  // background-color: #36373c;
   display: flex;
   flex-direction: column;
   // margin-top: 70px;
@@ -712,7 +434,7 @@ button:disabled {
 .logIn__form__input_button {
   min-height: 54px;
   // background-color: var(--theme-primary-color);
-  background: v-bind(borderLocal) !important;
+  // background: v-bind(borderLocal) !important;
 
   border: none;
   font-weight: 700 !important;
@@ -780,7 +502,7 @@ input[type="button"]:focus {
 
 button {
   border: none;
-  background-color: transparent;
+  // background-color: transparent;
   outline: none;
 }
 
@@ -914,10 +636,11 @@ button {
   }
 
   &__input-error-hint {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    // position: absolute;
+    // right: 10px;
+    // top: 50%;
+    // transform: translateY(-50%);
+    display: contents;
     color: #f94640;
     background-color: white;
     box-shadow: 0 0 4px 5px white;
@@ -1058,15 +781,15 @@ button {
   width: 80%;
   border-radius: 25px;
   margin-bottom: 10px;
-  color: v-bind(secondLocal) !important;
+  // color: v-bind(secondLocal) !important;
   border: solid 1px #e0e0e0;
 }
 .login_but:hover {
-  color: v-bind(borderLocal) !important;
+  // color: v-bind(borderLocal) !important;
 }
 .logIn__form__input {
-  background: v-bind(borderLocal) !important;
-  color: v-bind(inputTextLocal) !important;
+  // background: v-bind(borderLocal) !important;
+  // color: v-bind(inputTextLocal) !important;
 }
 .logIn__title_header {
   margin-bottom: 125px;
@@ -1127,13 +850,16 @@ button {
   background-color: v-bind(borderLocal) !important;
   width: 250px;
   height: 55px;
-  border-radius: 25px;
+  border-radius: 15px;
   border: solid 1px #e0e0e0;
   color: v-bind(inputTextLocal) !important;
   --tw-shadow-color: #343a40;
   --tw-shadow: var(--tw-shadow-colored);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+svg {
+  fill: var(--p-primary-color);
 }
 
 // .content {

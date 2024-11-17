@@ -139,7 +139,7 @@ export default {
       return index === -1 ? 0 : index;
     },
     mainTextLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.main_text || "#000000";
+      return localConfig?.themes?.[this.currentTheme]?.main_text || "";
     },
     questions() {
       const arr = [];
@@ -422,7 +422,7 @@ export default {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color: v-bind(mainTextLocal);
+  // background-color: v-bind(mainTextLocal);
   mask-image: url("/public/img/faq/bars.svg");
   mask-size: contain;
   mask-repeat: no-repeat;

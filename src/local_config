@@ -14,43 +14,39 @@ const localConfig = {
   site_domain: "exchange.pool4ever.com",
   host: "exchange.pool4ever.com",
   help_widget: "",
-  themes: [
-    {
-      main_color: "#212529",
-      second_color: "#f8d767",
-      cancel_color: "#d93d47",
-      login_background:
-        "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(248,215,103,1) 61%, rgba(248,215,103,1) 100%)",
-      login_text: "#222529",
-      main_background:
-        "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(248,215,103,1) 61%, rgba(248,215,103,1) 100%)",
-      main_text: "#888888",
-      input_color: "white",
-      input_text: "#2a2259",
-      block_color: "#f0f3fa",
-      border_color: "",
-      hover_color: "f4bf0b38",
-    },
-    {
-      main_color: "#212529",
-      second_color: "#f8d767",
-      cancel_color: "#d93d47",
-      login_background:
-        "linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(248,215,103,1) 61%, rgba(248,215,103,1) 100%)",
-      login_text: "#222529",
-      main_background:
-        "linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(248,215,103,1) 61%, rgba(248,215,103,1) 100%)",
-      main_text: "#888888",
-      input_color: "#f2d87826",
-      input_text: "#d0d0d0",
-      block_color: "#212529",
-      border_color: "",
-      hover_color: "f4bf0b38",
-    },
-  ],
+  // themes: [
+  //   {
+  //     main_color: "",
+  //     second_color: "",
+  //     cancel_color: "",
+  //     login_background: "",
+  //     login_text: "",
+  //     main_background: "",
+  //     main_text: "",
+  //     input_color: "",
+  //     input_text: "",
+  //     block_color: "",
+  //     border_color: "",
+  //     hover_color: "",
+  //   },
+  //   {
+  //     main_color: "",
+  //     second_color: "",
+  //     cancel_color: "",
+  //     login_background: "",
+  //     login_text: "",
+  //     main_background: "",
+  //     main_text: "",
+  //     input_color: "",
+  //     input_text: "",
+  //     block_color: "",
+  //     border_color: "",
+  //     hover_color: "",
+  //   },
+  // ],
   socials: {
     telegram: {
-      link: "opencex",
+      link: "",
       title: "sitechange",
     },
     telegramNews: {
@@ -59,11 +55,11 @@ const localConfig = {
     },
     mail: "idanzam@gmail.com",
     facebook: {
-      link: "polygant",
+      link: "",
       title: "Exchange",
     },
     twitter: {
-      link: "polygant",
+      link: "",
       title: "@",
     },
   },

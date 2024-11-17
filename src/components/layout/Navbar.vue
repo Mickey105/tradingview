@@ -1,41 +1,12 @@
 <script setup>
-// import { useLayout } from "./composables/layout";
 import { ref, onMounted } from "vue";
 import eventBus from "../../static/public/evenBus"; // Using alias for easier path resolution
 
-// import { useCookies } from "vue3-cookies";
-
-// const { toggleDarkMode, isDarkTheme } = useLayout();
 const menu = ref();
-// const checked = ref(isDarkTheme.value); // Bind `checked` to the initial theme state
-// const { cookies } = useCookies();
+
 const toggle = (event) => {
   menu.value.toggle(event);
 };
-// Theme toggle logic
-
-// const setGraphColor = (isDark) => {
-//   const backgroundColor = isDark ? darkBackgroundColor : blockColorLocal;
-
-//   let graphTheme = {
-//     timezone: "Etc/UTC",
-//     priceScaleSelectionStrategyName: "auto",
-//     dataWindowProperties: {
-//       background: backgroundColor,
-//       border: "rgba(96, 96, 144, 1)",
-//     },
-//   };
-
-//   try {
-//     localStorage.setItem(
-//       "tradingview.chartproperties",
-//       JSON.stringify(graphTheme)
-//     );
-//   } catch (error) {
-//     console.error("Error saving graph theme:", error);
-//   }
-// };
-// Check for dark mode preference on initial load
 
 const toggleDarkMode = () => {
   // Toggle the "my-app-dark" class on the root element
@@ -48,7 +19,6 @@ const toggleDarkMode = () => {
   eventBus.emit("toggleTheme", isDark);
 };
 
-// Ensure the correct theme is applied on load
 onMounted(() => {
   const darkMode = localStorage.getItem("darkMode");
   if (darkMode === "enabled") {
@@ -78,46 +48,12 @@ export default {
     },
   },
   setup() {
-    // Pull the colors from PrimeVue theme variables instead of hardcoding
-    const blockColorLocal = getComputedStyle(
-      document.documentElement
-    ).getPropertyValue("--block-bg"); // Light mode background color
-
-    const darkBackgroundColor = getComputedStyle(
-      document.documentElement
-    ).getPropertyValue("--dark-bg"); // Dark mode background // Dark mode text color
-
-    const setGraphColor = (isDark) => {
-      const backgroundColor = isDark ? darkBackgroundColor : blockColorLocal;
-      // const textColor = isDark ? darkTextColor : mainTextLocal;
-
-      let graphTheme = {
-        timezone: "Etc/UTC",
-        priceScaleSelectionStrategyName: "auto",
-        dataWindowProperties: {
-          background: backgroundColor,
-          border: "rgba(96, 96, 144, 1)",
-        },
-      };
-
-      try {
-        localStorage.setItem(
-          "tradingview.chartproperties",
-          JSON.stringify(graphTheme)
-        );
-      } catch (error) {
-        console.error("Error saving graph theme:", error);
-      }
-
-      // changeTopColor(); // Make sure this function is defined elsewhere in your code
-    };
-
     // Method to toggle dark mode
     const toggleDarkMode = () => {
       document.documentElement.classList.toggle("my-app-dark");
       const isDark = document.documentElement.classList.contains("my-app-dark");
       localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
-      setGraphColor(isDark); // Call setGraphColor with the current state of isDark
+      // setGraphColor(isDark); // Call setGraphColor with the current state of isDark
       // makeChart(); // Ensure this function is defined elsewhere
     };
 
@@ -300,11 +236,6 @@ export default {
       this.cookies.set("theme", newTheme);
     },
 
-    // changeTheme() {
-    //   const newTheme = this.theme === "dark" ? "light" : "dark";
-    //   this.$store.dispatch("core/changeTheme", newTheme);
-    //   // this.cookies.set("theme", newTheme);
-    // },
     volume() {
       return parseFloat(
         this.getFromObj(
@@ -474,7 +405,6 @@ export default {
             </template>
           </PrimeMenu>
           <LanguageSelector class="mr-2" />
-
           <ToggleButton
             v-model="checked"
             on-icon="pi pi-moon"

@@ -25,7 +25,7 @@ export default {
   mixins: [globalWSSubscriptions],
   metaInfo() {
     return {
-      title: localConfig.project_title ? localConfig.project_title : "OpenCex",
+      title: localConfig.project_title ? localConfig.project_title : "",
       description: `${localConfig.project_title} ${this.$t(
         "common.invalid_code"
       )} `,
@@ -52,7 +52,7 @@ export default {
   mounted() {
     localStorage.setItem(
       "project_title",
-      localConfig.project_title ? localConfig.project_title : "OpenCex"
+      localConfig.project_title ? localConfig.project_title : ""
     );
     let s = document.createElement("script");
     s.type = "text/javascript";

@@ -45,7 +45,7 @@ button:disabled {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: #36373c;
+  // background-color: #36373c;
   display: flex;
   flex-direction: column;
 
@@ -179,7 +179,7 @@ button:disabled {
 .logIn__form__input {
   margin-bottom: 13px;
   width: 304px;
-  border-radius: 3px !important;
+  // border-radius: 15px !important;
   min-height: 45px;
   font-size: 14px !important;
   font-weight: 400 !important;
@@ -218,7 +218,7 @@ button:disabled {
   // background-color: var(--theme-primary-color) !important;
   border: none;
   font-weight: 700 !important;
-  color: white !important;
+  // color: white !important;
 }
 
 .logIn__form__input_button:hover {
@@ -309,8 +309,8 @@ button {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: #36373c;
-  color: #ffffff;
+  // background-color: #36373c;
+  // color: #ffffff;
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -371,7 +371,7 @@ button {
   }
 
   &__link {
-    color: var(--theme-primary-color);
+    // color: var(--theme-primary-color);
 
     &:hover {
       color: rgba(60, 191, 140, 0.7);
@@ -421,10 +421,12 @@ button {
   }
 
   &__input-error-hint {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    // position: absolute;
+    // right: 10px;
+    // top: 50%;
+    // transform: translateY(-50%);
+    // margin: auto;
+    display: contents;
     color: #f94640;
     background-color: white;
     box-shadow: 0 0 4px 5px white;
@@ -477,7 +479,7 @@ button {
     padding-right: 46px;
     margin-top: 16px;
     background-color: #43c868;
-    color: white;
+    // color: white;
     font-family: "Montserrat", Arial, sans-serif;
     font-size: 13px;
     font-weight: 500;

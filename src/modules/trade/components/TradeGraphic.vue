@@ -6,7 +6,10 @@
 import { mapGetters } from "vuex";
 import getDatafeed from "~/api/TradingView";
 import { widget } from "~/assets/TradingView/charting_library/charting_library.esm.js";
-import localConfig from "~/local_config";
+import eventBus from "../../../static/public/evenBus"; // Using alias for easier path resolution
+
+const textc = "gray";
+// const backg = "yellow";
 
 export default {
   // eslint-disable-next-line vue/require-prop-types
@@ -27,11 +30,30 @@ export default {
       baseCurrency: "getCurrentBaseCurrency",
       quoteCurrency: "getCurrentQuoteCurrency",
     }),
+
     blockColorLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.block_color || "#FFF";
+      const isDark = document.documentElement.classList.contains("my-app-dark");
+
+      // Retrieve the value of the --surface-card CSS variable
+      const color = getComputedStyle(document.documentElement)
+        .getPropertyValue("--surface-card")
+        .trim();
+
+      // Log the color to debug
+      console.log("colortest:", color);
+
+      // Check if the retrieved color is valid
+      if (!color || color === "") {
+        console.error(
+          "Retrieved color is invalid, falling back to default color."
+        );
+        return isDark ? "gray" : "yellow"; // Fallback colors
+      }
+
+      return color;
     },
     mainTextLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.main_text || "#000000";
+      return textc;
     },
     lang() {
       return this.$locale;
@@ -65,6 +87,9 @@ export default {
   },
 
   mounted() {
+    const updateColorOnThemeChange = () => {
+      this.blockColorLocal(); // Call blockColorLocal to re-evaluate color
+    };
     const graphInterval = setInterval(() => {
       if (this.$refs.graphic) {
         try {
@@ -76,6 +101,7 @@ export default {
       }
     }, 300);
     this.setGraphColor();
+    eventBus.on("toggleTheme", updateColorOnThemeChange);
   },
 
   beforeUnmount() {

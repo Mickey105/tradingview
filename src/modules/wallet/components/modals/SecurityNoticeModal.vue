@@ -3,26 +3,26 @@
     <div class="modal-content">
       <div class="modal-body">
         <div>
-          <h3 class="text-capitalize">
+          <h3 class="text-capitalize text-primary">
             {{ $t("common.security_notice.title") }}
           </h3>
           <div class="security-notice">
-            <p>{{ $t("common.security_notice.info") }}</p>
+            <p class="mb-2">{{ $t("common.security_notice.info") }}</p>
             <ul>
               <li>{{ $t("common.security_notice.list_item_1") }}</li>
             </ul>
             <p>{{ $t("common.security_notice.description") }}</p>
-            <div class="text-center">
+            <div class="text-center gap-2 mt-4 flex justify-content-evenly">
               <button
                 type="button"
-                class="btn btn-primary btn-block py-2"
+                class="p-button p-button py-2 p-button-sm p-button-danger p-button-raised font-medium"
                 @click="goToSettings"
               >
                 {{ $t("common.setup") }}
               </button>
               <button
                 type="button"
-                class="btn btn-danger btn-block py-2"
+                class="p-button p-button py-2 p-button-sm p-button-warn-button-raised font-medium"
                 @click="remindMeLater()"
               >
                 {{ $t("common.remind_me_later") }}

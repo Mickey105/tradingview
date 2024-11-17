@@ -67,48 +67,40 @@ export default {
       coins: "core/coins",
     }),
     colorFromScript() {
-      return "red";
+      return "";
     },
     inputColorLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.input_color || "#FFF";
+      return localConfig?.themes?.[this.currentTheme]?.input_color || "";
     },
     inputTextLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.input_text || "#000";
+      return localConfig?.themes?.[this.currentTheme]?.input_text || "";
     },
     loginTextLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.login_text || "#FFF";
+      return localConfig?.themes?.[this.currentTheme]?.login_text || "";
     },
     blockColorLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.block_color || "#FFF";
+      return localConfig?.themes?.[this.currentTheme]?.block_color || "";
     },
     mainColorLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.main_color || "#2A2259";
+      return localConfig?.themes?.[this.currentTheme]?.main_color || "";
     },
     mainBackgroundLocal() {
-      return (
-        localConfig?.themes?.[this.currentTheme]?.main_background || "#edf1fa"
-      );
+      return localConfig?.themes?.[this.currentTheme]?.main_background || "";
     },
     mainTextLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.main_text || "#000000";
+      return localConfig?.themes?.[this.currentTheme]?.main_text || "";
     },
     cancelLocal() {
-      return (
-        localConfig?.themes?.[this.currentTheme]?.cancel_color || "#ff0000"
-      );
+      return localConfig?.themes?.[this.currentTheme]?.cancel_color || "";
     },
     secondLocal() {
-      return (
-        localConfig?.themes?.[this.currentTheme]?.second_color || "#ffac2a"
-      );
+      return localConfig?.themes?.[this.currentTheme]?.second_color || "";
     },
     borderLocal() {
-      return localConfig?.themes?.[this.currentTheme]?.border_color || "#CCC";
+      return localConfig?.themes?.[this.currentTheme]?.border_color || "";
     },
     hoverLocal() {
-      return (
-        localConfig?.themes?.[this.currentTheme]?.hover_color || "#f4bf0b38"
-      );
+      return localConfig?.themes?.[this.currentTheme]?.hover_color || "";
     },
   },
   watch: {
@@ -286,7 +278,7 @@ export default {
   color: v-bind(mainTextLocal) !important;
 }
 .footer__social-item path {
-  fill: v-bind(mainTextLocal) !important;
+  // fill: v-bind(mainTextLocal) !important;
 }
 .wr-line,
 .wr-line b,
@@ -366,7 +358,7 @@ th.walletTable__header,
 }
 .author-list__link-icon,
 .navigation__link__img {
-  fill: v-bind(mainTextLocal) !important;
+  // fill: v-bind(mainTextLocal) !important;
 }
 .btn-danger {
   background: v-bind(cancelLocal) !important;
@@ -388,17 +380,19 @@ th.walletTable__header,
   // color: v-bind(secondLocal) !important;
   // background-color: var(--p-content-background) !important;
 }
+.register__link {
+}
 #themeSelector,
 .wallet__action--deposit use {
   fill: v-bind(secondLocal) !important;
 }
 .wallet__action--withdrawal path,
 .wallet__action--history path {
-  fill: v-bind(mainTextLocal) !important;
+  // fill: v-bind(mainTextLocal) !important;
 }
 .search-input-icon path,
 .currency-table svg {
-  fill: v-bind(secondLocal) !important;
+  fill: var(--p-primary-color) !important;
 }
 .trade-menus__nav-item,
 .nav-tabs .nav-item.show .nav-link,
@@ -419,6 +413,6 @@ th.walletTable__header,
 }
 .show-password-icon path {
   background: v-bind(mainColorLocal) !important;
-  fill: v-bind(mainTextLocal) !important;
+  // fill: v-bind(mainTextLocal) !important;
 }
 </style>

@@ -1,11 +1,11 @@
 @use "sass:color";
 @import "./variables.scss";
 
-body {
-    --theme-background-color: #{$theme-background-color};
-    --theme-primary-color: #{$theme-primary-color};
-    --theme-secondary-color: #{$theme-secondary-color};
-}
+// body {
+//     --theme-background-color: #{$theme-background-color};
+//     --theme-primary-color: #{$theme-primary-color};
+//     --theme-secondary-color: #{$theme-secondary-color};
+// }
 
 .currency-list .currency-table .table tbody tr.active,
 .wallet-list .currency-table .table tbody tr.active {

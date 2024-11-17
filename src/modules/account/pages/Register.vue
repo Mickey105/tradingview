@@ -1,5 +1,265 @@
 <template>
-  <HeaderComponent v-if="!simpleLayout" />
+  <HeaderComponent />
+  <PrimeCard class="max-w-30rem m-auto p-3 mt-5 mb-5">
+    <template #title>
+      <span class="flex flex-column gap-1">
+        <span class="m-auto"
+          ><img src="/public/img/logo-white.svg" class="max-w-16rem"
+        /></span>
+        <PrimeDivider></PrimeDivider>
+        <span class="text-4xl font-semibold text-center mt-2"
+          >Welcome to Pool4Ever</span
+        >
+        <span class="text-xl font-light text-center">{{
+          $t("common.createAccount")
+        }}</span>
+      </span>
+    </template>
+    <template v-if="stage === 'data_gathering'" #content>
+      <PrimeStepper value="1" class="basis-[50rem]">
+        <StepList>
+          <PrimeStep value="1">Personal Info</PrimeStep>
+          <PrimeStep value="2" @click="validateAndProceed(activateCallback)"
+            >D.O.B & Country</PrimeStep
+          >
+          <PrimeStep value="3">Set Password</PrimeStep>
+        </StepList>
+        <StepPanels>
+          <StepPanel v-slot="{ activateCallback }" value="1">
+            <div class="flex flex-col h-20rem">
+              <div
+                class="border-2 border-surface-200 dark:border-surface-700 rounded flex-auto flex justify-center font-medium mt-2"
+              >
+                <form
+                  class="register__form flex flex-column mt-4 p-2 mb-4"
+                  autocomplete="off"
+                  novalidate
+                  @submit.prevent="handleRegister"
+                >
+                  <span class="flex flex-column gap-2 mb-3">
+                    <label for="first_name" class="text-primary"
+                      >{{ $t("common.firstname") }}:</label
+                    >
+                    <span class="register__input-wrapper">
+                      <input
+                        id="first_name"
+                        v-model="form.first_name"
+                        type="text"
+                        class=""
+                        style="border-radius: 15px"
+                        :class="{
+                          'border-red': showedValidationError.first_name,
+                        }"
+                        @blur="showValidationErrorFor.first_name = true"
+                        @focus="showValidationErrorFor.first_name = false"
+                      /><span
+                        v-if="showedValidationError.first_name"
+                        class="register__input-error-hint"
+                      >
+                        {{ showedValidationError.first_name }}
+                      </span></span
+                    >
+                  </span>
+                  <span class="flex flex-column gap-2 mb-3">
+                    <label for="last_name" class="text-primary"
+                      >{{ $t("common.lastname") }}:</label
+                    >
+                    <span class="flex flex-column gap-2">
+                      <input
+                        id="last_name"
+                        v-model="form.last_name"
+                        type="text"
+                        class=""
+                        style="border-radius: 15px"
+                        :class="{
+                          'border-red': showedValidationError.last_name,
+                        }"
+                        @blur="showValidationErrorFor.last_name = true"
+                        @focus="showValidationErrorFor.last_name = false"
+                      />
+                      <span
+                        v-if="showedValidationError.last_name"
+                        class="register__input-error-hint"
+                      >
+                        {{ showedValidationError.last_name }}
+                      </span>
+                    </span>
+                  </span>
+                  <span class="flex flex-column gap-2 mb-3">
+                    <label for="email" class="text-primary">Email:</label>
+                    <span class="register__input-wrapper">
+                      <input
+                        id="email"
+                        v-model="form.email"
+                        type="text"
+                        class=""
+                        style="border-radius: 15px"
+                        :class="{ 'border-red': showedValidationError.email }"
+                        @blur="showValidationErrorFor.email = true"
+                        @focus="showValidationErrorFor.email = false"
+                      />
+                      <span
+                        v-if="showedValidationError.email"
+                        class="register__input-error-hint"
+                      >
+                        {{ showedValidationError.email }}
+                      </span>
+                    </span>
+                  </span>
+                </form>
+              </div>
+            </div>
+            <div class="flex pt-6 justify-end">
+              <PrimeButton
+                label="Next"
+                icon="pi pi-arrow-right"
+                icon-pos="right"
+                @click="validateAndProceed(activateCallback)"
+              />
+            </div>
+          </StepPanel>
+          <StepPanel v-slot="{ activateCallback }" value="2">
+            <div class="flex flex-col h-20rem">
+              <div
+                class="border-2 border-surface-200 dark:border-surface-700 rounded flex-auto flex justify-center font-medium mt-2"
+              >
+                <form
+                  class="register__form flex flex-column mt-4 p-2 mb-4"
+                  autocomplete="off"
+                  novalidate
+                  @submit.prevent="handleRegister"
+                >
+                  <span
+                    class="flex flex-column gap-2 mb-3 align-items-center"
+                    birthday
+                  >
+                    <label>{{ $t("common.birthday") }}:</label>
+                    <date-picker
+                      ref="datepicker"
+                      v-model:value="form.birth_day"
+                      v-pattern="/^[0-9.]*$/"
+                      :typeable="true"
+                      :clearable="datePickerOptions.isClearable"
+                      :editable="datePickerOptions.editable"
+                      :format="datePickerOptions.format"
+                      :placeholder="datePickerOptions.placeholder"
+                      :first-day-of-week="datePickerOptions.firstDay"
+                      value-type="timestamp"
+                      :lang="$locale === 'en' ? 'en' : 'ru'"
+                      class="register__input--birthday"
+                      :class="{
+                        'register__input--birthday-invalid': birthRangeError,
+                        'border-red': showedValidationError.birth_day,
+                      }"
+                      @close="showValidationErrorFor.birth_day = true"
+                      @focus="showValidationErrorFor.birth_day = false"
+                    >
+                      <template #calendar-icon>
+                        <div class="register__date-icon">
+                          <i class="material-icons">calendar_today</i>
+                          <i class="material-icons">arrow_drop_down</i>
+                        </div>
+                      </template>
+                    </date-picker>
+                    <span
+                      v-if="showedValidationError.birth_day"
+                      class="register__input-error-hint register__input-error-hint--birthday"
+                    >
+                      {{ showedValidationError.birth_day }}
+                    </span>
+                    <span
+                      v-if="birthRangeError"
+                      class="register__birthday-error"
+                    >
+                      {{ $t("common.bdayError") }}
+                    </span>
+                    <span
+                      class="flex register__input-group register__input-group--agree align-items-center"
+                    >
+                      <span class="custom-control custom-switch">
+                        <input
+                          id="terms"
+                          v-model="terms"
+                          type="checkbox"
+                          class="custom-control-input"
+                        />
+                        <label class="custom-control-label pt-1" for="terms"
+                          >{{ $t("common.agree") }}
+                          <a
+                            href="/public/docs/EN_User_Agreement_site.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            class="register__link"
+                            >{{ $t("common.terms") }}</a
+                          >
+                          &
+                          <a
+                            href="/public/docs/EN_Privacy_policy_site.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            class="register__link"
+                            >{{ $t("common.privacy") }}</a
+                          ></label
+                        >
+                      </span>
+                    </span>
+
+                    <span class="custom-control custom-switch">
+                      <input
+                        id="newspaper"
+                        v-model="form.subscription"
+                        type="checkbox"
+                        class="custom-control-input"
+                      />
+                      <label
+                        class="custom-control-label pt-1"
+                        :style="
+                          loginText ? `color: ${loginText} !important` : {}
+                        "
+                        for="newspaper"
+                        >{{ $t("common.newspaper") }}</label
+                      >
+                    </span>
+                  </span>
+                </form>
+              </div>
+            </div>
+            <div class="flex pt-6 justify-between">
+              <PrimeButton
+                label="Back"
+                severity="secondary"
+                icon="pi pi-arrow-left"
+                @click="activateCallback('1')"
+              />
+              <PrimeButton
+                label="Next"
+                icon="pi pi-arrow-right"
+                icon-pos="right"
+                @click="activateCallback('3')"
+              />
+            </div>
+          </StepPanel>
+          <StepPanel v-slot="{ activateCallback }" value="3">
+            <div class="flex flex-col h-48">
+              <div
+                class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium"
+              >
+                Content III
+              </div>
+            </div>
+            <div class="pt-6">
+              <PrimeButton
+                label="Back"
+                severity="secondary"
+                icon="pi pi-arrow-left"
+                @click="activateCallback('2')"
+              />
+            </div>
+          </StepPanel>
+        </StepPanels>
+      </PrimeStepper>
+    </template>
+  </PrimeCard>
   <div class="auth">
     <div
       class="register pb-8 px-1 pt-16"
@@ -260,11 +520,8 @@
                   type="checkbox"
                   class="custom-control-input"
                 />
-                <label
-                  class="custom-control-label pt-1"
-                  :style="loginText ? `color: ${loginText} !important` : {}"
-                  for="terms"
-                  >{{ $t("common.agree") }}
+                <label class="custom-control-label pt-1" for="terms">
+                  <span>{{ $t("common.agree") }}</span>
                   <a
                     href="/public/docs/EN_User_Agreement_site.pdf"
                     target="_blank"
@@ -687,6 +944,15 @@ export default {
     }
   },
   methods: {
+    validateAndProceed(activateCallback) {
+      // Check if all fields are filled
+      if (!this.form.first_name || !this.form.last_name || !this.form.email) {
+        alert("Please fill all info needed, Thank You");
+        return; // Prevent proceeding if any field is empty
+      }
+      // If all fields are filled, proceed to the next step
+      activateCallback("2");
+    },
     goToGathering() {
       this.form = getEmptyForm();
       this.stage = "data_gathering";
@@ -946,7 +1212,7 @@ $red: #e93a3a;
 }
 
 .register__input-group--agree {
-  margin-left: 37px;
+  // margin-left: 37px;
 }
 .register__button {
   // background-color: var(--theme-primary-color);
@@ -1019,19 +1285,15 @@ $red: #e93a3a;
 }
 
 .register__input {
-  border-radius: 25px;
-  background: v-bind(borderLocal) !important;
-  color: v-bind(inputTextLocal) !important;
+  border-radius: 15px;
+  // background: v-bind(borderLocal) !important;
+  // color: v-bind(inputTextLocal) !important;
 }
 .register__title {
   font-weight: 500;
 }
 .register__input-error-hint {
   border-radius: 15px !important;
-}
-.register__input--birthday,
-.mx-input {
-  background: v-bind(borderLocal) !important;
-  color: v-bind(secondLocal) !important;
+  padding: 0px !important;
 }
 </style>

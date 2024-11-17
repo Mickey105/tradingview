@@ -126,7 +126,7 @@ export default {
         address: "Punane tn 56 Lasnamäe linnaosa, Tallinn Harju maakond 13619",
         contacts: {
           phone: "+3728804907",
-          email: "support@opencex.exchange",
+          email: "admin@pool4ever.com",
         },
       },
       currentTopUpCardPaySystem: config.currentTopUpCardPaySystem,

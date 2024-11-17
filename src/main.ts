@@ -38,6 +38,14 @@ import MyPreset from "./assets/css/MyPresey";
 import Ripple from "primevue/ripple";
 import Divider from "primevue/divider";
 import CascadeSelect from "primevue/cascadeselect";
+import InputGroup from "primevue/inputgroup";
+import InputGroupAddon from "primevue/inputgroupaddon";
+import Stepper from "primevue/stepper";
+import StepList from "primevue/steplist";
+import StepPanels from "primevue/steppanels";
+import StepItem from "primevue/stepitem";
+import Step from "primevue/step";
+import StepPanel from "primevue/steppanel";
 
 export const app = createApp(App);
 
@@ -68,9 +76,13 @@ app.use(Vue3GoogleLogin, {
 });
 
 // Immediately check and apply dark mode class before page starts rendering
-const darkMode = localStorage.getItem("darkMode") === "enabled";
-if (darkMode) {
+const darkMode = localStorage.getItem("darkMode");
+// Default to dark mode if no preference is set
+if (!darkMode || darkMode === "enabled") {
   document.documentElement.classList.add("my-app-dark");
+  localStorage.setItem("darkMode", "enabled"); // Set default as enabled in localStorage
+} else {
+  document.documentElement.classList.remove("my-app-dark");
 }
 
 app.use(PrimeVue, {
@@ -92,10 +104,15 @@ app.component("PrimeCard", Card);
 app.component("PrimeDivider", Divider);
 app.directive("ripple", Ripple);
 app.component("CascadeSelect", CascadeSelect);
-
-// Register the Menubar component
 app.component("PrimeMenubar", Menubar);
-
-// eslint-disable-next-line vue/multi-word-component-names
+app.component("InputGroup", InputGroup);
+app.component("InputGroupAddon", InputGroupAddon);
 app.component("BaseComponent", Base);
+app.component("PrimeStepper", Stepper);
+app.component("StepList", StepList);
+app.component("StepPanels", StepPanels);
+app.component("StepItem", StepItem);
+app.component("PrimeStep", Step);
+app.component("StepPanel", StepPanel);
+
 app.mount("#app");
